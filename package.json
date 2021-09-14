@@ -1,7 +1,7 @@
 {
   "name": "brewman-api",
-  "version": "1.0.0",
-  "description": "Brewman API",
+  "version": "0.0.1",
+  "description": "Brewman Api",
   "main": "output/index.js",
   "files": ["output"],
   "scripts": {
