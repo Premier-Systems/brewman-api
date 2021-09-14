@@ -9,6 +9,7 @@
     "build": "npm run lint && rollup -c",
     "lint": "eslint **/*.ts"
   },
+  "repository": {"type": "git", "url": "https://github.com/Premier-Systems/brewman-api"},
   "keywords": ["brewman"],
   "author": "",
   "license": "ISC",
