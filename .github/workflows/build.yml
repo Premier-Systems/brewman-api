@@ -21,5 +21,9 @@ jobs:
       - name: build
         id: build
         run: npm run build
-        continue-on-error: false
-      - run: npm test
+      - name: test
+        id: test
+        run: npm test
+      - name: Check failures
+        if: steps.build.outcome != 'success' || steps.test.outcome != 'success'
+        run: exit 1
