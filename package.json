@@ -3,14 +3,21 @@
   "version": "0.0.2",
   "description": "Brewman Api",
   "main": "output/index.js",
-  "files": ["output"],
+  "files": [
+    "output"
+  ],
   "scripts": {
     "test": "jest",
     "build": "npm run lint && rollup -c",
     "lint": "eslint **/*.ts"
   },
-  "repository": {"type": "git", "url": "https://github.com/Premier-Systems/brewman-api"},
-  "keywords": ["brewman"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Premier-Systems/brewman-api"
+  },
+  "keywords": [
+    "brewman"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -24,6 +31,7 @@
     "prettier": "2.4.0",
     "rollup": "^2.56.3",
     "rollup-plugin-terser": "^7.0.2",
-    "ts-jest": "^27.0.5"
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
   }
 }
