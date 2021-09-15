@@ -18,12 +18,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - name: build
-        id: build
-        run: npm run build
-      - name: test
-        id: test
-        run: npm test
-      - name: Check failures
-        if: steps.build.outcome != 'success' || steps.test.outcome != 'success'
-        run: exit 1
+      - run: npm run build
+      - run: npm test
