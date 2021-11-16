@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package bmapi.common;
+
+
+message StringArrayValue {
+  repeated string Value = 1;
+}
+
+message Int32ArrayValue {
+  repeated int32 Value = 1;
+}
+
+

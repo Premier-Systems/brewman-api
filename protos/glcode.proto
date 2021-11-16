@@ -1,0 +1,123 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.stocks.glcode;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service GlCodeService {
+    // Gets all GlCodes
+    rpc GetAllGlCodes(GetAllGlCodesRequestProto) returns (GetAllGlCodesResponseProto) {}
+    // Gets a specific GlCode by Id. (Errors if not found).
+    rpc GetGlCode(GetGlCodeRequestProto) returns (GetGlCodeResponseProto) {}
+    // Gets specific GlCodes by Ids. (Errors if any not found).
+    rpc GetGlCodes(GetGlCodesRequestProto) returns (GetGlCodesResponseProto) {}
+    // Saves a single GlCode
+    rpc SaveGlCode(SaveGlCodeRequestProto) returns (SaveGlCodeResponseProto) {}
+    // Hides or unhides the given GlCode.
+    rpc SetGlCodeIsHidden(SetGlCodeIsHiddenRequestProto) returns (SetGlCodeIsHiddenResponseProto) {}
+    // Gets all undeleted GlCodeOverrides
+    rpc GetAllGlCodeOverrides(GetAllGlCodeOverridesRequestProto) returns (GetAllGlCodeOverridesResponseProto) {}
+}
+
+// Service Messages 
+message GetAllGlCodesRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllGlCodesResponseProto {
+    
+    repeated GlCodeProto gl_codes = 1;
+}
+
+message GetGlCodeRequestProto {
+    
+    string tenant_id = 1;
+    
+    string gl_code_id = 2;
+}
+
+message GetGlCodeResponseProto {
+    
+    GlCodeProto gl_code = 1;
+}
+
+message GetGlCodesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string gl_code_ids = 2;
+}
+
+message GetGlCodesResponseProto {
+    
+    repeated GlCodeProto gl_codes = 1;
+}
+
+message SaveGlCodeRequestProto {
+    
+    string tenant_id = 1;
+    
+    GlCodeProto gl_code = 2;
+}
+
+message SaveGlCodeResponseProto {
+}
+
+message SetGlCodeIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string gl_code_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetGlCodeIsHiddenResponseProto {
+}
+
+message GetAllGlCodeOverridesRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllGlCodeOverridesResponseProto {
+    
+    repeated GlCodeOverrideProto gl_code_overrides = 1;
+}
+
+
+// Domain Messages
+message GlCodeProto {
+    int64 version = 7;
+    string id = 8;
+
+    // General Ledger Code
+    string code = 9;
+
+    // General Ledger Code Name
+    string name = 10;
+    bool is_hidden = 11;
+}
+message GlCodeOverrideProto {
+
+    // Stock Item Id
+    string stock_item_id = 1;
+
+    // Outlet Type ID
+    string outlet_type_id = 2;
+
+    // GL Code ID
+    google.protobuf.StringValue gl_code_id = 4;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

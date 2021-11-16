@@ -1,0 +1,74 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.orders.collectiontime;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service CollectionTimeService {
+    
+    rpc GetAllCollectionTimes(GetAllCollectionTimesRequestProto) returns (GetAllCollectionTimesResponseProto) {}
+    
+    rpc GetCollectionTimes(GetCollectionTimesRequestProto) returns (GetCollectionTimesResponseProto) {}
+    // Saves one or many collection times
+    rpc SaveCollectionTimes(SaveCollectionTimesRequestProto) returns (SaveCollectionTimesResponseProto) {}
+}
+
+// Service Messages 
+message GetAllCollectionTimesRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllCollectionTimesResponseProto {
+    
+    repeated CollectionTimeProto collection_times = 1;
+}
+
+message GetCollectionTimesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string collection_time_ids = 2;
+}
+
+message GetCollectionTimesResponseProto {
+    
+    repeated CollectionTimeProto collection_times = 1;
+}
+
+message SaveCollectionTimesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated CollectionTimeProto collection_times = 2;
+}
+
+message SaveCollectionTimesResponseProto {
+}
+
+
+// Domain Messages
+message CollectionTimeProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Name
+    string name = 9;
+
+    // True if this is the default collection time. Simply a marker for the FE to use. Will be automatically set false if another CollectionTime is saved with IsDefault true, thus ensuring there will always be 0 or 1 but no more CollectionTimes with IsDefault set true.
+    bool is_default = 10;
+
+    // Sequence, for ordering CollectionTimes.
+    int32 sequence = 11;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

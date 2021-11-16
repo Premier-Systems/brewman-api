@@ -1,3 +1,8 @@
 /node_modules
+
+# Build output
 /output
+/.idea
+/.vs
+
 *.tgz

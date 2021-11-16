@@ -1,0 +1,120 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.distribution.courier;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service CourierService {
+    // Gets all undeleted Couriers
+    rpc GetAllCouriers(GetAllCouriersRequestProto) returns (GetAllCouriersResponseProto) {}
+    // Gets a specific Courier by Id, even if it has been soft-deleted. (Errors if not found).
+    rpc GetCourier(GetCourierRequestProto) returns (GetCourierResponseProto) {}
+    // Gets specific Couriers by Id, even if they has been soft-deleted. (Errors if not found).
+    rpc GetCouriers(GetCouriersRequestProto) returns (GetCouriersResponseProto) {}
+    // Saves zero or more Couriers
+    rpc SaveCouriers(SaveCouriersRequestProto) returns (SaveCouriersResponseProto) {}
+    // Hides or unhides the given Courier.
+    rpc SetCourierIsHidden(SetCourierIsHiddenRequestProto) returns (SetCourierIsHiddenResponseProto) {}
+    // Calculate the next despatch date by the given Courier id.
+    rpc CalculateNextDespatchDateByCourier(CalculateNextDespatchDateByCourierRequestProto) returns (CalculateNextDespatchDateByCourierResponseProto) {}
+}
+
+// Service Messages 
+message GetAllCouriersRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllCouriersResponseProto {
+    
+    repeated CourierProto couriers = 1;
+}
+
+message GetCourierRequestProto {
+    
+    string tenant_id = 1;
+    
+    string courier_id = 2;
+}
+
+message GetCourierResponseProto {
+    
+    CourierProto courier = 1;
+}
+
+message GetCouriersRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string courier_ids = 2;
+}
+
+message GetCouriersResponseProto {
+    
+    repeated CourierProto couriers = 1;
+}
+
+message SaveCouriersRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated CourierProto couriers = 2;
+}
+
+message SaveCouriersResponseProto {
+}
+
+message SetCourierIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string courier_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetCourierIsHiddenResponseProto {
+}
+
+message CalculateNextDespatchDateByCourierRequestProto {
+    
+    string tenant_id = 1;
+    
+    string courier_id = 2;
+}
+
+message CalculateNextDespatchDateByCourierResponseProto {
+    
+    google.type.Date despatch_date = 2;
+}
+
+
+// Domain Messages
+message CourierProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Lead Time in Days.
+    int32 lead_time_days = 9;
+
+    // Name
+    string name = 10;
+
+    // Notes
+    string notes = 11;
+
+    // Array of days of week on which orders are typically despatched. Will always read in order Monday to Sunday.
+    repeated bmapi.common.EnumDayOfWeek despatch_days = 12;
+    bool is_hidden = 13;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

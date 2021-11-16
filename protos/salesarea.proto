@@ -1,0 +1,86 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.outlets.salesarea;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service SalesAreaService {
+    // Gets all SalesAreas
+    rpc GetAllSalesAreas(GetAllSalesAreasRequestProto) returns (GetAllSalesAreasResponseProto) {}
+    // Gets specific SalesAreas. (Errors if any not found).
+    rpc GetSalesAreas(GetSalesAreasRequestProto) returns (GetSalesAreasResponseProto) {}
+    // Saves one or many SalesAreas
+    rpc SaveSalesAreas(SaveSalesAreasRequestProto) returns (SaveSalesAreasResponseProto) {}
+    // Hides or unhides the given Sales Area.
+    rpc SetSalesAreaIsHidden(SetSalesAreaIsHiddenRequestProto) returns (SetSalesAreaIsHiddenResponseProto) {}
+}
+
+// Service Messages 
+message GetAllSalesAreasRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllSalesAreasResponseProto {
+    
+    repeated SalesAreaProto sales_areas = 1;
+}
+
+message GetSalesAreasRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string sales_area_ids = 2;
+}
+
+message GetSalesAreasResponseProto {
+    
+    repeated SalesAreaProto sales_areas = 1;
+}
+
+message SaveSalesAreasRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated SalesAreaProto sales_areas = 2;
+}
+
+message SaveSalesAreasResponseProto {
+}
+
+message SetSalesAreaIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string sales_area_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetSalesAreaIsHiddenResponseProto {
+}
+
+
+// Domain Messages
+message SalesAreaProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Sales Area Name
+    string name = 9;
+
+    // Sales Area Description
+    string description = 10;
+    bool is_hidden = 11;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

@@ -1,0 +1,249 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.stocks.stockitem;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service StockItemService {
+    // Gets all undeleted StockItems
+    rpc GetAllStockItems(GetAllStockItemsRequestProto) returns (GetAllStockItemsResponseProto) {}
+    // Gets a single StockItem by Id, even if it has been soft-deleted. (Errors if not found).
+    rpc GetStockItem(GetStockItemRequestProto) returns (GetStockItemResponseProto) {}
+    // Gets specific StockItems by Ids, including soft-deleted ones. (Errors if any not found).
+    rpc GetStockItems(GetStockItemsRequestProto) returns (GetStockItemsResponseProto) {}
+    // Gets StockItems matching the given filter. (soft-deleted stock items are not returned).
+    rpc GetStockItemsByFilter(GetStockItemsByFilterRequestProto) returns (GetStockItemsByFilterResponseProto) {}
+    // Gets GlCodeOverrides for a specific Stock Item
+    rpc GetGlCodeOverridesForStockItem(GetGlCodeOverridesForStockItemRequestProto) returns (GetGlCodeOverridesForStockItemResponseProto) {}
+    // Hides or unhides the given stock item.
+    rpc SetStockItemIsHidden(SetStockItemIsHiddenRequestProto) returns (SetStockItemIsHiddenResponseProto) {}
+}
+
+// Service Messages 
+message GetAllStockItemsRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllStockItemsResponseProto {
+    
+    repeated StockItemProto stock_items = 1;
+}
+
+message GetStockItemRequestProto {
+    
+    string tenant_id = 1;
+    
+    string stock_item_id = 2;
+}
+
+message GetStockItemResponseProto {
+    
+    StockItemProto stock_item = 1;
+}
+
+message GetStockItemsRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string stock_item_ids = 2;
+}
+
+message GetStockItemsResponseProto {
+    
+    repeated StockItemProto stock_items = 1;
+}
+
+message GetStockItemsByFilterRequestProto {
+    
+    string tenant_id = 1;
+    
+    StockItemFilterProto filter = 2;
+}
+
+message GetStockItemsByFilterResponseProto {
+    
+    repeated StockItemProto stock_items = 1;
+}
+
+message GetGlCodeOverridesForStockItemRequestProto {
+    
+    string tenant_id = 1;
+    
+    string stock_item_id = 2;
+}
+
+message GetGlCodeOverridesForStockItemResponseProto {
+    
+    repeated GlCodeOverrideForStockItemProto gl_code_overrides = 1;
+}
+
+message SetStockItemIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string stock_item_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetStockItemIsHiddenResponseProto {
+}
+
+
+// Domain Messages
+message StockItemProto {
+    int64 version = 7;
+    string id = 8;
+    bool is_hidden = 9;
+
+    // Name
+    string name = 10;
+
+    // Stock Code
+    google.protobuf.StringValue code = 12;
+
+    // To indicate that Urn should be captured when printing labels or using in onward assemblies.
+    bool delivery_batch_tracked = 13;
+
+    // Is this item a Raw Material.
+    bool is_material = 14;
+
+    // Cost Price - Used for GrossProfit calculations when goods are sold.
+    double cost_price = 15;
+
+    // Is this item perishable.
+    bool is_perishable = 16;
+
+    // Is Stock of this Item Tracked.
+    bool is_stock_tracked = 17;
+
+    // Is Tracked in Batches.
+    bool is_batch_tracked = 18;
+
+    // Notes.
+    string notes = 19;
+
+    // Package Type Id. Optional even for Products
+    google.protobuf.StringValue package_type_id = 21;
+
+    // Stock Group Id
+    google.protobuf.StringValue stock_group_id = 23;
+
+    // Unit of Measure
+    string unit_of_measure_id = 24;
+
+    // Vat Code Id
+    string vat_code_id = 25;
+
+    // Alcohol Type.
+    bmapi.common.EnumAlcoholType alcohol_type = 26;
+
+    // Abv.
+    double abv = 27;
+
+    // Dutiable Litres
+    double dutiable_litres = 28;
+
+    // Manufacturer.
+    google.protobuf.StringValue manufacturer_id = 30;
+
+    // Plato Value
+    google.protobuf.DoubleValue plato = 32;
+
+    // Use the Product Brand Tasting Notes
+    bool label_uses_brand_tasting_notes = 33;
+
+    // Tasting Notes (May be overridden by branding).
+    string label_tasting_notes = 34;
+
+    // Use the Product Brand Ingredients and Allergens
+    bool label_uses_brand_ingredients_and_allergens = 35;
+
+    // Ingredients and Allergens
+    string label_ingredients_and_allergens = 36;
+
+    // Supplier.
+    google.protobuf.StringValue supplier_id = 38;
+
+    // Supplier Part Number
+    string supplier_part_no = 39;
+
+    // Purchase Pack Price
+    google.protobuf.DoubleValue purchase_price = 41;
+
+    // Purchase GL Code
+    google.protobuf.StringValue purchase_gl_code_id = 43;
+
+    // Supplier Pack Size
+    google.protobuf.DoubleValue purchase_pack_size = 45;
+
+    // Number of days typically between ordering and receiving item.
+    int32 lead_time_days = 46;
+
+    // Are sales currently allowed for this product? (Use to prevent selling of Eg out-of-season products).
+    bool allow_sales = 47;
+
+    // Product Brand Id. Optional even for Products.
+    google.protobuf.StringValue product_brand_id = 49;
+
+    // Export Weight
+    google.protobuf.DoubleValue export_weight = 51;
+
+    // Pricing Category Id. Required for Products.
+    google.protobuf.StringValue pricing_category_id = 53;
+
+    // Flag indicating whether we can take an order which requires us to rack beer IN to this product (for scenario where we do not have stock of this product but do have liquid beer available).
+    bool rack_to_order = 54;
+
+    // Weight (kg)
+    double weight_kg = 55;
+
+    // Gl Code
+    google.protobuf.StringValue sales_gl_code_id = 57;
+
+    // Country Of Origin
+    string country_of_origin = 58;
+
+    // Net Weight (kg), Ie if this item is a packaged thing such as a foodstuff then the actual weight of the foodstuff within the package.
+    google.protobuf.DoubleValue net_weight_kg = 60;
+
+    // EAN 13/14 Product Code
+    string ean_barcode_number = 61;
+
+    // Beerflex Product Code
+    string beerflex_code = 62;
+
+    // Export Commodity Code
+    string export_commodity_code = 63;
+}
+message StockItemFilterProto {
+    bool include_materials = 1;
+    bool include_products = 2;
+    bmapi.common.StringArrayValue limit_stock_group_ids = 4;
+    bmapi.common.StringArrayValue limit_supplier_ids = 6;
+    bmapi.common.StringArrayValue limit_purchase_gl_code_ids = 8;
+    bmapi.common.StringArrayValue limit_sales_gl_code_ids = 10;
+    bmapi.common.StringArrayValue limit_vat_code_ids = 12;
+    bmapi.common.StringArrayValue limit_codes = 14;
+    bmapi.common.StringArrayValue limit_stock_item_ids = 16;
+}
+message GlCodeOverrideForStockItemProto {
+
+    // Outlet Type ID
+    string outlet_type_id = 1;
+
+    // GL Code ID
+    google.protobuf.StringValue gl_code_id = 3;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

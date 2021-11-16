@@ -1,0 +1,98 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.stocks.productbrand;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service ProductBrandService {
+    // Gets all ProductBrands
+    rpc GetAllProductBrands(GetAllProductBrandsRequestProto) returns (GetAllProductBrandsResponseProto) {}
+    // Gets specific ProductBrands
+    rpc GetProductBrands(GetProductBrandsRequestProto) returns (GetProductBrandsResponseProto) {}
+    // Saves a ProductBrand
+    rpc SaveProductBrand(SaveProductBrandRequestProto) returns (SaveProductBrandResponseProto) {}
+    // Hides or unhides the given product brand.
+    rpc SetProductBrandIsHidden(SetProductBrandIsHiddenRequestProto) returns (SetProductBrandIsHiddenResponseProto) {}
+}
+
+// Service Messages 
+message GetAllProductBrandsRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllProductBrandsResponseProto {
+    
+    repeated ProductBrandProto product_brands = 1;
+}
+
+message GetProductBrandsRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string product_brand_ids = 2;
+}
+
+message GetProductBrandsResponseProto {
+    
+    repeated ProductBrandProto product_brands = 1;
+}
+
+message SaveProductBrandRequestProto {
+    
+    string tenant_id = 1;
+    
+    ProductBrandProto product_brand = 2;
+}
+
+message SaveProductBrandResponseProto {
+}
+
+message SetProductBrandIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string product_brand_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetProductBrandIsHiddenResponseProto {
+}
+
+
+// Domain Messages
+message ProductBrandProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Product Brand Name
+    string name = 9;
+
+    // Alternative Logo for Label Printing
+    google.protobuf.StringValue image_id = 11;
+
+    // Are sales currently allowed for products in this brand? (Use to prevent selling of Eg out-of-season products).
+    bool allow_sales = 12;
+
+    // Product Brand Notes
+    string notes = 13;
+
+    // Tasting Notes
+    string tasting_notes = 14;
+
+    // Ingredients and Allergens
+    string ingredients_and_allergens = 15;
+    bool is_hidden = 16;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

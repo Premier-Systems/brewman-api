@@ -1,0 +1,112 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.stocks.packagetype;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service PackageTypeService {
+    // Gets all undeleted PackageTypes
+    rpc GetAllPackageTypes(GetAllPackageTypesRequestProto) returns (GetAllPackageTypesResponseProto) {}
+    // Gets a specific PackageType by Id, even if it has been soft-deleted. (Errors if not found).
+    rpc GetPackageType(GetPackageTypeRequestProto) returns (GetPackageTypeResponseProto) {}
+    // Gets specific PackageTypes by Ids, including soft-deleted ones. (Errors if any not found).
+    rpc GetPackageTypes(GetPackageTypesRequestProto) returns (GetPackageTypesResponseProto) {}
+    // Saves a single PackageType
+    rpc SavePackageType(SavePackageTypeRequestProto) returns (SavePackageTypeResponseProto) {}
+    // Hides or unhides the given Package Type.
+    rpc SetPackageTypeIsHidden(SetPackageTypeIsHiddenRequestProto) returns (SetPackageTypeIsHiddenResponseProto) {}
+}
+
+// Service Messages 
+message GetAllPackageTypesRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllPackageTypesResponseProto {
+    
+    repeated PackageTypeProto package_types = 1;
+}
+
+message GetPackageTypeRequestProto {
+    
+    string tenant_id = 1;
+    
+    string package_type_id = 2;
+}
+
+message GetPackageTypeResponseProto {
+    
+    PackageTypeProto package_type = 1;
+}
+
+message GetPackageTypesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string package_type_ids = 2;
+}
+
+message GetPackageTypesResponseProto {
+    
+    repeated PackageTypeProto package_types = 1;
+}
+
+message SavePackageTypeRequestProto {
+    
+    string tenant_id = 1;
+    
+    PackageTypeProto package_type = 2;
+}
+
+message SavePackageTypeResponseProto {
+}
+
+message SetPackageTypeIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string package_type_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetPackageTypeIsHiddenResponseProto {
+}
+
+
+// Domain Messages
+message PackageTypeProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Package Type
+    string name = 9;
+
+    // Litres usually dispensed into this package, if relevant
+    google.protobuf.DoubleValue litres = 11;
+
+    // Package is normally traceable, so expect it to be scanned out on orders.
+    bool is_traceable = 12;
+
+    // Package is normally returnable, so expect it to be scanned out and in.
+    bool is_returnable = 13;
+
+    // Label document template that the package type will use for returnable labels.
+    google.protobuf.StringValue default_returnable_label_document_template_id = 15;
+
+    // Label document template that the package type will use for non-returnable labels.
+    google.protobuf.StringValue default_non_returnable_label_document_template_id = 17;
+    bool is_hidden = 18;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

@@ -1,0 +1,97 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.price.pricingcategory;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service PricingCategoryService {
+    // Gets all pricing categories
+    rpc GetAllPricingCategories(GetAllPricingCategoriesRequestProto) returns (GetAllPricingCategoriesResponseProto) {}
+    // Gets a specific pricing category. (Errors if not found).
+    rpc GetPricingCategory(GetPricingCategoryRequestProto) returns (GetPricingCategoryResponseProto) {}
+    // Saves a single PricingCategory
+    rpc SavePricingCategory(SavePricingCategoryRequestProto) returns (SavePricingCategoryResponseProto) {}
+    // Hides or unhides the given Pricing Category.
+    rpc SetPricingCategoryIsHidden(SetPricingCategoryIsHiddenRequestProto) returns (SetPricingCategoryIsHiddenResponseProto) {}
+    // Gets specific pricing categories. (Errors if any not found).
+    rpc GetPricingCategories(GetPricingCategoriesRequestProto) returns (GetPricingCategoriesResponseProto) {}
+}
+
+// Service Messages 
+message GetAllPricingCategoriesRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllPricingCategoriesResponseProto {
+    
+    repeated PricingCategoryProto pricing_categories = 1;
+}
+
+message GetPricingCategoryRequestProto {
+    
+    string tenant_id = 1;
+    
+    string pricing_category_id = 2;
+}
+
+message GetPricingCategoryResponseProto {
+    
+    PricingCategoryProto pricing_category = 1;
+}
+
+message SavePricingCategoryRequestProto {
+    
+    string tenant_id = 1;
+    
+    PricingCategoryProto pricing_category = 2;
+}
+
+message SavePricingCategoryResponseProto {
+}
+
+message SetPricingCategoryIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string pricing_category_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetPricingCategoryIsHiddenResponseProto {
+}
+
+message GetPricingCategoriesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string pricing_category_ids = 2;
+}
+
+message GetPricingCategoriesResponseProto {
+    
+    repeated PricingCategoryProto pricing_category = 1;
+}
+
+
+// Domain Messages
+message PricingCategoryProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Pricing Category
+    string name = 9;
+    bool is_hidden = 10;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

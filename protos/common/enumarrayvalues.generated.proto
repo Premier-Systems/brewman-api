@@ -1,0 +1,20 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+
+package bmapi.common;
+
+
+import "common/enums.generated.proto";
+
+message EnumOrderSourceArrayValue {
+    repeated EnumOrderSource Value = 1;
+}
+
+message EnumDistributionTypeArrayValue {
+    repeated EnumDistributionType Value = 1;
+}
+
+message EnumOrderStatusArrayValue {
+    repeated EnumOrderStatus Value = 1;
+}
+

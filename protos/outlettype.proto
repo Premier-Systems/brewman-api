@@ -1,0 +1,83 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.outlets.outlettype;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service OutletTypeService {
+    // Gets all outlet types.
+    rpc GetAllOutletTypes(GetAllOutletTypesRequestProto) returns (GetAllOutletTypesResponseProto) {}
+    // Gets specific outlet types. (Errors if any not found).
+    rpc GetOutletTypes(GetOutletTypesRequestProto) returns (GetOutletTypesResponseProto) {}
+    // Saves one or many outlet types
+    rpc SaveOutletTypes(SaveOutletTypesRequestProto) returns (SaveOutletTypesResponseProto) {}
+    // Hides or unhides the given Outlet Type.
+    rpc SetOutletTypeIsHidden(SetOutletTypeIsHiddenRequestProto) returns (SetOutletTypeIsHiddenResponseProto) {}
+}
+
+// Service Messages 
+message GetAllOutletTypesRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllOutletTypesResponseProto {
+    
+    repeated OutletTypeProto outlet_types = 1;
+}
+
+message GetOutletTypesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string outlet_type_ids = 2;
+}
+
+message GetOutletTypesResponseProto {
+    
+    repeated OutletTypeProto outlet_types = 1;
+}
+
+message SaveOutletTypesRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated OutletTypeProto outlet_types = 2;
+}
+
+message SaveOutletTypesResponseProto {
+}
+
+message SetOutletTypeIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string outlet_type_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetOutletTypeIsHiddenResponseProto {
+}
+
+
+// Domain Messages
+message OutletTypeProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Type Description
+    string name = 9;
+    bool is_hidden = 10;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

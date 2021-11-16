@@ -1,0 +1,86 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.stocks.stockgroup;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service StockGroupService {
+    // Gets all stock groups
+    rpc GetAllStockGroups(GetAllStockGroupsRequestProto) returns (GetAllStockGroupsResponseProto) {}
+    // Gets a specific stock group. (Errors if not found).
+    rpc GetStockGroup(GetStockGroupRequestProto) returns (GetStockGroupResponseProto) {}
+    // Saves a StockGroup
+    rpc SaveStockGroup(SaveStockGroupRequestProto) returns (SaveStockGroupResponseProto) {}
+    // Get specific stock groups. (Errors if any not found).
+    rpc GetStockGroupsById(GetStockGroupsByIdRequestProto) returns (GetStockGroupsByIdResponseProto) {}
+}
+
+// Service Messages 
+message GetAllStockGroupsRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllStockGroupsResponseProto {
+    
+    repeated StockGroupProto stock_groups = 1;
+}
+
+message GetStockGroupRequestProto {
+    
+    string tenant_id = 1;
+    
+    string stock_group_id = 2;
+}
+
+message GetStockGroupResponseProto {
+    
+    StockGroupProto stock_group = 1;
+}
+
+message SaveStockGroupRequestProto {
+    
+    string tenant_id = 1;
+    
+    StockGroupProto stock_group = 2;
+}
+
+message SaveStockGroupResponseProto {
+}
+
+message GetStockGroupsByIdRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string stock_group_ids = 2;
+}
+
+message GetStockGroupsByIdResponseProto {
+    
+    repeated StockGroupProto stock_groups = 1;
+}
+
+
+// Domain Messages
+message StockGroupProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Name
+    string name = 9;
+
+    // Restricted Stock - Raises warning on attempt to over-sell.
+    bool restricted_stock = 10;
+    bool is_hidden = 11;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

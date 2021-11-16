@@ -1,0 +1,106 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.stocks.unitofmeasure;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service UnitOfMeasureService {
+    // Gets all UnitsOfMeasure
+    rpc GetAllUnitsOfMeasure(GetAllUnitsOfMeasureRequestProto) returns (GetAllUnitsOfMeasureResponseProto) {}
+    // Gets a single unit of measure. (Errors if not found).
+    rpc GetUnitOfMeasure(GetUnitOfMeasureRequestProto) returns (GetUnitOfMeasureResponseProto) {}
+    // Gets specific units of measure. (Errors if any not found).
+    rpc GetUnitsOfMeasure(GetUnitsOfMeasureRequestProto) returns (GetUnitsOfMeasureResponseProto) {}
+    // Saves a single UnitOfMeasure
+    rpc SaveUnitOfMeasure(SaveUnitOfMeasureRequestProto) returns (SaveUnitOfMeasureResponseProto) {}
+    // Hides or unhides the given Unit of Measure.
+    rpc SetUnitOfMeasureIsHidden(SetUnitOfMeasureIsHiddenRequestProto) returns (SetUnitOfMeasureIsHiddenResponseProto) {}
+}
+
+// Service Messages 
+message GetAllUnitsOfMeasureRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllUnitsOfMeasureResponseProto {
+    
+    repeated UnitOfMeasureProto units_of_measure = 1;
+}
+
+message GetUnitOfMeasureRequestProto {
+    
+    string tenant_id = 1;
+    
+    string unit_of_measure_id = 2;
+}
+
+message GetUnitOfMeasureResponseProto {
+    
+    UnitOfMeasureProto unit_of_measure = 1;
+}
+
+message GetUnitsOfMeasureRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string unit_of_measure_ids = 2;
+}
+
+message GetUnitsOfMeasureResponseProto {
+    
+    repeated UnitOfMeasureProto units_of_measure = 1;
+}
+
+message SaveUnitOfMeasureRequestProto {
+    
+    string tenant_id = 1;
+    
+    UnitOfMeasureProto unit_of_measure = 2;
+}
+
+message SaveUnitOfMeasureResponseProto {
+}
+
+message SetUnitOfMeasureIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string unit_of_measure_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetUnitOfMeasureIsHiddenResponseProto {
+}
+
+
+// Domain Messages
+message UnitOfMeasureProto {
+    int64 version = 7;
+    string id = 8;
+
+    // Litres
+    google.protobuf.DoubleValue litres = 10;
+
+    // Name
+    string name = 11;
+    UnitOfMeasureReadOnlyProto read_only = 12;
+    bool is_hidden = 13;
+}
+message UnitOfMeasureReadOnlyProto {
+
+    // Identifies if this is the system unit of measure for units, used for all product stock items.
+    bool is_units = 1;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+

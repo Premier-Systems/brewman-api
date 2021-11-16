@@ -1,0 +1,350 @@
+// THIS FILE IS GENERATED
+syntax = "proto3";
+package bmapi.outlets.outlet;
+
+
+import "google/type/timeofday.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/protobuf/wrappers.proto";
+import "common/arrayvalues.proto";
+
+import "common/enums.generated.proto";
+import "common/enumarrayvalues.generated.proto";
+
+service OutletService {
+    // Gets all undeleted Outlets
+    rpc GetAllOutlets(GetAllOutletsRequestProto) returns (GetAllOutletsResponseProto) {}
+    // Gets specific Outlets by Ids, including soft-deleted ones. (Errors if any not found).
+    rpc GetOutlets(GetOutletsRequestProto) returns (GetOutletsResponseProto) {}
+    // Gets a specific Outlet by Id, even if soft-deleted. (Errors if not found).
+    rpc GetOutlet(GetOutletRequestProto) returns (GetOutletResponseProto) {}
+    // Hides or unhides the given Outlet.
+    rpc SetOutletIsHidden(SetOutletIsHiddenRequestProto) returns (SetOutletIsHiddenResponseProto) {}
+    // Get Outlets matching the given filter. (soft-deleted outlets are not returned).
+    rpc GetOutletsByFilter(GetOutletsByFilterRequestProto) returns (GetOutletsByFilterResponseProto) {}
+}
+
+// Service Messages 
+message GetAllOutletsRequestProto {
+    
+    string tenant_id = 1;
+}
+
+message GetAllOutletsResponseProto {
+    
+    repeated OutletProto outlets = 1;
+}
+
+message GetOutletsRequestProto {
+    
+    string tenant_id = 1;
+    
+    repeated string outlet_id = 2;
+}
+
+message GetOutletsResponseProto {
+    
+    repeated OutletProto outlets = 1;
+}
+
+message GetOutletRequestProto {
+    
+    string tenant_id = 1;
+    
+    string outlet_id = 2;
+    
+    google.protobuf.BoolValue ensure_lat_longs = 4;
+}
+
+message GetOutletResponseProto {
+    
+    OutletProto outlet = 1;
+}
+
+message SetOutletIsHiddenRequestProto {
+    
+    string tenant_id = 1;
+    
+    string outlet_id = 2;
+    // True to hide, false to unhide.
+    bool hide = 3;
+}
+
+message SetOutletIsHiddenResponseProto {
+}
+
+message GetOutletsByFilterRequestProto {
+    
+    string tenant_id = 1;
+    
+    OutletFilterProto filter = 2;
+}
+
+message GetOutletsByFilterResponseProto {
+    
+    repeated OutletProto outlets = 1;
+}
+
+
+// Domain Messages
+message OutletProto {
+    int64 version = 7;
+    string id = 8;
+    bool is_hidden = 17;
+
+    // Name
+    string business_name = 19;
+
+    // Internal name shown only to the users of the BrewMan system
+    string display_name = 20;
+
+    // Telephone number
+    string telephone_number = 21;
+
+    // Email Address
+    string email_address = 22;
+
+    // Outlet Group
+    google.protobuf.StringValue group_id = 24;
+
+    // Sales Area Id
+    google.protobuf.StringValue sales_area_id = 26;
+
+    // Sales Code Id
+    google.protobuf.StringValue sales_code_id = 28;
+
+    // Outlet Rating
+    string outlet_rating_id = 29;
+
+    // Outlet Type
+    google.protobuf.StringValue outlet_type_id = 31;
+
+    // Default Stock Location
+    string stock_location_id = 32;
+
+    // Default Invoice Address
+    string main_address_line1 = 33;
+
+    // Default Invoice Address
+    string main_address_line2 = 34;
+
+    // Default Invoice Address
+    string main_address_line3 = 35;
+
+    // Default Invoice Address
+    string main_address_line4 = 36;
+
+    // Default Invoice Address
+    string main_address_line5 = 37;
+
+    // Default Invoice Address
+    string main_address_line6 = 38;
+
+    // Default Invoice Address
+    string main_address_postcode = 39;
+
+    // Price List
+    string price_list_id = 40;
+
+    // VAT Registration No.
+    string vat_number = 41;
+
+    // Credit Terms Set
+    bool credit_terms_set = 42;
+
+    // Credit Terms
+    google.protobuf.StringValue credit_terms_id = 44;
+
+    // Credit Limit
+    google.protobuf.DoubleValue credit_limit = 46;
+
+    // Credit Review Date
+    google.type.Date review_date = 48;
+
+    // Bank Name
+    string bank_name = 49;
+
+    // Bank Sort Code
+    string bank_sort_code = 50;
+
+    // Bank Account No
+    string bank_account_number = 51;
+
+    // Email Invoices
+    bool email_invoices = 52;
+
+    // Default Invoice Template Id
+    google.protobuf.StringValue default_invoice_template_id = 54;
+
+    // Default invoice recipient
+    string default_invoice_recipient = 55;
+
+    // The default email address invoices will be sent to if not updated by the order.
+    string default_invoice_email_address = 56;
+
+    // HasDefaultInvoiceAddress
+    bool has_default_invoice_address = 57;
+
+    // Default Invoice Address
+    string default_invoice_address_business = 58;
+
+    // Default Invoice Address
+    string default_invoice_address_line1 = 59;
+
+    // Default Invoice Address
+    string default_invoice_address_line2 = 60;
+
+    // Default Invoice Address
+    string default_invoice_address_line3 = 61;
+
+    // Default Invoice Address
+    string default_invoice_address_line4 = 62;
+
+    // Default Invoice Address
+    string default_invoice_address_line5 = 63;
+
+    // Default Invoice Address
+    string default_invoice_address_line6 = 64;
+
+    // Default Invoice Address
+    string default_invoice_address_postcode = 65;
+
+    // Country Code (for Accounts)
+    string country_code = 66;
+
+    // Accounts Department No (1-999)
+    int32 accounts_department_number = 67;
+
+    // Default Despatch Note Template Id
+    google.protobuf.StringValue default_despatch_note_template_id = 69;
+
+    // Courier
+    google.protobuf.StringValue courier_id = 71;
+
+    // Delivery Area
+    google.protobuf.StringValue delivery_area_id = 73;
+
+    // End of delivery window
+    google.type.TimeOfDay delivery_time_end = 75;
+
+    // Start of delivery window
+    google.type.TimeOfDay delivery_time_start = 77;
+
+    // Distribution Type : 0 = None, 1 = Delivery, 2 = Courier, 3 = Collection
+    bmapi.common.EnumDistributionType distribution_type = 78;
+
+    // Stop Minutes
+    int32 stop_minutes = 79;
+
+    // Text to appear on Delivery Notes
+    string delivery_note_text = 80;
+
+    // Notes to appear on the Dray Run
+    string dray_run_notes = 81;
+
+    // EORI Number
+    string eori_number = 82;
+
+    // Exporting Incoterm Code : 0 = None, 1 = EXW, 2 = FCA, 3 = FAS, 4 = FOB, 5 = CFR, 6 = CIF, 7 = CIP, 8 = DPU, 9 = DDP, 10 = CPT, 11 = DAP
+    bmapi.common.EnumExportIncotermCode exporting_incoterm_code = 83;
+
+    // Exporting Incoterm Place
+    string exporting_incoterm_place = 84;
+
+    // The default email address to use for delivery issues and updates.
+    string default_delivery_email_address = 85;
+
+    // The default phone number to use for delivery issues and updates.
+    string default_delivery_telephone_number = 86;
+
+    // The recipient of the delivery
+    string default_delivery_recipient = 87;
+
+    // HasDefaultDeliveryAddress
+    bool has_default_delivery_address = 88;
+
+    // Default Delivery Address
+    string default_delivery_address_business = 89;
+
+    // Default Delivery Address
+    string default_delivery_address_line1 = 90;
+
+    // Default Delivery Address
+    string default_delivery_address_line2 = 91;
+
+    // Default Delivery Address
+    string default_delivery_address_line3 = 92;
+
+    // Default Delivery Address
+    string default_delivery_address_line4 = 93;
+
+    // Default Delivery Address
+    string default_delivery_address_line5 = 94;
+
+    // Default Delivery Address
+    string default_delivery_address_line6 = 95;
+
+    // Default Delivery Address
+    string default_delivery_address_postcode = 96;
+
+    // Beerflex Customer Code
+    string beerflex_code = 97;
+
+    // Outlet Standard Order Type 0=Full Price  - Duty Paid 1=Price Excluding Duty - Duty Suspended 2=Full Price - Duty Paid Elsewhere 3=Export - Duty Suspended
+    bmapi.common.EnumStandardOrder standard_order_type = 98;
+
+    // VAT Code
+    string vat_code_id = 99;
+
+    // Application Form Returned
+    bool application_form_returned = 100;
+
+    // Trading Terms
+    string trading_terms = 101;
+
+    // Company Number of the outlet
+    string company_reg_number = 102;
+
+    // Sales Notes
+    string sales_notes = 103;
+    OutletReadOnlyProto read_only = 104;
+
+    // International Bank Account Number
+    string iban = 105;
+
+    // Bank Identification Code
+    string bic = 106;
+
+    // The code used by the outlets group to identify this outlet. Will appear as a document tag for use on invoices and invoice data exchanges.
+    string outlet_group_code = 107;
+}
+message OutletFilterProto {
+    bmapi.common.StringArrayValue limit_price_list_ids = 2;
+    bmapi.common.StringArrayValue limit_stock_location_ids = 4;
+    bmapi.common.StringArrayValue limit_vat_code_ids = 6;
+    bmapi.common.StringArrayValue limit_outlet_group_ids = 8;
+}
+message OutletReadOnlyProto {
+
+    // Identifies if this is a Retail Outlet.
+    bool is_retail = 1;
+
+    // Default Latitude of delviery address (if known)
+    google.protobuf.DoubleValue default_delivery_latitude = 3;
+
+    // Default Longitude of delviery address (if known)
+    google.protobuf.DoubleValue default_delivery_longitude = 5;
+
+    // Longitude
+    google.protobuf.DoubleValue main_longitude = 7;
+
+    // Latitude
+    google.protobuf.DoubleValue main_latitude = 9;
+
+    // Outlet Code
+    string code = 10;
+}
+
+// ArrayValue messages for ArrayQs of Domain Message Types
+
