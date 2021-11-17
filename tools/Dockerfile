@@ -26,23 +26,23 @@ COPY . .
 
 # See https://www.npmjs.com/package/grpc_tools_node_protoc_ts
 # Example https://github.com/agreatfool/grpc_tools_node_protoc_ts/blob/master/examples/bash/build.sh
-RUN mkdir -p /src/generated/
+RUN mkdir -p /src/generated/nodejs
 
 RUN grpc_tools_node_protoc \
-    --js_out=import_style=commonjs,binary:/src/generated/ \
-    --ts_out=grpc_js:/src/generated/ \
-    --grpc_out=grpc_js:/src/generated/ \
+    --js_out=import_style=commonjs,binary:/src/generated/nodejs/ \
+    --ts_out=grpc_js:/src/generated/nodejs/ \
+    --grpc_out=grpc_js:/src/generated/nodejs/ \
     -I /src/protos \
       /src/protos/*.proto
 
 # It seems to create unnecessary grpc files for dependencies if they are generated with grpc_out included
 RUN grpc_tools_node_protoc \
-    --js_out=import_style=commonjs,binary:/src/generated/ \
-    --ts_out=/src/generated/ \
+    --js_out=import_style=commonjs,binary:/src/generated/nodejs \
+    --ts_out=/src/generated/nodejs \
     -I /src/protos \
       /src/protos/common/*.proto \
       /src/protos/google/protobuf/*.proto \
       /src/protos/google/type/*.proto
 
 FROM scratch AS export-stage
-COPY --from=node-client-stage /src/generated/ .
+COPY --from=node-client-stage /src/generated/nodejs ./nodejs

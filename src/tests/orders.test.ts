@@ -4,22 +4,22 @@ import {
   CreateOrderRequestProto,
   OrderLineProto,
   SaveOrderRequestProto,
-} from "../../generated/order_pb";
-import { OutletServiceClient } from "../../generated/outlet_grpc_pb";
-import { GetAllOutletsRequestProto } from "../../generated/outlet_pb";
+} from "../../generated/nodejs/order_pb";
+import { OutletServiceClient } from "../../generated/nodejs/outlet_grpc_pb";
+import { GetAllOutletsRequestProto } from "../../generated/nodejs/outlet_pb";
 import {
   EnumOrderSource,
   EnumStockItemType,
-} from "../../generated/common/enums.generated_pb";
-import { StockItemServiceClient } from "../../generated/stockitem_grpc_pb";
+} from "../../generated/nodejs/common/enums.generated_pb";
+import { StockItemServiceClient } from "../../generated/nodejs/stockitem_grpc_pb";
 import { credentials, Metadata } from "@grpc/grpc-js";
-import { OrderV2ServiceClient } from "../../generated/order_grpc_pb";
+import { OrderV2ServiceClient } from "../../generated/nodejs/order_grpc_pb";
 import {
   GetStockItemsByFilterRequestProto,
   StockItemFilterProto,
   StockItemProto,
-} from "../../generated/stockitem_pb";
-import { EnumStockItemTypeArrayValue } from "../../generated/common/enumarrayvalues.generated_pb";
+} from "../../generated/nodejs/stockitem_pb";
+import { EnumStockItemTypeArrayValue } from "../../generated/nodejs/common/enumarrayvalues.generated_pb";
 import * as crypto from "crypto";
 
 // Staging testing credentials (use 'brewman.premiersystems.com' for production)
