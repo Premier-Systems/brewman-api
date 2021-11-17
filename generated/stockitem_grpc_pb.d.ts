@@ -19,6 +19,7 @@ interface IStockItemServiceService extends grpc.ServiceDefinition<grpc.UntypedSe
     getStockItem: IStockItemServiceService_IGetStockItem;
     getStockItems: IStockItemServiceService_IGetStockItems;
     getStockItemsByFilter: IStockItemServiceService_IGetStockItemsByFilter;
+    getStockItemSummariesByFilter: IStockItemServiceService_IGetStockItemSummariesByFilter;
     getGlCodeOverridesForStockItem: IStockItemServiceService_IGetGlCodeOverridesForStockItem;
     setStockItemIsHidden: IStockItemServiceService_ISetStockItemIsHidden;
 }
@@ -59,6 +60,15 @@ interface IStockItemServiceService_IGetStockItemsByFilter extends grpc.MethodDef
     responseSerialize: grpc.serialize<stockitem_pb.GetStockItemsByFilterResponseProto>;
     responseDeserialize: grpc.deserialize<stockitem_pb.GetStockItemsByFilterResponseProto>;
 }
+interface IStockItemServiceService_IGetStockItemSummariesByFilter extends grpc.MethodDefinition<stockitem_pb.GetStockItemSummariesByFilterRequestProto, stockitem_pb.GetStockItemSummariesByFilterResponseProto> {
+    path: "/bmapi.stocks.stockitem.StockItemService/GetStockItemSummariesByFilter";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<stockitem_pb.GetStockItemSummariesByFilterRequestProto>;
+    requestDeserialize: grpc.deserialize<stockitem_pb.GetStockItemSummariesByFilterRequestProto>;
+    responseSerialize: grpc.serialize<stockitem_pb.GetStockItemSummariesByFilterResponseProto>;
+    responseDeserialize: grpc.deserialize<stockitem_pb.GetStockItemSummariesByFilterResponseProto>;
+}
 interface IStockItemServiceService_IGetGlCodeOverridesForStockItem extends grpc.MethodDefinition<stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, stockitem_pb.GetGlCodeOverridesForStockItemResponseProto> {
     path: "/bmapi.stocks.stockitem.StockItemService/GetGlCodeOverridesForStockItem";
     requestStream: false;
@@ -85,6 +95,7 @@ export interface IStockItemServiceServer extends grpc.UntypedServiceImplementati
     getStockItem: grpc.handleUnaryCall<stockitem_pb.GetStockItemRequestProto, stockitem_pb.GetStockItemResponseProto>;
     getStockItems: grpc.handleUnaryCall<stockitem_pb.GetStockItemsRequestProto, stockitem_pb.GetStockItemsResponseProto>;
     getStockItemsByFilter: grpc.handleUnaryCall<stockitem_pb.GetStockItemsByFilterRequestProto, stockitem_pb.GetStockItemsByFilterResponseProto>;
+    getStockItemSummariesByFilter: grpc.handleUnaryCall<stockitem_pb.GetStockItemSummariesByFilterRequestProto, stockitem_pb.GetStockItemSummariesByFilterResponseProto>;
     getGlCodeOverridesForStockItem: grpc.handleUnaryCall<stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, stockitem_pb.GetGlCodeOverridesForStockItemResponseProto>;
     setStockItemIsHidden: grpc.handleUnaryCall<stockitem_pb.SetStockItemIsHiddenRequestProto, stockitem_pb.SetStockItemIsHiddenResponseProto>;
 }
@@ -102,6 +113,9 @@ export interface IStockItemServiceClient {
     getStockItemsByFilter(request: stockitem_pb.GetStockItemsByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemsByFilterResponseProto) => void): grpc.ClientUnaryCall;
     getStockItemsByFilter(request: stockitem_pb.GetStockItemsByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemsByFilterResponseProto) => void): grpc.ClientUnaryCall;
     getStockItemsByFilter(request: stockitem_pb.GetStockItemsByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemsByFilterResponseProto) => void): grpc.ClientUnaryCall;
+    getStockItemSummariesByFilter(request: stockitem_pb.GetStockItemSummariesByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemSummariesByFilterResponseProto) => void): grpc.ClientUnaryCall;
+    getStockItemSummariesByFilter(request: stockitem_pb.GetStockItemSummariesByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemSummariesByFilterResponseProto) => void): grpc.ClientUnaryCall;
+    getStockItemSummariesByFilter(request: stockitem_pb.GetStockItemSummariesByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemSummariesByFilterResponseProto) => void): grpc.ClientUnaryCall;
     getGlCodeOverridesForStockItem(request: stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetGlCodeOverridesForStockItemResponseProto) => void): grpc.ClientUnaryCall;
     getGlCodeOverridesForStockItem(request: stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetGlCodeOverridesForStockItemResponseProto) => void): grpc.ClientUnaryCall;
     getGlCodeOverridesForStockItem(request: stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetGlCodeOverridesForStockItemResponseProto) => void): grpc.ClientUnaryCall;
@@ -124,6 +138,9 @@ export class StockItemServiceClient extends grpc.Client implements IStockItemSer
     public getStockItemsByFilter(request: stockitem_pb.GetStockItemsByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemsByFilterResponseProto) => void): grpc.ClientUnaryCall;
     public getStockItemsByFilter(request: stockitem_pb.GetStockItemsByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemsByFilterResponseProto) => void): grpc.ClientUnaryCall;
     public getStockItemsByFilter(request: stockitem_pb.GetStockItemsByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemsByFilterResponseProto) => void): grpc.ClientUnaryCall;
+    public getStockItemSummariesByFilter(request: stockitem_pb.GetStockItemSummariesByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemSummariesByFilterResponseProto) => void): grpc.ClientUnaryCall;
+    public getStockItemSummariesByFilter(request: stockitem_pb.GetStockItemSummariesByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemSummariesByFilterResponseProto) => void): grpc.ClientUnaryCall;
+    public getStockItemSummariesByFilter(request: stockitem_pb.GetStockItemSummariesByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetStockItemSummariesByFilterResponseProto) => void): grpc.ClientUnaryCall;
     public getGlCodeOverridesForStockItem(request: stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetGlCodeOverridesForStockItemResponseProto) => void): grpc.ClientUnaryCall;
     public getGlCodeOverridesForStockItem(request: stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetGlCodeOverridesForStockItemResponseProto) => void): grpc.ClientUnaryCall;
     public getGlCodeOverridesForStockItem(request: stockitem_pb.GetGlCodeOverridesForStockItemRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockitem_pb.GetGlCodeOverridesForStockItemResponseProto) => void): grpc.ClientUnaryCall;

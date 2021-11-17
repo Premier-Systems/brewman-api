@@ -8,9 +8,10 @@
   ],
   "scripts": {
     "test": "jest",
-    "codegen": "rimraf ./generated && docker build --progress=plain -f tools/Dockerfile --output generated .",
+    "codegen": "rimraf ./generated && docker build --platform linux/amd64 --progress=plain -f tools/Dockerfile --output generated .",
     "build": "npm run lint && rollup -c",
-    "lint": "eslint **/*.ts --fix"
+    "lint": "eslint **/*.ts --fix",
+    "version": "node --version"
   },
   "repository": {
     "type": "git",

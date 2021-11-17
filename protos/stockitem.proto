@@ -13,14 +13,16 @@ import "common/enums.generated.proto";
 import "common/enumarrayvalues.generated.proto";
 
 service StockItemService {
-    // Gets all undeleted StockItems
+    // Gets all StockItems
     rpc GetAllStockItems(GetAllStockItemsRequestProto) returns (GetAllStockItemsResponseProto) {}
-    // Gets a single StockItem by Id, even if it has been soft-deleted. (Errors if not found).
+    // Gets a single StockItem by Id. (Errors if not found).
     rpc GetStockItem(GetStockItemRequestProto) returns (GetStockItemResponseProto) {}
-    // Gets specific StockItems by Ids, including soft-deleted ones. (Errors if any not found).
+    // Gets specific StockItems by Ids. (Errors if any not found).
     rpc GetStockItems(GetStockItemsRequestProto) returns (GetStockItemsResponseProto) {}
-    // Gets StockItems matching the given filter. (soft-deleted stock items are not returned).
+    // Gets StockItems matching the given filter.
     rpc GetStockItemsByFilter(GetStockItemsByFilterRequestProto) returns (GetStockItemsByFilterResponseProto) {}
+    // Gets StockItem Summaries matching the given filter.
+    rpc GetStockItemSummariesByFilter(GetStockItemSummariesByFilterRequestProto) returns (GetStockItemSummariesByFilterResponseProto) {}
     // Gets GlCodeOverrides for a specific Stock Item
     rpc GetGlCodeOverridesForStockItem(GetGlCodeOverridesForStockItemRequestProto) returns (GetGlCodeOverridesForStockItemResponseProto) {}
     // Hides or unhides the given stock item.
@@ -71,7 +73,19 @@ message GetStockItemsByFilterRequestProto {
 
 message GetStockItemsByFilterResponseProto {
     
-    repeated StockItemProto stock_items = 1;
+    FilteredStockItemsProto results = 1;
+}
+
+message GetStockItemSummariesByFilterRequestProto {
+    
+    string tenant_id = 1;
+    
+    StockItemFilterProto filter = 2;
+}
+
+message GetStockItemSummariesByFilterResponseProto {
+    
+    FilteredStockItemSummariesProto results = 1;
 }
 
 message GetGlCodeOverridesForStockItemRequestProto {
@@ -101,140 +115,148 @@ message SetStockItemIsHiddenResponseProto {
 
 // Domain Messages
 message StockItemProto {
-    int64 version = 7;
-    string id = 8;
-    bool is_hidden = 9;
+    int64 version = 1;
+    string id = 2;
+    bool is_hidden = 3;
 
     // Name
-    string name = 10;
+    string name = 4;
 
     // Stock Code
-    google.protobuf.StringValue code = 12;
+    google.protobuf.StringValue code = 5;
 
     // To indicate that Urn should be captured when printing labels or using in onward assemblies.
-    bool delivery_batch_tracked = 13;
+    bool delivery_batch_tracked = 6;
 
     // Is this item a Raw Material.
-    bool is_material = 14;
+    bool is_material = 7;
 
     // Cost Price - Used for GrossProfit calculations when goods are sold.
-    double cost_price = 15;
+    double cost_price = 8;
 
     // Is this item perishable.
-    bool is_perishable = 16;
+    bool is_perishable = 9;
 
     // Is Stock of this Item Tracked.
-    bool is_stock_tracked = 17;
+    bool is_stock_tracked = 10;
 
     // Is Tracked in Batches.
-    bool is_batch_tracked = 18;
+    bool is_batch_tracked = 11;
 
     // Notes.
-    string notes = 19;
+    string notes = 12;
 
     // Package Type Id. Optional even for Products
-    google.protobuf.StringValue package_type_id = 21;
+    google.protobuf.StringValue package_type_id = 13;
 
     // Stock Group Id
-    google.protobuf.StringValue stock_group_id = 23;
+    google.protobuf.StringValue stock_group_id = 14;
 
     // Unit of Measure
-    string unit_of_measure_id = 24;
+    string unit_of_measure_id = 15;
 
     // Vat Code Id
-    string vat_code_id = 25;
+    string vat_code_id = 16;
 
     // Alcohol Type.
-    bmapi.common.EnumAlcoholType alcohol_type = 26;
+    bmapi.common.EnumAlcoholType alcohol_type = 17;
 
     // Abv.
-    double abv = 27;
+    double abv = 18;
 
     // Dutiable Litres
-    double dutiable_litres = 28;
+    double dutiable_litres = 19;
 
     // Manufacturer.
-    google.protobuf.StringValue manufacturer_id = 30;
+    google.protobuf.StringValue manufacturer_id = 20;
 
     // Plato Value
-    google.protobuf.DoubleValue plato = 32;
+    google.protobuf.DoubleValue plato = 21;
 
     // Use the Product Brand Tasting Notes
-    bool label_uses_brand_tasting_notes = 33;
+    bool label_uses_brand_tasting_notes = 22;
 
     // Tasting Notes (May be overridden by branding).
-    string label_tasting_notes = 34;
+    string label_tasting_notes = 23;
 
     // Use the Product Brand Ingredients and Allergens
-    bool label_uses_brand_ingredients_and_allergens = 35;
+    bool label_uses_brand_ingredients_and_allergens = 24;
 
     // Ingredients and Allergens
-    string label_ingredients_and_allergens = 36;
+    string label_ingredients_and_allergens = 25;
 
     // Supplier.
-    google.protobuf.StringValue supplier_id = 38;
+    google.protobuf.StringValue supplier_id = 26;
 
     // Supplier Part Number
-    string supplier_part_no = 39;
+    string supplier_part_no = 27;
 
     // Purchase Pack Price
-    google.protobuf.DoubleValue purchase_price = 41;
+    google.protobuf.DoubleValue purchase_price = 28;
 
     // Purchase GL Code
-    google.protobuf.StringValue purchase_gl_code_id = 43;
+    google.protobuf.StringValue purchase_gl_code_id = 29;
 
     // Supplier Pack Size
-    google.protobuf.DoubleValue purchase_pack_size = 45;
+    google.protobuf.DoubleValue purchase_pack_size = 30;
 
     // Number of days typically between ordering and receiving item.
-    int32 lead_time_days = 46;
+    int32 lead_time_days = 31;
 
     // Are sales currently allowed for this product? (Use to prevent selling of Eg out-of-season products).
-    bool allow_sales = 47;
+    bool allow_sales = 32;
 
     // Product Brand Id. Optional even for Products.
-    google.protobuf.StringValue product_brand_id = 49;
+    google.protobuf.StringValue product_brand_id = 33;
 
     // Export Weight
-    google.protobuf.DoubleValue export_weight = 51;
+    google.protobuf.DoubleValue export_weight = 34;
 
     // Pricing Category Id. Required for Products.
-    google.protobuf.StringValue pricing_category_id = 53;
+    google.protobuf.StringValue pricing_category_id = 35;
 
     // Flag indicating whether we can take an order which requires us to rack beer IN to this product (for scenario where we do not have stock of this product but do have liquid beer available).
-    bool rack_to_order = 54;
+    bool rack_to_order = 36;
 
     // Weight (kg)
-    double weight_kg = 55;
+    double weight_kg = 37;
 
     // Gl Code
-    google.protobuf.StringValue sales_gl_code_id = 57;
+    google.protobuf.StringValue sales_gl_code_id = 38;
 
     // Country Of Origin
-    string country_of_origin = 58;
+    string country_of_origin = 39;
 
     // Net Weight (kg), Ie if this item is a packaged thing such as a foodstuff then the actual weight of the foodstuff within the package.
-    google.protobuf.DoubleValue net_weight_kg = 60;
+    google.protobuf.DoubleValue net_weight_kg = 40;
 
     // EAN 13/14 Product Code
-    string ean_barcode_number = 61;
+    string ean_barcode_number = 41;
 
     // Beerflex Product Code
-    string beerflex_code = 62;
+    string beerflex_code = 42;
 
     // Export Commodity Code
-    string export_commodity_code = 63;
+    string export_commodity_code = 43;
 }
 message StockItemFilterProto {
-    bool include_materials = 1;
-    bool include_products = 2;
-    bmapi.common.StringArrayValue limit_stock_group_ids = 4;
-    bmapi.common.StringArrayValue limit_supplier_ids = 6;
-    bmapi.common.StringArrayValue limit_purchase_gl_code_ids = 8;
-    bmapi.common.StringArrayValue limit_sales_gl_code_ids = 10;
-    bmapi.common.StringArrayValue limit_vat_code_ids = 12;
-    bmapi.common.StringArrayValue limit_codes = 14;
-    bmapi.common.StringArrayValue limit_stock_item_ids = 16;
+    google.protobuf.Int32Value maximum_results = 1;
+    bmapi.common.EnumStockItemTypeArrayValue stock_item_types = 2;
+    bmapi.common.StringArrayValue stock_group_ids = 3;
+    bmapi.common.StringArrayValue supplier_ids = 4;
+    bmapi.common.StringArrayValue purchase_gl_code_ids = 5;
+    bmapi.common.StringArrayValue sales_gl_code_ids = 6;
+    bmapi.common.StringArrayValue vat_code_ids = 7;
+    bmapi.common.StringArrayValue codes = 8;
+    bmapi.common.StringArrayValue stock_item_ids = 9;
+}
+message FilteredStockItemsProto {
+    int32 matching_count = 1;
+    repeated StockItemProto stock_items = 2;
+}
+message FilteredStockItemSummariesProto {
+    int32 matching_count = 1;
+    repeated StockItemSummaryProto summaries = 2;
 }
 message GlCodeOverrideForStockItemProto {
 
@@ -242,7 +264,47 @@ message GlCodeOverrideForStockItemProto {
     string outlet_type_id = 1;
 
     // GL Code ID
-    google.protobuf.StringValue gl_code_id = 3;
+    google.protobuf.StringValue gl_code_id = 2;
+}
+message StockItemSummaryProto {
+    string id = 1;
+
+    // Name
+    string name = 2;
+
+    // Code
+    string code = 3;
+
+    // Package Type Id. Optional even for Products
+    google.protobuf.StringValue package_type_id = 4;
+
+    // Are sales currently allowed for this product? (Use to prevent selling of Eg out-of-season products).
+    bool allow_sales = 5;
+    bool is_hidden = 6;
+
+    // Cost Price - Used for GrossProfit calculations when goods are sold.
+    double cost_price = 7;
+
+    // Stock Group Id
+    google.protobuf.StringValue stock_group_id = 8;
+
+    // Supplier.
+    google.protobuf.StringValue supplier_id = 9;
+
+    // Manufacturer.
+    google.protobuf.StringValue manufacturer_id = 10;
+
+    // Is this item a Raw Material.
+    bool is_material = 11;
+
+    // Supplier Pack Size
+    google.protobuf.DoubleValue purchase_pack_size = 12;
+
+    // Is Stock of this Item Tracked.
+    bool is_stock_tracked = 13;
+
+    // Is Tracked in Batches.
+    bool is_batch_tracked = 14;
 }
 
 // ArrayValue messages for ArrayQs of Domain Message Types

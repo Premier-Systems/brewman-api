@@ -6,6 +6,10 @@ package bmapi.common;
 
 import "common/enums.generated.proto";
 
+message EnumStockItemTypeArrayValue {
+    repeated EnumStockItemType Value = 1;
+}
+
 message EnumOrderSourceArrayValue {
     repeated EnumOrderSource Value = 1;
 }

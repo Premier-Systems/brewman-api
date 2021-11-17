@@ -79,6 +79,28 @@ function deserialize_bmapi_stocks_stockitem_GetStockItemResponseProto(buffer_arg
   return stockitem_pb.GetStockItemResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterRequestProto(arg) {
+  if (!(arg instanceof stockitem_pb.GetStockItemSummariesByFilterRequestProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.stockitem.GetStockItemSummariesByFilterRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterRequestProto(buffer_arg) {
+  return stockitem_pb.GetStockItemSummariesByFilterRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterResponseProto(arg) {
+  if (!(arg instanceof stockitem_pb.GetStockItemSummariesByFilterResponseProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.stockitem.GetStockItemSummariesByFilterResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterResponseProto(buffer_arg) {
+  return stockitem_pb.GetStockItemSummariesByFilterResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_stocks_stockitem_GetStockItemsByFilterRequestProto(arg) {
   if (!(arg instanceof stockitem_pb.GetStockItemsByFilterRequestProto)) {
     throw new Error('Expected argument of type bmapi.stocks.stockitem.GetStockItemsByFilterRequestProto');
@@ -147,7 +169,7 @@ function deserialize_bmapi_stocks_stockitem_SetStockItemIsHiddenResponseProto(bu
 
 
 var StockItemServiceService = exports.StockItemServiceService = {
-  // Gets all undeleted StockItems
+  // Gets all StockItems
 getAllStockItems: {
     path: '/bmapi.stocks.stockitem.StockItemService/GetAllStockItems',
     requestStream: false,
@@ -159,7 +181,7 @@ getAllStockItems: {
     responseSerialize: serialize_bmapi_stocks_stockitem_GetAllStockItemsResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stockitem_GetAllStockItemsResponseProto,
   },
-  // Gets a single StockItem by Id, even if it has been soft-deleted. (Errors if not found).
+  // Gets a single StockItem by Id. (Errors if not found).
 getStockItem: {
     path: '/bmapi.stocks.stockitem.StockItemService/GetStockItem',
     requestStream: false,
@@ -171,7 +193,7 @@ getStockItem: {
     responseSerialize: serialize_bmapi_stocks_stockitem_GetStockItemResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stockitem_GetStockItemResponseProto,
   },
-  // Gets specific StockItems by Ids, including soft-deleted ones. (Errors if any not found).
+  // Gets specific StockItems by Ids. (Errors if any not found).
 getStockItems: {
     path: '/bmapi.stocks.stockitem.StockItemService/GetStockItems',
     requestStream: false,
@@ -183,7 +205,7 @@ getStockItems: {
     responseSerialize: serialize_bmapi_stocks_stockitem_GetStockItemsResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stockitem_GetStockItemsResponseProto,
   },
-  // Gets StockItems matching the given filter. (soft-deleted stock items are not returned).
+  // Gets StockItems matching the given filter.
 getStockItemsByFilter: {
     path: '/bmapi.stocks.stockitem.StockItemService/GetStockItemsByFilter',
     requestStream: false,
@@ -194,6 +216,18 @@ getStockItemsByFilter: {
     requestDeserialize: deserialize_bmapi_stocks_stockitem_GetStockItemsByFilterRequestProto,
     responseSerialize: serialize_bmapi_stocks_stockitem_GetStockItemsByFilterResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stockitem_GetStockItemsByFilterResponseProto,
+  },
+  // Gets StockItem Summaries matching the given filter.
+getStockItemSummariesByFilter: {
+    path: '/bmapi.stocks.stockitem.StockItemService/GetStockItemSummariesByFilter',
+    requestStream: false,
+    responseStream: false,
+    requestType: stockitem_pb.GetStockItemSummariesByFilterRequestProto,
+    responseType: stockitem_pb.GetStockItemSummariesByFilterResponseProto,
+    requestSerialize: serialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterRequestProto,
+    requestDeserialize: deserialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterRequestProto,
+    responseSerialize: serialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterResponseProto,
+    responseDeserialize: deserialize_bmapi_stocks_stockitem_GetStockItemSummariesByFilterResponseProto,
   },
   // Gets GlCodeOverrides for a specific Stock Item
 getGlCodeOverridesForStockItem: {

@@ -7,6 +7,28 @@
 import * as jspb from "google-protobuf";
 import * as common_enums_generated_pb from "../common/enums.generated_pb";
 
+export class EnumStockItemTypeArrayValue extends jspb.Message { 
+    clearValueList(): void;
+    getValueList(): Array<common_enums_generated_pb.EnumStockItemType>;
+    setValueList(value: Array<common_enums_generated_pb.EnumStockItemType>): EnumStockItemTypeArrayValue;
+    addValue(value: common_enums_generated_pb.EnumStockItemType, index?: number): common_enums_generated_pb.EnumStockItemType;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EnumStockItemTypeArrayValue.AsObject;
+    static toObject(includeInstance: boolean, msg: EnumStockItemTypeArrayValue): EnumStockItemTypeArrayValue.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EnumStockItemTypeArrayValue, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EnumStockItemTypeArrayValue;
+    static deserializeBinaryFromReader(message: EnumStockItemTypeArrayValue, reader: jspb.BinaryReader): EnumStockItemTypeArrayValue;
+}
+
+export namespace EnumStockItemTypeArrayValue {
+    export type AsObject = {
+        valueList: Array<common_enums_generated_pb.EnumStockItemType>,
+    }
+}
+
 export class EnumOrderSourceArrayValue extends jspb.Message { 
     clearValueList(): void;
     getValueList(): Array<common_enums_generated_pb.EnumOrderSource>;

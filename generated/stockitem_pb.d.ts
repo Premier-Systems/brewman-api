@@ -175,10 +175,11 @@ export namespace GetStockItemsByFilterRequestProto {
 }
 
 export class GetStockItemsByFilterResponseProto extends jspb.Message { 
-    clearStockItemsList(): void;
-    getStockItemsList(): Array<StockItemProto>;
-    setStockItemsList(value: Array<StockItemProto>): GetStockItemsByFilterResponseProto;
-    addStockItems(value?: StockItemProto, index?: number): StockItemProto;
+
+    hasResults(): boolean;
+    clearResults(): void;
+    getResults(): FilteredStockItemsProto | undefined;
+    setResults(value?: FilteredStockItemsProto): GetStockItemsByFilterResponseProto;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): GetStockItemsByFilterResponseProto.AsObject;
@@ -192,7 +193,56 @@ export class GetStockItemsByFilterResponseProto extends jspb.Message {
 
 export namespace GetStockItemsByFilterResponseProto {
     export type AsObject = {
-        stockItemsList: Array<StockItemProto.AsObject>,
+        results?: FilteredStockItemsProto.AsObject,
+    }
+}
+
+export class GetStockItemSummariesByFilterRequestProto extends jspb.Message { 
+    getTenantId(): string;
+    setTenantId(value: string): GetStockItemSummariesByFilterRequestProto;
+
+    hasFilter(): boolean;
+    clearFilter(): void;
+    getFilter(): StockItemFilterProto | undefined;
+    setFilter(value?: StockItemFilterProto): GetStockItemSummariesByFilterRequestProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetStockItemSummariesByFilterRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetStockItemSummariesByFilterRequestProto): GetStockItemSummariesByFilterRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetStockItemSummariesByFilterRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetStockItemSummariesByFilterRequestProto;
+    static deserializeBinaryFromReader(message: GetStockItemSummariesByFilterRequestProto, reader: jspb.BinaryReader): GetStockItemSummariesByFilterRequestProto;
+}
+
+export namespace GetStockItemSummariesByFilterRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        filter?: StockItemFilterProto.AsObject,
+    }
+}
+
+export class GetStockItemSummariesByFilterResponseProto extends jspb.Message { 
+
+    hasResults(): boolean;
+    clearResults(): void;
+    getResults(): FilteredStockItemSummariesProto | undefined;
+    setResults(value?: FilteredStockItemSummariesProto): GetStockItemSummariesByFilterResponseProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetStockItemSummariesByFilterResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetStockItemSummariesByFilterResponseProto): GetStockItemSummariesByFilterResponseProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetStockItemSummariesByFilterResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetStockItemSummariesByFilterResponseProto;
+    static deserializeBinaryFromReader(message: GetStockItemSummariesByFilterResponseProto, reader: jspb.BinaryReader): GetStockItemSummariesByFilterResponseProto;
+}
+
+export namespace GetStockItemSummariesByFilterResponseProto {
+    export type AsObject = {
+        results?: FilteredStockItemSummariesProto.AsObject,
     }
 }
 
@@ -473,45 +523,51 @@ export namespace StockItemProto {
 }
 
 export class StockItemFilterProto extends jspb.Message { 
-    getIncludeMaterials(): boolean;
-    setIncludeMaterials(value: boolean): StockItemFilterProto;
-    getIncludeProducts(): boolean;
-    setIncludeProducts(value: boolean): StockItemFilterProto;
 
-    hasLimitStockGroupIds(): boolean;
-    clearLimitStockGroupIds(): void;
-    getLimitStockGroupIds(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitStockGroupIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasMaximumResults(): boolean;
+    clearMaximumResults(): void;
+    getMaximumResults(): google_protobuf_wrappers_pb.Int32Value | undefined;
+    setMaximumResults(value?: google_protobuf_wrappers_pb.Int32Value): StockItemFilterProto;
 
-    hasLimitSupplierIds(): boolean;
-    clearLimitSupplierIds(): void;
-    getLimitSupplierIds(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitSupplierIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasStockItemTypes(): boolean;
+    clearStockItemTypes(): void;
+    getStockItemTypes(): common_enumarrayvalues_generated_pb.EnumStockItemTypeArrayValue | undefined;
+    setStockItemTypes(value?: common_enumarrayvalues_generated_pb.EnumStockItemTypeArrayValue): StockItemFilterProto;
 
-    hasLimitPurchaseGlCodeIds(): boolean;
-    clearLimitPurchaseGlCodeIds(): void;
-    getLimitPurchaseGlCodeIds(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitPurchaseGlCodeIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasStockGroupIds(): boolean;
+    clearStockGroupIds(): void;
+    getStockGroupIds(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setStockGroupIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
 
-    hasLimitSalesGlCodeIds(): boolean;
-    clearLimitSalesGlCodeIds(): void;
-    getLimitSalesGlCodeIds(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitSalesGlCodeIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasSupplierIds(): boolean;
+    clearSupplierIds(): void;
+    getSupplierIds(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setSupplierIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
 
-    hasLimitVatCodeIds(): boolean;
-    clearLimitVatCodeIds(): void;
-    getLimitVatCodeIds(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitVatCodeIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasPurchaseGlCodeIds(): boolean;
+    clearPurchaseGlCodeIds(): void;
+    getPurchaseGlCodeIds(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setPurchaseGlCodeIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
 
-    hasLimitCodes(): boolean;
-    clearLimitCodes(): void;
-    getLimitCodes(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitCodes(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasSalesGlCodeIds(): boolean;
+    clearSalesGlCodeIds(): void;
+    getSalesGlCodeIds(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setSalesGlCodeIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
 
-    hasLimitStockItemIds(): boolean;
-    clearLimitStockItemIds(): void;
-    getLimitStockItemIds(): common_arrayvalues_pb.StringArrayValue | undefined;
-    setLimitStockItemIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+    hasVatCodeIds(): boolean;
+    clearVatCodeIds(): void;
+    getVatCodeIds(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setVatCodeIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+
+    hasCodes(): boolean;
+    clearCodes(): void;
+    getCodes(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setCodes(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
+
+    hasStockItemIds(): boolean;
+    clearStockItemIds(): void;
+    getStockItemIds(): common_arrayvalues_pb.StringArrayValue | undefined;
+    setStockItemIds(value?: common_arrayvalues_pb.StringArrayValue): StockItemFilterProto;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): StockItemFilterProto.AsObject;
@@ -525,15 +581,65 @@ export class StockItemFilterProto extends jspb.Message {
 
 export namespace StockItemFilterProto {
     export type AsObject = {
-        includeMaterials: boolean,
-        includeProducts: boolean,
-        limitStockGroupIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
-        limitSupplierIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
-        limitPurchaseGlCodeIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
-        limitSalesGlCodeIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
-        limitVatCodeIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
-        limitCodes?: common_arrayvalues_pb.StringArrayValue.AsObject,
-        limitStockItemIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        maximumResults?: google_protobuf_wrappers_pb.Int32Value.AsObject,
+        stockItemTypes?: common_enumarrayvalues_generated_pb.EnumStockItemTypeArrayValue.AsObject,
+        stockGroupIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        supplierIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        purchaseGlCodeIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        salesGlCodeIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        vatCodeIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        codes?: common_arrayvalues_pb.StringArrayValue.AsObject,
+        stockItemIds?: common_arrayvalues_pb.StringArrayValue.AsObject,
+    }
+}
+
+export class FilteredStockItemsProto extends jspb.Message { 
+    getMatchingCount(): number;
+    setMatchingCount(value: number): FilteredStockItemsProto;
+    clearStockItemsList(): void;
+    getStockItemsList(): Array<StockItemProto>;
+    setStockItemsList(value: Array<StockItemProto>): FilteredStockItemsProto;
+    addStockItems(value?: StockItemProto, index?: number): StockItemProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FilteredStockItemsProto.AsObject;
+    static toObject(includeInstance: boolean, msg: FilteredStockItemsProto): FilteredStockItemsProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FilteredStockItemsProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FilteredStockItemsProto;
+    static deserializeBinaryFromReader(message: FilteredStockItemsProto, reader: jspb.BinaryReader): FilteredStockItemsProto;
+}
+
+export namespace FilteredStockItemsProto {
+    export type AsObject = {
+        matchingCount: number,
+        stockItemsList: Array<StockItemProto.AsObject>,
+    }
+}
+
+export class FilteredStockItemSummariesProto extends jspb.Message { 
+    getMatchingCount(): number;
+    setMatchingCount(value: number): FilteredStockItemSummariesProto;
+    clearSummariesList(): void;
+    getSummariesList(): Array<StockItemSummaryProto>;
+    setSummariesList(value: Array<StockItemSummaryProto>): FilteredStockItemSummariesProto;
+    addSummaries(value?: StockItemSummaryProto, index?: number): StockItemSummaryProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FilteredStockItemSummariesProto.AsObject;
+    static toObject(includeInstance: boolean, msg: FilteredStockItemSummariesProto): FilteredStockItemSummariesProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FilteredStockItemSummariesProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FilteredStockItemSummariesProto;
+    static deserializeBinaryFromReader(message: FilteredStockItemSummariesProto, reader: jspb.BinaryReader): FilteredStockItemSummariesProto;
+}
+
+export namespace FilteredStockItemSummariesProto {
+    export type AsObject = {
+        matchingCount: number,
+        summariesList: Array<StockItemSummaryProto.AsObject>,
     }
 }
 
@@ -560,5 +666,79 @@ export namespace GlCodeOverrideForStockItemProto {
     export type AsObject = {
         outletTypeId: string,
         glCodeId?: google_protobuf_wrappers_pb.StringValue.AsObject,
+    }
+}
+
+export class StockItemSummaryProto extends jspb.Message { 
+    getId(): string;
+    setId(value: string): StockItemSummaryProto;
+    getName(): string;
+    setName(value: string): StockItemSummaryProto;
+    getCode(): string;
+    setCode(value: string): StockItemSummaryProto;
+
+    hasPackageTypeId(): boolean;
+    clearPackageTypeId(): void;
+    getPackageTypeId(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setPackageTypeId(value?: google_protobuf_wrappers_pb.StringValue): StockItemSummaryProto;
+    getAllowSales(): boolean;
+    setAllowSales(value: boolean): StockItemSummaryProto;
+    getIsHidden(): boolean;
+    setIsHidden(value: boolean): StockItemSummaryProto;
+    getCostPrice(): number;
+    setCostPrice(value: number): StockItemSummaryProto;
+
+    hasStockGroupId(): boolean;
+    clearStockGroupId(): void;
+    getStockGroupId(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setStockGroupId(value?: google_protobuf_wrappers_pb.StringValue): StockItemSummaryProto;
+
+    hasSupplierId(): boolean;
+    clearSupplierId(): void;
+    getSupplierId(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setSupplierId(value?: google_protobuf_wrappers_pb.StringValue): StockItemSummaryProto;
+
+    hasManufacturerId(): boolean;
+    clearManufacturerId(): void;
+    getManufacturerId(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setManufacturerId(value?: google_protobuf_wrappers_pb.StringValue): StockItemSummaryProto;
+    getIsMaterial(): boolean;
+    setIsMaterial(value: boolean): StockItemSummaryProto;
+
+    hasPurchasePackSize(): boolean;
+    clearPurchasePackSize(): void;
+    getPurchasePackSize(): google_protobuf_wrappers_pb.DoubleValue | undefined;
+    setPurchasePackSize(value?: google_protobuf_wrappers_pb.DoubleValue): StockItemSummaryProto;
+    getIsStockTracked(): boolean;
+    setIsStockTracked(value: boolean): StockItemSummaryProto;
+    getIsBatchTracked(): boolean;
+    setIsBatchTracked(value: boolean): StockItemSummaryProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): StockItemSummaryProto.AsObject;
+    static toObject(includeInstance: boolean, msg: StockItemSummaryProto): StockItemSummaryProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: StockItemSummaryProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StockItemSummaryProto;
+    static deserializeBinaryFromReader(message: StockItemSummaryProto, reader: jspb.BinaryReader): StockItemSummaryProto;
+}
+
+export namespace StockItemSummaryProto {
+    export type AsObject = {
+        id: string,
+        name: string,
+        code: string,
+        packageTypeId?: google_protobuf_wrappers_pb.StringValue.AsObject,
+        allowSales: boolean,
+        isHidden: boolean,
+        costPrice: number,
+        stockGroupId?: google_protobuf_wrappers_pb.StringValue.AsObject,
+        supplierId?: google_protobuf_wrappers_pb.StringValue.AsObject,
+        manufacturerId?: google_protobuf_wrappers_pb.StringValue.AsObject,
+        isMaterial: boolean,
+        purchasePackSize?: google_protobuf_wrappers_pb.DoubleValue.AsObject,
+        isStockTracked: boolean,
+        isBatchTracked: boolean,
     }
 }
