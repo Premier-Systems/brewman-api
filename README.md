@@ -20,7 +20,7 @@ many platforms including (but not limited to):
 
 Typically, you will need to compile our service proto files into a client library targeting your platform of choice. 
 The instructions for doing so vary by platform. We have provided generated client libraries for some frameworks in the 
-`./generated` folder. Please see `tools/Dockerfile` for some tips on how to generate code for other platforms.
+`./generated` folder. Please see [`tools/Dockerfile`](tools/Dockerfile) for some tips on how to generate code for other platforms.
 
 #### Authentication
 The API is designed to make requests as a Brewman user. We recommend creating a user in Brewman specifically for your 
@@ -31,7 +31,7 @@ needs to be supplied on every API request as metadata on a key called `API_TOKEN
 
 ### Documentation
 Our proto files contain some documentation. Our plan is to improve the documentation over time - especially on our most 
-critical services. We recommend looking at our NodeJS unit test that creates an order as a starting point for making
+critical services. We recommend looking at our [NodeJS unit test](src/tests/orders.test.ts) that creates an order as a starting point for making
 your own requests.
 
 We will also shortly be publishing documentation to a web portal.
