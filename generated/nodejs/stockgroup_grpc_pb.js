@@ -57,48 +57,26 @@ function deserialize_bmapi_stocks_stockgroup_GetStockGroupResponseProto(buffer_a
   return stockgroup_pb.GetStockGroupResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_stockgroup_GetStockGroupsByIdRequestProto(arg) {
-  if (!(arg instanceof stockgroup_pb.GetStockGroupsByIdRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stockgroup.GetStockGroupsByIdRequestProto');
+function serialize_bmapi_stocks_stockgroup_GetStockGroupsRequestProto(arg) {
+  if (!(arg instanceof stockgroup_pb.GetStockGroupsRequestProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.stockgroup.GetStockGroupsRequestProto');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_bmapi_stocks_stockgroup_GetStockGroupsByIdRequestProto(buffer_arg) {
-  return stockgroup_pb.GetStockGroupsByIdRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_bmapi_stocks_stockgroup_GetStockGroupsRequestProto(buffer_arg) {
+  return stockgroup_pb.GetStockGroupsRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_stockgroup_GetStockGroupsByIdResponseProto(arg) {
-  if (!(arg instanceof stockgroup_pb.GetStockGroupsByIdResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stockgroup.GetStockGroupsByIdResponseProto');
+function serialize_bmapi_stocks_stockgroup_GetStockGroupsResponseProto(arg) {
+  if (!(arg instanceof stockgroup_pb.GetStockGroupsResponseProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.stockgroup.GetStockGroupsResponseProto');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_bmapi_stocks_stockgroup_GetStockGroupsByIdResponseProto(buffer_arg) {
-  return stockgroup_pb.GetStockGroupsByIdResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_stockgroup_SaveStockGroupRequestProto(arg) {
-  if (!(arg instanceof stockgroup_pb.SaveStockGroupRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stockgroup.SaveStockGroupRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stockgroup_SaveStockGroupRequestProto(buffer_arg) {
-  return stockgroup_pb.SaveStockGroupRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_stockgroup_SaveStockGroupResponseProto(arg) {
-  if (!(arg instanceof stockgroup_pb.SaveStockGroupResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stockgroup.SaveStockGroupResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stockgroup_SaveStockGroupResponseProto(buffer_arg) {
-  return stockgroup_pb.SaveStockGroupResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_bmapi_stocks_stockgroup_GetStockGroupsResponseProto(buffer_arg) {
+  return stockgroup_pb.GetStockGroupsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -127,29 +105,17 @@ getStockGroup: {
     responseSerialize: serialize_bmapi_stocks_stockgroup_GetStockGroupResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stockgroup_GetStockGroupResponseProto,
   },
-  // Saves a StockGroup
-saveStockGroup: {
-    path: '/bmapi.stocks.stockgroup.StockGroupService/SaveStockGroup',
-    requestStream: false,
-    responseStream: false,
-    requestType: stockgroup_pb.SaveStockGroupRequestProto,
-    responseType: stockgroup_pb.SaveStockGroupResponseProto,
-    requestSerialize: serialize_bmapi_stocks_stockgroup_SaveStockGroupRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_stockgroup_SaveStockGroupRequestProto,
-    responseSerialize: serialize_bmapi_stocks_stockgroup_SaveStockGroupResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_stockgroup_SaveStockGroupResponseProto,
-  },
   // Get specific stock groups. (Errors if any not found).
-getStockGroupsById: {
-    path: '/bmapi.stocks.stockgroup.StockGroupService/GetStockGroupsById',
+getStockGroups: {
+    path: '/bmapi.stocks.stockgroup.StockGroupService/GetStockGroups',
     requestStream: false,
     responseStream: false,
-    requestType: stockgroup_pb.GetStockGroupsByIdRequestProto,
-    responseType: stockgroup_pb.GetStockGroupsByIdResponseProto,
-    requestSerialize: serialize_bmapi_stocks_stockgroup_GetStockGroupsByIdRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_stockgroup_GetStockGroupsByIdRequestProto,
-    responseSerialize: serialize_bmapi_stocks_stockgroup_GetStockGroupsByIdResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_stockgroup_GetStockGroupsByIdResponseProto,
+    requestType: stockgroup_pb.GetStockGroupsRequestProto,
+    responseType: stockgroup_pb.GetStockGroupsResponseProto,
+    requestSerialize: serialize_bmapi_stocks_stockgroup_GetStockGroupsRequestProto,
+    requestDeserialize: deserialize_bmapi_stocks_stockgroup_GetStockGroupsRequestProto,
+    responseSerialize: serialize_bmapi_stocks_stockgroup_GetStockGroupsResponseProto,
+    responseDeserialize: deserialize_bmapi_stocks_stockgroup_GetStockGroupsResponseProto,
   },
 };
 

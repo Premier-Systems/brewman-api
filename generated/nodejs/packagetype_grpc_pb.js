@@ -79,53 +79,9 @@ function deserialize_bmapi_stocks_packagetype_GetPackageTypesResponseProto(buffe
   return packagetype_pb.GetPackageTypesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_packagetype_SavePackageTypeRequestProto(arg) {
-  if (!(arg instanceof packagetype_pb.SavePackageTypeRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.packagetype.SavePackageTypeRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_packagetype_SavePackageTypeRequestProto(buffer_arg) {
-  return packagetype_pb.SavePackageTypeRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_packagetype_SavePackageTypeResponseProto(arg) {
-  if (!(arg instanceof packagetype_pb.SavePackageTypeResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.packagetype.SavePackageTypeResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_packagetype_SavePackageTypeResponseProto(buffer_arg) {
-  return packagetype_pb.SavePackageTypeResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenRequestProto(arg) {
-  if (!(arg instanceof packagetype_pb.SetPackageTypeIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.packagetype.SetPackageTypeIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenRequestProto(buffer_arg) {
-  return packagetype_pb.SetPackageTypeIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenResponseProto(arg) {
-  if (!(arg instanceof packagetype_pb.SetPackageTypeIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.packagetype.SetPackageTypeIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenResponseProto(buffer_arg) {
-  return packagetype_pb.SetPackageTypeIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var PackageTypeServiceService = exports.PackageTypeServiceService = {
-  // Gets all undeleted PackageTypes
+  // Gets all PackageTypes
 getAllPackageTypes: {
     path: '/bmapi.stocks.packagetype.PackageTypeService/GetAllPackageTypes',
     requestStream: false,
@@ -137,7 +93,7 @@ getAllPackageTypes: {
     responseSerialize: serialize_bmapi_stocks_packagetype_GetAllPackageTypesResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_packagetype_GetAllPackageTypesResponseProto,
   },
-  // Gets a specific PackageType by Id, even if it has been soft-deleted. (Errors if not found).
+  // Gets a specific PackageType by Id. (Errors if not found).
 getPackageType: {
     path: '/bmapi.stocks.packagetype.PackageTypeService/GetPackageType',
     requestStream: false,
@@ -149,7 +105,7 @@ getPackageType: {
     responseSerialize: serialize_bmapi_stocks_packagetype_GetPackageTypeResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_packagetype_GetPackageTypeResponseProto,
   },
-  // Gets specific PackageTypes by Ids, including soft-deleted ones. (Errors if any not found).
+  // Gets specific PackageTypes by Ids. (Errors if any not found).
 getPackageTypes: {
     path: '/bmapi.stocks.packagetype.PackageTypeService/GetPackageTypes',
     requestStream: false,
@@ -160,30 +116,6 @@ getPackageTypes: {
     requestDeserialize: deserialize_bmapi_stocks_packagetype_GetPackageTypesRequestProto,
     responseSerialize: serialize_bmapi_stocks_packagetype_GetPackageTypesResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_packagetype_GetPackageTypesResponseProto,
-  },
-  // Saves a single PackageType
-savePackageType: {
-    path: '/bmapi.stocks.packagetype.PackageTypeService/SavePackageType',
-    requestStream: false,
-    responseStream: false,
-    requestType: packagetype_pb.SavePackageTypeRequestProto,
-    responseType: packagetype_pb.SavePackageTypeResponseProto,
-    requestSerialize: serialize_bmapi_stocks_packagetype_SavePackageTypeRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_packagetype_SavePackageTypeRequestProto,
-    responseSerialize: serialize_bmapi_stocks_packagetype_SavePackageTypeResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_packagetype_SavePackageTypeResponseProto,
-  },
-  // Hides or unhides the given Package Type.
-setPackageTypeIsHidden: {
-    path: '/bmapi.stocks.packagetype.PackageTypeService/SetPackageTypeIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: packagetype_pb.SetPackageTypeIsHiddenRequestProto,
-    responseType: packagetype_pb.SetPackageTypeIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_packagetype_SetPackageTypeIsHiddenResponseProto,
   },
 };
 

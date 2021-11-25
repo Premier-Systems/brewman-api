@@ -13,14 +13,12 @@ import "common/enums.generated.proto";
 import "common/enumarrayvalues.generated.proto";
 
 service DeliveryAreaService {
-    // Gets all undeleted DeliveryAreas
+    // Gets all DeliveryAreas
     rpc GetAllDeliveryAreas(GetAllDeliveryAreasRequestProto) returns (GetAllDeliveryAreasResponseProto) {}
-    // Gets a specific DeliveryArea by Id, even if it has been soft-deleted. (Errors if not found).
+    // Gets a specific DeliveryArea by Id. (Errors if not found).
     rpc GetDeliveryArea(GetDeliveryAreaRequestProto) returns (GetDeliveryAreaResponseProto) {}
-    // Saves zero or more Delivery Areas
-    rpc SaveDeliveryAreas(SaveDeliveryAreasRequestProto) returns (SaveDeliveryAreasResponseProto) {}
-    // Hides or unhides the given Delivery Area
-    rpc SetDeliveryAreaIsHidden(SetDeliveryAreaIsHiddenRequestProto) returns (SetDeliveryAreaIsHiddenResponseProto) {}
+    // Gets specific DeliveryAreas by Id. (Errors if any not found).
+    rpc GetDeliveryAreas(GetDeliveryAreasRequestProto) returns (GetDeliveryAreasResponseProto) {}
     // Calculate the next despatch date by the given Delivery Area id.
     rpc CalculateNextDespatchDateByDeliveryArea(CalculateNextDespatchDateByDeliveryAreaRequestProto) returns (CalculateNextDespatchDateByDeliveryAreaResponseProto) {}
 }
@@ -48,26 +46,16 @@ message GetDeliveryAreaResponseProto {
     DeliveryAreaProto delivery_area = 1;
 }
 
-message SaveDeliveryAreasRequestProto {
+message GetDeliveryAreasRequestProto {
     
     string tenant_id = 1;
     
-    repeated DeliveryAreaProto delivery_areas = 2;
+    repeated string delivery_area_ids = 2;
 }
 
-message SaveDeliveryAreasResponseProto {
-}
-
-message SetDeliveryAreaIsHiddenRequestProto {
+message GetDeliveryAreasResponseProto {
     
-    string tenant_id = 1;
-    
-    string delivery_area_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetDeliveryAreaIsHiddenResponseProto {
+    repeated DeliveryAreaProto delivery_areas = 1;
 }
 
 message CalculateNextDespatchDateByDeliveryAreaRequestProto {

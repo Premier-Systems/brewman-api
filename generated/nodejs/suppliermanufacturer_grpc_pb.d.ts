@@ -18,9 +18,6 @@ interface ISupplierManufacturerServiceService extends grpc.ServiceDefinition<grp
     getAllSupplierManufacturers: ISupplierManufacturerServiceService_IGetAllSupplierManufacturers;
     getSupplierManufacturer: ISupplierManufacturerServiceService_IGetSupplierManufacturer;
     getSupplierManufacturers: ISupplierManufacturerServiceService_IGetSupplierManufacturers;
-    saveSupplierManufacturer: ISupplierManufacturerServiceService_ISaveSupplierManufacturer;
-    setSupplierManufacturerIsHidden: ISupplierManufacturerServiceService_ISetSupplierManufacturerIsHidden;
-    getSupplierManufacturersByFilter: ISupplierManufacturerServiceService_IGetSupplierManufacturersByFilter;
 }
 
 interface ISupplierManufacturerServiceService_IGetAllSupplierManufacturers extends grpc.MethodDefinition<suppliermanufacturer_pb.GetAllSupplierManufacturersRequestProto, suppliermanufacturer_pb.GetAllSupplierManufacturersResponseProto> {
@@ -50,33 +47,6 @@ interface ISupplierManufacturerServiceService_IGetSupplierManufacturers extends 
     responseSerialize: grpc.serialize<suppliermanufacturer_pb.GetSupplierManufacturersResponseProto>;
     responseDeserialize: grpc.deserialize<suppliermanufacturer_pb.GetSupplierManufacturersResponseProto>;
 }
-interface ISupplierManufacturerServiceService_ISaveSupplierManufacturer extends grpc.MethodDefinition<suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto> {
-    path: "/bmapi.stocks.suppliermanufacturer.SupplierManufacturerService/SaveSupplierManufacturer";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto>;
-    requestDeserialize: grpc.deserialize<suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto>;
-    responseSerialize: grpc.serialize<suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto>;
-    responseDeserialize: grpc.deserialize<suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto>;
-}
-interface ISupplierManufacturerServiceService_ISetSupplierManufacturerIsHidden extends grpc.MethodDefinition<suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto> {
-    path: "/bmapi.stocks.suppliermanufacturer.SupplierManufacturerService/SetSupplierManufacturerIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto>;
-}
-interface ISupplierManufacturerServiceService_IGetSupplierManufacturersByFilter extends grpc.MethodDefinition<suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto> {
-    path: "/bmapi.stocks.suppliermanufacturer.SupplierManufacturerService/GetSupplierManufacturersByFilter";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto>;
-    requestDeserialize: grpc.deserialize<suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto>;
-    responseSerialize: grpc.serialize<suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto>;
-    responseDeserialize: grpc.deserialize<suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto>;
-}
 
 export const SupplierManufacturerServiceService: ISupplierManufacturerServiceService;
 
@@ -84,9 +54,6 @@ export interface ISupplierManufacturerServiceServer extends grpc.UntypedServiceI
     getAllSupplierManufacturers: grpc.handleUnaryCall<suppliermanufacturer_pb.GetAllSupplierManufacturersRequestProto, suppliermanufacturer_pb.GetAllSupplierManufacturersResponseProto>;
     getSupplierManufacturer: grpc.handleUnaryCall<suppliermanufacturer_pb.GetSupplierManufacturerRequestProto, suppliermanufacturer_pb.GetSupplierManufacturerResponseProto>;
     getSupplierManufacturers: grpc.handleUnaryCall<suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, suppliermanufacturer_pb.GetSupplierManufacturersResponseProto>;
-    saveSupplierManufacturer: grpc.handleUnaryCall<suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto>;
-    setSupplierManufacturerIsHidden: grpc.handleUnaryCall<suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto>;
-    getSupplierManufacturersByFilter: grpc.handleUnaryCall<suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto>;
 }
 
 export interface ISupplierManufacturerServiceClient {
@@ -99,15 +66,6 @@ export interface ISupplierManufacturerServiceClient {
     getSupplierManufacturers(request: suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersResponseProto) => void): grpc.ClientUnaryCall;
     getSupplierManufacturers(request: suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersResponseProto) => void): grpc.ClientUnaryCall;
     getSupplierManufacturers(request: suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersResponseProto) => void): grpc.ClientUnaryCall;
-    saveSupplierManufacturer(request: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto) => void): grpc.ClientUnaryCall;
-    saveSupplierManufacturer(request: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto) => void): grpc.ClientUnaryCall;
-    saveSupplierManufacturer(request: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto) => void): grpc.ClientUnaryCall;
-    setSupplierManufacturerIsHidden(request: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setSupplierManufacturerIsHidden(request: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setSupplierManufacturerIsHidden(request: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    getSupplierManufacturersByFilter(request: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    getSupplierManufacturersByFilter(request: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    getSupplierManufacturersByFilter(request: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class SupplierManufacturerServiceClient extends grpc.Client implements ISupplierManufacturerServiceClient {
@@ -121,13 +79,4 @@ export class SupplierManufacturerServiceClient extends grpc.Client implements IS
     public getSupplierManufacturers(request: suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersResponseProto) => void): grpc.ClientUnaryCall;
     public getSupplierManufacturers(request: suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersResponseProto) => void): grpc.ClientUnaryCall;
     public getSupplierManufacturers(request: suppliermanufacturer_pb.GetSupplierManufacturersRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSupplierManufacturer(request: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSupplierManufacturer(request: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSupplierManufacturer(request: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto) => void): grpc.ClientUnaryCall;
-    public setSupplierManufacturerIsHidden(request: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setSupplierManufacturerIsHidden(request: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setSupplierManufacturerIsHidden(request: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public getSupplierManufacturersByFilter(request: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    public getSupplierManufacturersByFilter(request: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    public getSupplierManufacturersByFilter(request: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto) => void): grpc.ClientUnaryCall;
 }

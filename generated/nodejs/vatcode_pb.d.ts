@@ -55,6 +55,52 @@ export namespace GetAllVatCodesResponseProto {
     }
 }
 
+export class GetVatCodeRequestProto extends jspb.Message { 
+    getTenantId(): string;
+    setTenantId(value: string): GetVatCodeRequestProto;
+    getVatCodeId(): string;
+    setVatCodeId(value: string): GetVatCodeRequestProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetVatCodeRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetVatCodeRequestProto): GetVatCodeRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetVatCodeRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetVatCodeRequestProto;
+    static deserializeBinaryFromReader(message: GetVatCodeRequestProto, reader: jspb.BinaryReader): GetVatCodeRequestProto;
+}
+
+export namespace GetVatCodeRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        vatCodeId: string,
+    }
+}
+
+export class GetVatCodeResponseProto extends jspb.Message { 
+
+    hasVatCode(): boolean;
+    clearVatCode(): void;
+    getVatCode(): VatCodeProto | undefined;
+    setVatCode(value?: VatCodeProto): GetVatCodeResponseProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetVatCodeResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetVatCodeResponseProto): GetVatCodeResponseProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetVatCodeResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetVatCodeResponseProto;
+    static deserializeBinaryFromReader(message: GetVatCodeResponseProto, reader: jspb.BinaryReader): GetVatCodeResponseProto;
+}
+
+export namespace GetVatCodeResponseProto {
+    export type AsObject = {
+        vatCode?: VatCodeProto.AsObject,
+    }
+}
+
 export class GetVatCodesRequestProto extends jspb.Message { 
     getTenantId(): string;
     setTenantId(value: string): GetVatCodesRequestProto;
@@ -99,91 +145,6 @@ export class GetVatCodesResponseProto extends jspb.Message {
 export namespace GetVatCodesResponseProto {
     export type AsObject = {
         vatCodesList: Array<VatCodeProto.AsObject>,
-    }
-}
-
-export class SaveVatCodesRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SaveVatCodesRequestProto;
-    clearVatCodesList(): void;
-    getVatCodesList(): Array<VatCodeProto>;
-    setVatCodesList(value: Array<VatCodeProto>): SaveVatCodesRequestProto;
-    addVatCodes(value?: VatCodeProto, index?: number): VatCodeProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveVatCodesRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveVatCodesRequestProto): SaveVatCodesRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveVatCodesRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveVatCodesRequestProto;
-    static deserializeBinaryFromReader(message: SaveVatCodesRequestProto, reader: jspb.BinaryReader): SaveVatCodesRequestProto;
-}
-
-export namespace SaveVatCodesRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        vatCodesList: Array<VatCodeProto.AsObject>,
-    }
-}
-
-export class SaveVatCodesResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveVatCodesResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveVatCodesResponseProto): SaveVatCodesResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveVatCodesResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveVatCodesResponseProto;
-    static deserializeBinaryFromReader(message: SaveVatCodesResponseProto, reader: jspb.BinaryReader): SaveVatCodesResponseProto;
-}
-
-export namespace SaveVatCodesResponseProto {
-    export type AsObject = {
-    }
-}
-
-export class SetVatCodeIsHiddenRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SetVatCodeIsHiddenRequestProto;
-    getVatCodeId(): string;
-    setVatCodeId(value: string): SetVatCodeIsHiddenRequestProto;
-    getHide(): boolean;
-    setHide(value: boolean): SetVatCodeIsHiddenRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetVatCodeIsHiddenRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetVatCodeIsHiddenRequestProto): SetVatCodeIsHiddenRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetVatCodeIsHiddenRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetVatCodeIsHiddenRequestProto;
-    static deserializeBinaryFromReader(message: SetVatCodeIsHiddenRequestProto, reader: jspb.BinaryReader): SetVatCodeIsHiddenRequestProto;
-}
-
-export namespace SetVatCodeIsHiddenRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        vatCodeId: string,
-        hide: boolean,
-    }
-}
-
-export class SetVatCodeIsHiddenResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetVatCodeIsHiddenResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetVatCodeIsHiddenResponseProto): SetVatCodeIsHiddenResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetVatCodeIsHiddenResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetVatCodeIsHiddenResponseProto;
-    static deserializeBinaryFromReader(message: SetVatCodeIsHiddenResponseProto, reader: jspb.BinaryReader): SetVatCodeIsHiddenResponseProto;
-}
-
-export namespace SetVatCodeIsHiddenResponseProto {
-    export type AsObject = {
     }
 }
 

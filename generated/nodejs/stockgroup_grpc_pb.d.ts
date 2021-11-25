@@ -17,8 +17,7 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 interface IStockGroupServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllStockGroups: IStockGroupServiceService_IGetAllStockGroups;
     getStockGroup: IStockGroupServiceService_IGetStockGroup;
-    saveStockGroup: IStockGroupServiceService_ISaveStockGroup;
-    getStockGroupsById: IStockGroupServiceService_IGetStockGroupsById;
+    getStockGroups: IStockGroupServiceService_IGetStockGroups;
 }
 
 interface IStockGroupServiceService_IGetAllStockGroups extends grpc.MethodDefinition<stockgroup_pb.GetAllStockGroupsRequestProto, stockgroup_pb.GetAllStockGroupsResponseProto> {
@@ -39,23 +38,14 @@ interface IStockGroupServiceService_IGetStockGroup extends grpc.MethodDefinition
     responseSerialize: grpc.serialize<stockgroup_pb.GetStockGroupResponseProto>;
     responseDeserialize: grpc.deserialize<stockgroup_pb.GetStockGroupResponseProto>;
 }
-interface IStockGroupServiceService_ISaveStockGroup extends grpc.MethodDefinition<stockgroup_pb.SaveStockGroupRequestProto, stockgroup_pb.SaveStockGroupResponseProto> {
-    path: "/bmapi.stocks.stockgroup.StockGroupService/SaveStockGroup";
+interface IStockGroupServiceService_IGetStockGroups extends grpc.MethodDefinition<stockgroup_pb.GetStockGroupsRequestProto, stockgroup_pb.GetStockGroupsResponseProto> {
+    path: "/bmapi.stocks.stockgroup.StockGroupService/GetStockGroups";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<stockgroup_pb.SaveStockGroupRequestProto>;
-    requestDeserialize: grpc.deserialize<stockgroup_pb.SaveStockGroupRequestProto>;
-    responseSerialize: grpc.serialize<stockgroup_pb.SaveStockGroupResponseProto>;
-    responseDeserialize: grpc.deserialize<stockgroup_pb.SaveStockGroupResponseProto>;
-}
-interface IStockGroupServiceService_IGetStockGroupsById extends grpc.MethodDefinition<stockgroup_pb.GetStockGroupsByIdRequestProto, stockgroup_pb.GetStockGroupsByIdResponseProto> {
-    path: "/bmapi.stocks.stockgroup.StockGroupService/GetStockGroupsById";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<stockgroup_pb.GetStockGroupsByIdRequestProto>;
-    requestDeserialize: grpc.deserialize<stockgroup_pb.GetStockGroupsByIdRequestProto>;
-    responseSerialize: grpc.serialize<stockgroup_pb.GetStockGroupsByIdResponseProto>;
-    responseDeserialize: grpc.deserialize<stockgroup_pb.GetStockGroupsByIdResponseProto>;
+    requestSerialize: grpc.serialize<stockgroup_pb.GetStockGroupsRequestProto>;
+    requestDeserialize: grpc.deserialize<stockgroup_pb.GetStockGroupsRequestProto>;
+    responseSerialize: grpc.serialize<stockgroup_pb.GetStockGroupsResponseProto>;
+    responseDeserialize: grpc.deserialize<stockgroup_pb.GetStockGroupsResponseProto>;
 }
 
 export const StockGroupServiceService: IStockGroupServiceService;
@@ -63,8 +53,7 @@ export const StockGroupServiceService: IStockGroupServiceService;
 export interface IStockGroupServiceServer extends grpc.UntypedServiceImplementation {
     getAllStockGroups: grpc.handleUnaryCall<stockgroup_pb.GetAllStockGroupsRequestProto, stockgroup_pb.GetAllStockGroupsResponseProto>;
     getStockGroup: grpc.handleUnaryCall<stockgroup_pb.GetStockGroupRequestProto, stockgroup_pb.GetStockGroupResponseProto>;
-    saveStockGroup: grpc.handleUnaryCall<stockgroup_pb.SaveStockGroupRequestProto, stockgroup_pb.SaveStockGroupResponseProto>;
-    getStockGroupsById: grpc.handleUnaryCall<stockgroup_pb.GetStockGroupsByIdRequestProto, stockgroup_pb.GetStockGroupsByIdResponseProto>;
+    getStockGroups: grpc.handleUnaryCall<stockgroup_pb.GetStockGroupsRequestProto, stockgroup_pb.GetStockGroupsResponseProto>;
 }
 
 export interface IStockGroupServiceClient {
@@ -74,12 +63,9 @@ export interface IStockGroupServiceClient {
     getStockGroup(request: stockgroup_pb.GetStockGroupRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupResponseProto) => void): grpc.ClientUnaryCall;
     getStockGroup(request: stockgroup_pb.GetStockGroupRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupResponseProto) => void): grpc.ClientUnaryCall;
     getStockGroup(request: stockgroup_pb.GetStockGroupRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    saveStockGroup(request: stockgroup_pb.SaveStockGroupRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.SaveStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    saveStockGroup(request: stockgroup_pb.SaveStockGroupRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.SaveStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    saveStockGroup(request: stockgroup_pb.SaveStockGroupRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.SaveStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    getStockGroupsById(request: stockgroup_pb.GetStockGroupsByIdRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsByIdResponseProto) => void): grpc.ClientUnaryCall;
-    getStockGroupsById(request: stockgroup_pb.GetStockGroupsByIdRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsByIdResponseProto) => void): grpc.ClientUnaryCall;
-    getStockGroupsById(request: stockgroup_pb.GetStockGroupsByIdRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsByIdResponseProto) => void): grpc.ClientUnaryCall;
+    getStockGroups(request: stockgroup_pb.GetStockGroupsRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsResponseProto) => void): grpc.ClientUnaryCall;
+    getStockGroups(request: stockgroup_pb.GetStockGroupsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsResponseProto) => void): grpc.ClientUnaryCall;
+    getStockGroups(request: stockgroup_pb.GetStockGroupsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class StockGroupServiceClient extends grpc.Client implements IStockGroupServiceClient {
@@ -90,10 +76,7 @@ export class StockGroupServiceClient extends grpc.Client implements IStockGroupS
     public getStockGroup(request: stockgroup_pb.GetStockGroupRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupResponseProto) => void): grpc.ClientUnaryCall;
     public getStockGroup(request: stockgroup_pb.GetStockGroupRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupResponseProto) => void): grpc.ClientUnaryCall;
     public getStockGroup(request: stockgroup_pb.GetStockGroupRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    public saveStockGroup(request: stockgroup_pb.SaveStockGroupRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.SaveStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    public saveStockGroup(request: stockgroup_pb.SaveStockGroupRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.SaveStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    public saveStockGroup(request: stockgroup_pb.SaveStockGroupRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.SaveStockGroupResponseProto) => void): grpc.ClientUnaryCall;
-    public getStockGroupsById(request: stockgroup_pb.GetStockGroupsByIdRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsByIdResponseProto) => void): grpc.ClientUnaryCall;
-    public getStockGroupsById(request: stockgroup_pb.GetStockGroupsByIdRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsByIdResponseProto) => void): grpc.ClientUnaryCall;
-    public getStockGroupsById(request: stockgroup_pb.GetStockGroupsByIdRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsByIdResponseProto) => void): grpc.ClientUnaryCall;
+    public getStockGroups(request: stockgroup_pb.GetStockGroupsRequestProto, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsResponseProto) => void): grpc.ClientUnaryCall;
+    public getStockGroups(request: stockgroup_pb.GetStockGroupsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsResponseProto) => void): grpc.ClientUnaryCall;
+    public getStockGroups(request: stockgroup_pb.GetStockGroupsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stockgroup_pb.GetStockGroupsResponseProto) => void): grpc.ClientUnaryCall;
 }

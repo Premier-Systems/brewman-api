@@ -57,28 +57,6 @@ function deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturerRe
   return suppliermanufacturer_pb.GetSupplierManufacturerResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterRequestProto(arg) {
-  if (!(arg instanceof suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.GetSupplierManufacturersByFilterRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterRequestProto(buffer_arg) {
-  return suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterResponseProto(arg) {
-  if (!(arg instanceof suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.GetSupplierManufacturersByFilterResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterResponseProto(buffer_arg) {
-  return suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersRequestProto(arg) {
   if (!(arg instanceof suppliermanufacturer_pb.GetSupplierManufacturersRequestProto)) {
     throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.GetSupplierManufacturersRequestProto');
@@ -99,50 +77,6 @@ function serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersRes
 
 function deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersResponseProto(buffer_arg) {
   return suppliermanufacturer_pb.GetSupplierManufacturersResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerRequestProto(arg) {
-  if (!(arg instanceof suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.SaveSupplierManufacturerRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerRequestProto(buffer_arg) {
-  return suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerResponseProto(arg) {
-  if (!(arg instanceof suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.SaveSupplierManufacturerResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerResponseProto(buffer_arg) {
-  return suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenRequestProto(arg) {
-  if (!(arg instanceof suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.SetSupplierManufacturerIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenRequestProto(buffer_arg) {
-  return suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenResponseProto(arg) {
-  if (!(arg instanceof suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.suppliermanufacturer.SetSupplierManufacturerIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenResponseProto(buffer_arg) {
-  return suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -182,42 +116,6 @@ getSupplierManufacturers: {
     requestDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersRequestProto,
     responseSerialize: serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersResponseProto,
-  },
-  // Saves a SupplierManufacturer
-saveSupplierManufacturer: {
-    path: '/bmapi.stocks.suppliermanufacturer.SupplierManufacturerService/SaveSupplierManufacturer',
-    requestStream: false,
-    responseStream: false,
-    requestType: suppliermanufacturer_pb.SaveSupplierManufacturerRequestProto,
-    responseType: suppliermanufacturer_pb.SaveSupplierManufacturerResponseProto,
-    requestSerialize: serialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerRequestProto,
-    responseSerialize: serialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_SaveSupplierManufacturerResponseProto,
-  },
-  // Hides or unhides the given Supplier Manufacturer
-setSupplierManufacturerIsHidden: {
-    path: '/bmapi.stocks.suppliermanufacturer.SupplierManufacturerService/SetSupplierManufacturerIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenRequestProto,
-    responseType: suppliermanufacturer_pb.SetSupplierManufacturerIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_SetSupplierManufacturerIsHiddenResponseProto,
-  },
-  // Get Suppliers and Manufacturers matching the given filter.
-getSupplierManufacturersByFilter: {
-    path: '/bmapi.stocks.suppliermanufacturer.SupplierManufacturerService/GetSupplierManufacturersByFilter',
-    requestStream: false,
-    responseStream: false,
-    requestType: suppliermanufacturer_pb.GetSupplierManufacturersByFilterRequestProto,
-    responseType: suppliermanufacturer_pb.GetSupplierManufacturersByFilterResponseProto,
-    requestSerialize: serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterRequestProto,
-    responseSerialize: serialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_suppliermanufacturer_GetSupplierManufacturersByFilterResponseProto,
   },
 };
 

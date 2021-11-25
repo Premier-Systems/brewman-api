@@ -35,6 +35,28 @@ function deserialize_bmapi_orders_collectiontime_GetAllCollectionTimesResponsePr
   return collectiontime_pb.GetAllCollectionTimesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_orders_collectiontime_GetCollectionTimeRequestProto(arg) {
+  if (!(arg instanceof collectiontime_pb.GetCollectionTimeRequestProto)) {
+    throw new Error('Expected argument of type bmapi.orders.collectiontime.GetCollectionTimeRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_orders_collectiontime_GetCollectionTimeRequestProto(buffer_arg) {
+  return collectiontime_pb.GetCollectionTimeRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_orders_collectiontime_GetCollectionTimeResponseProto(arg) {
+  if (!(arg instanceof collectiontime_pb.GetCollectionTimeResponseProto)) {
+    throw new Error('Expected argument of type bmapi.orders.collectiontime.GetCollectionTimeResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_orders_collectiontime_GetCollectionTimeResponseProto(buffer_arg) {
+  return collectiontime_pb.GetCollectionTimeResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_orders_collectiontime_GetCollectionTimesRequestProto(arg) {
   if (!(arg instanceof collectiontime_pb.GetCollectionTimesRequestProto)) {
     throw new Error('Expected argument of type bmapi.orders.collectiontime.GetCollectionTimesRequestProto');
@@ -57,28 +79,6 @@ function deserialize_bmapi_orders_collectiontime_GetCollectionTimesResponseProto
   return collectiontime_pb.GetCollectionTimesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_orders_collectiontime_SaveCollectionTimesRequestProto(arg) {
-  if (!(arg instanceof collectiontime_pb.SaveCollectionTimesRequestProto)) {
-    throw new Error('Expected argument of type bmapi.orders.collectiontime.SaveCollectionTimesRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_orders_collectiontime_SaveCollectionTimesRequestProto(buffer_arg) {
-  return collectiontime_pb.SaveCollectionTimesRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_orders_collectiontime_SaveCollectionTimesResponseProto(arg) {
-  if (!(arg instanceof collectiontime_pb.SaveCollectionTimesResponseProto)) {
-    throw new Error('Expected argument of type bmapi.orders.collectiontime.SaveCollectionTimesResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_orders_collectiontime_SaveCollectionTimesResponseProto(buffer_arg) {
-  return collectiontime_pb.SaveCollectionTimesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var CollectionTimeServiceService = exports.CollectionTimeServiceService = {
   getAllCollectionTimes: {
@@ -92,6 +92,17 @@ var CollectionTimeServiceService = exports.CollectionTimeServiceService = {
     responseSerialize: serialize_bmapi_orders_collectiontime_GetAllCollectionTimesResponseProto,
     responseDeserialize: deserialize_bmapi_orders_collectiontime_GetAllCollectionTimesResponseProto,
   },
+  getCollectionTime: {
+    path: '/bmapi.orders.collectiontime.CollectionTimeService/GetCollectionTime',
+    requestStream: false,
+    responseStream: false,
+    requestType: collectiontime_pb.GetCollectionTimeRequestProto,
+    responseType: collectiontime_pb.GetCollectionTimeResponseProto,
+    requestSerialize: serialize_bmapi_orders_collectiontime_GetCollectionTimeRequestProto,
+    requestDeserialize: deserialize_bmapi_orders_collectiontime_GetCollectionTimeRequestProto,
+    responseSerialize: serialize_bmapi_orders_collectiontime_GetCollectionTimeResponseProto,
+    responseDeserialize: deserialize_bmapi_orders_collectiontime_GetCollectionTimeResponseProto,
+  },
   getCollectionTimes: {
     path: '/bmapi.orders.collectiontime.CollectionTimeService/GetCollectionTimes',
     requestStream: false,
@@ -102,18 +113,6 @@ var CollectionTimeServiceService = exports.CollectionTimeServiceService = {
     requestDeserialize: deserialize_bmapi_orders_collectiontime_GetCollectionTimesRequestProto,
     responseSerialize: serialize_bmapi_orders_collectiontime_GetCollectionTimesResponseProto,
     responseDeserialize: deserialize_bmapi_orders_collectiontime_GetCollectionTimesResponseProto,
-  },
-  // Saves one or many collection times
-saveCollectionTimes: {
-    path: '/bmapi.orders.collectiontime.CollectionTimeService/SaveCollectionTimes',
-    requestStream: false,
-    responseStream: false,
-    requestType: collectiontime_pb.SaveCollectionTimesRequestProto,
-    responseType: collectiontime_pb.SaveCollectionTimesResponseProto,
-    requestSerialize: serialize_bmapi_orders_collectiontime_SaveCollectionTimesRequestProto,
-    requestDeserialize: deserialize_bmapi_orders_collectiontime_SaveCollectionTimesRequestProto,
-    responseSerialize: serialize_bmapi_orders_collectiontime_SaveCollectionTimesResponseProto,
-    responseDeserialize: deserialize_bmapi_orders_collectiontime_SaveCollectionTimesResponseProto,
   },
 };
 

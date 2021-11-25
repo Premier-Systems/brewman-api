@@ -18,8 +18,6 @@ interface IOutletServiceService extends grpc.ServiceDefinition<grpc.UntypedServi
     getAllOutlets: IOutletServiceService_IGetAllOutlets;
     getOutlets: IOutletServiceService_IGetOutlets;
     getOutlet: IOutletServiceService_IGetOutlet;
-    setOutletIsHidden: IOutletServiceService_ISetOutletIsHidden;
-    getOutletsByFilter: IOutletServiceService_IGetOutletsByFilter;
 }
 
 interface IOutletServiceService_IGetAllOutlets extends grpc.MethodDefinition<outlet_pb.GetAllOutletsRequestProto, outlet_pb.GetAllOutletsResponseProto> {
@@ -49,24 +47,6 @@ interface IOutletServiceService_IGetOutlet extends grpc.MethodDefinition<outlet_
     responseSerialize: grpc.serialize<outlet_pb.GetOutletResponseProto>;
     responseDeserialize: grpc.deserialize<outlet_pb.GetOutletResponseProto>;
 }
-interface IOutletServiceService_ISetOutletIsHidden extends grpc.MethodDefinition<outlet_pb.SetOutletIsHiddenRequestProto, outlet_pb.SetOutletIsHiddenResponseProto> {
-    path: "/bmapi.outlets.outlet.OutletService/SetOutletIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<outlet_pb.SetOutletIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<outlet_pb.SetOutletIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<outlet_pb.SetOutletIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<outlet_pb.SetOutletIsHiddenResponseProto>;
-}
-interface IOutletServiceService_IGetOutletsByFilter extends grpc.MethodDefinition<outlet_pb.GetOutletsByFilterRequestProto, outlet_pb.GetOutletsByFilterResponseProto> {
-    path: "/bmapi.outlets.outlet.OutletService/GetOutletsByFilter";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<outlet_pb.GetOutletsByFilterRequestProto>;
-    requestDeserialize: grpc.deserialize<outlet_pb.GetOutletsByFilterRequestProto>;
-    responseSerialize: grpc.serialize<outlet_pb.GetOutletsByFilterResponseProto>;
-    responseDeserialize: grpc.deserialize<outlet_pb.GetOutletsByFilterResponseProto>;
-}
 
 export const OutletServiceService: IOutletServiceService;
 
@@ -74,8 +54,6 @@ export interface IOutletServiceServer extends grpc.UntypedServiceImplementation 
     getAllOutlets: grpc.handleUnaryCall<outlet_pb.GetAllOutletsRequestProto, outlet_pb.GetAllOutletsResponseProto>;
     getOutlets: grpc.handleUnaryCall<outlet_pb.GetOutletsRequestProto, outlet_pb.GetOutletsResponseProto>;
     getOutlet: grpc.handleUnaryCall<outlet_pb.GetOutletRequestProto, outlet_pb.GetOutletResponseProto>;
-    setOutletIsHidden: grpc.handleUnaryCall<outlet_pb.SetOutletIsHiddenRequestProto, outlet_pb.SetOutletIsHiddenResponseProto>;
-    getOutletsByFilter: grpc.handleUnaryCall<outlet_pb.GetOutletsByFilterRequestProto, outlet_pb.GetOutletsByFilterResponseProto>;
 }
 
 export interface IOutletServiceClient {
@@ -88,12 +66,6 @@ export interface IOutletServiceClient {
     getOutlet(request: outlet_pb.GetOutletRequestProto, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletResponseProto) => void): grpc.ClientUnaryCall;
     getOutlet(request: outlet_pb.GetOutletRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletResponseProto) => void): grpc.ClientUnaryCall;
     getOutlet(request: outlet_pb.GetOutletRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletResponseProto) => void): grpc.ClientUnaryCall;
-    setOutletIsHidden(request: outlet_pb.SetOutletIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: outlet_pb.SetOutletIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setOutletIsHidden(request: outlet_pb.SetOutletIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlet_pb.SetOutletIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setOutletIsHidden(request: outlet_pb.SetOutletIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlet_pb.SetOutletIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    getOutletsByFilter(request: outlet_pb.GetOutletsByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletsByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    getOutletsByFilter(request: outlet_pb.GetOutletsByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletsByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    getOutletsByFilter(request: outlet_pb.GetOutletsByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletsByFilterResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class OutletServiceClient extends grpc.Client implements IOutletServiceClient {
@@ -107,10 +79,4 @@ export class OutletServiceClient extends grpc.Client implements IOutletServiceCl
     public getOutlet(request: outlet_pb.GetOutletRequestProto, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletResponseProto) => void): grpc.ClientUnaryCall;
     public getOutlet(request: outlet_pb.GetOutletRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletResponseProto) => void): grpc.ClientUnaryCall;
     public getOutlet(request: outlet_pb.GetOutletRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletResponseProto) => void): grpc.ClientUnaryCall;
-    public setOutletIsHidden(request: outlet_pb.SetOutletIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: outlet_pb.SetOutletIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setOutletIsHidden(request: outlet_pb.SetOutletIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlet_pb.SetOutletIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setOutletIsHidden(request: outlet_pb.SetOutletIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlet_pb.SetOutletIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public getOutletsByFilter(request: outlet_pb.GetOutletsByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletsByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    public getOutletsByFilter(request: outlet_pb.GetOutletsByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletsByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    public getOutletsByFilter(request: outlet_pb.GetOutletsByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlet_pb.GetOutletsByFilterResponseProto) => void): grpc.ClientUnaryCall;
 }

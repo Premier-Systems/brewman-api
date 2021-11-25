@@ -19,11 +19,7 @@ service GlCodeService {
     rpc GetGlCode(GetGlCodeRequestProto) returns (GetGlCodeResponseProto) {}
     // Gets specific GlCodes by Ids. (Errors if any not found).
     rpc GetGlCodes(GetGlCodesRequestProto) returns (GetGlCodesResponseProto) {}
-    // Saves a single GlCode
-    rpc SaveGlCode(SaveGlCodeRequestProto) returns (SaveGlCodeResponseProto) {}
-    // Hides or unhides the given GlCode.
-    rpc SetGlCodeIsHidden(SetGlCodeIsHiddenRequestProto) returns (SetGlCodeIsHiddenResponseProto) {}
-    // Gets all undeleted GlCodeOverrides
+    // Gets all GlCodeOverrides
     rpc GetAllGlCodeOverrides(GetAllGlCodeOverridesRequestProto) returns (GetAllGlCodeOverridesResponseProto) {}
 }
 
@@ -60,28 +56,6 @@ message GetGlCodesRequestProto {
 message GetGlCodesResponseProto {
     
     repeated GlCodeProto gl_codes = 1;
-}
-
-message SaveGlCodeRequestProto {
-    
-    string tenant_id = 1;
-    
-    GlCodeProto gl_code = 2;
-}
-
-message SaveGlCodeResponseProto {
-}
-
-message SetGlCodeIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string gl_code_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetGlCodeIsHiddenResponseProto {
 }
 
 message GetAllGlCodeOverridesRequestProto {

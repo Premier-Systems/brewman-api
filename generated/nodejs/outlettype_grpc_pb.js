@@ -35,6 +35,28 @@ function deserialize_bmapi_outlets_outlettype_GetAllOutletTypesResponseProto(buf
   return outlettype_pb.GetAllOutletTypesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_outlets_outlettype_GetOutletTypeRequestProto(arg) {
+  if (!(arg instanceof outlettype_pb.GetOutletTypeRequestProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.outlettype.GetOutletTypeRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_outlettype_GetOutletTypeRequestProto(buffer_arg) {
+  return outlettype_pb.GetOutletTypeRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_outlets_outlettype_GetOutletTypeResponseProto(arg) {
+  if (!(arg instanceof outlettype_pb.GetOutletTypeResponseProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.outlettype.GetOutletTypeResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_outlettype_GetOutletTypeResponseProto(buffer_arg) {
+  return outlettype_pb.GetOutletTypeResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_outlets_outlettype_GetOutletTypesRequestProto(arg) {
   if (!(arg instanceof outlettype_pb.GetOutletTypesRequestProto)) {
     throw new Error('Expected argument of type bmapi.outlets.outlettype.GetOutletTypesRequestProto');
@@ -57,50 +79,6 @@ function deserialize_bmapi_outlets_outlettype_GetOutletTypesResponseProto(buffer
   return outlettype_pb.GetOutletTypesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_outlettype_SaveOutletTypesRequestProto(arg) {
-  if (!(arg instanceof outlettype_pb.SaveOutletTypesRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlettype.SaveOutletTypesRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlettype_SaveOutletTypesRequestProto(buffer_arg) {
-  return outlettype_pb.SaveOutletTypesRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outlettype_SaveOutletTypesResponseProto(arg) {
-  if (!(arg instanceof outlettype_pb.SaveOutletTypesResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlettype.SaveOutletTypesResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlettype_SaveOutletTypesResponseProto(buffer_arg) {
-  return outlettype_pb.SaveOutletTypesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenRequestProto(arg) {
-  if (!(arg instanceof outlettype_pb.SetOutletTypeIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlettype.SetOutletTypeIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenRequestProto(buffer_arg) {
-  return outlettype_pb.SetOutletTypeIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenResponseProto(arg) {
-  if (!(arg instanceof outlettype_pb.SetOutletTypeIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlettype.SetOutletTypeIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenResponseProto(buffer_arg) {
-  return outlettype_pb.SetOutletTypeIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var OutletTypeServiceService = exports.OutletTypeServiceService = {
   // Gets all outlet types.
@@ -115,6 +93,18 @@ getAllOutletTypes: {
     responseSerialize: serialize_bmapi_outlets_outlettype_GetAllOutletTypesResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outlettype_GetAllOutletTypesResponseProto,
   },
+  // Gets a specific outlet type. (Errors if not found).
+getOutletType: {
+    path: '/bmapi.outlets.outlettype.OutletTypeService/GetOutletType',
+    requestStream: false,
+    responseStream: false,
+    requestType: outlettype_pb.GetOutletTypeRequestProto,
+    responseType: outlettype_pb.GetOutletTypeResponseProto,
+    requestSerialize: serialize_bmapi_outlets_outlettype_GetOutletTypeRequestProto,
+    requestDeserialize: deserialize_bmapi_outlets_outlettype_GetOutletTypeRequestProto,
+    responseSerialize: serialize_bmapi_outlets_outlettype_GetOutletTypeResponseProto,
+    responseDeserialize: deserialize_bmapi_outlets_outlettype_GetOutletTypeResponseProto,
+  },
   // Gets specific outlet types. (Errors if any not found).
 getOutletTypes: {
     path: '/bmapi.outlets.outlettype.OutletTypeService/GetOutletTypes',
@@ -126,30 +116,6 @@ getOutletTypes: {
     requestDeserialize: deserialize_bmapi_outlets_outlettype_GetOutletTypesRequestProto,
     responseSerialize: serialize_bmapi_outlets_outlettype_GetOutletTypesResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outlettype_GetOutletTypesResponseProto,
-  },
-  // Saves one or many outlet types
-saveOutletTypes: {
-    path: '/bmapi.outlets.outlettype.OutletTypeService/SaveOutletTypes',
-    requestStream: false,
-    responseStream: false,
-    requestType: outlettype_pb.SaveOutletTypesRequestProto,
-    responseType: outlettype_pb.SaveOutletTypesResponseProto,
-    requestSerialize: serialize_bmapi_outlets_outlettype_SaveOutletTypesRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_outlettype_SaveOutletTypesRequestProto,
-    responseSerialize: serialize_bmapi_outlets_outlettype_SaveOutletTypesResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_outlettype_SaveOutletTypesResponseProto,
-  },
-  // Hides or unhides the given Outlet Type.
-setOutletTypeIsHidden: {
-    path: '/bmapi.outlets.outlettype.OutletTypeService/SetOutletTypeIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: outlettype_pb.SetOutletTypeIsHiddenRequestProto,
-    responseType: outlettype_pb.SetOutletTypeIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_outlettype_SetOutletTypeIsHiddenResponseProto,
   },
 };
 

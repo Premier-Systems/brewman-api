@@ -57,28 +57,6 @@ function deserialize_bmapi_outlets_outlet_GetOutletResponseProto(buffer_arg) {
   return outlet_pb.GetOutletResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_outlet_GetOutletsByFilterRequestProto(arg) {
-  if (!(arg instanceof outlet_pb.GetOutletsByFilterRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlet.GetOutletsByFilterRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlet_GetOutletsByFilterRequestProto(buffer_arg) {
-  return outlet_pb.GetOutletsByFilterRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outlet_GetOutletsByFilterResponseProto(arg) {
-  if (!(arg instanceof outlet_pb.GetOutletsByFilterResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlet.GetOutletsByFilterResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlet_GetOutletsByFilterResponseProto(buffer_arg) {
-  return outlet_pb.GetOutletsByFilterResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_bmapi_outlets_outlet_GetOutletsRequestProto(arg) {
   if (!(arg instanceof outlet_pb.GetOutletsRequestProto)) {
     throw new Error('Expected argument of type bmapi.outlets.outlet.GetOutletsRequestProto');
@@ -101,31 +79,9 @@ function deserialize_bmapi_outlets_outlet_GetOutletsResponseProto(buffer_arg) {
   return outlet_pb.GetOutletsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_outlet_SetOutletIsHiddenRequestProto(arg) {
-  if (!(arg instanceof outlet_pb.SetOutletIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlet.SetOutletIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlet_SetOutletIsHiddenRequestProto(buffer_arg) {
-  return outlet_pb.SetOutletIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outlet_SetOutletIsHiddenResponseProto(arg) {
-  if (!(arg instanceof outlet_pb.SetOutletIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outlet.SetOutletIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outlet_SetOutletIsHiddenResponseProto(buffer_arg) {
-  return outlet_pb.SetOutletIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var OutletServiceService = exports.OutletServiceService = {
-  // Gets all undeleted Outlets
+  // Gets all Outlets
 getAllOutlets: {
     path: '/bmapi.outlets.outlet.OutletService/GetAllOutlets',
     requestStream: false,
@@ -137,7 +93,7 @@ getAllOutlets: {
     responseSerialize: serialize_bmapi_outlets_outlet_GetAllOutletsResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outlet_GetAllOutletsResponseProto,
   },
-  // Gets specific Outlets by Ids, including soft-deleted ones. (Errors if any not found).
+  // Gets specific Outlets by Ids. (Errors if any not found).
 getOutlets: {
     path: '/bmapi.outlets.outlet.OutletService/GetOutlets',
     requestStream: false,
@@ -149,7 +105,7 @@ getOutlets: {
     responseSerialize: serialize_bmapi_outlets_outlet_GetOutletsResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outlet_GetOutletsResponseProto,
   },
-  // Gets a specific Outlet by Id, even if soft-deleted. (Errors if not found).
+  // Gets a specific Outlet by Id. (Errors if not found).
 getOutlet: {
     path: '/bmapi.outlets.outlet.OutletService/GetOutlet',
     requestStream: false,
@@ -160,30 +116,6 @@ getOutlet: {
     requestDeserialize: deserialize_bmapi_outlets_outlet_GetOutletRequestProto,
     responseSerialize: serialize_bmapi_outlets_outlet_GetOutletResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outlet_GetOutletResponseProto,
-  },
-  // Hides or unhides the given Outlet.
-setOutletIsHidden: {
-    path: '/bmapi.outlets.outlet.OutletService/SetOutletIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: outlet_pb.SetOutletIsHiddenRequestProto,
-    responseType: outlet_pb.SetOutletIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_outlets_outlet_SetOutletIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_outlet_SetOutletIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_outlets_outlet_SetOutletIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_outlet_SetOutletIsHiddenResponseProto,
-  },
-  // Get Outlets matching the given filter. (soft-deleted outlets are not returned).
-getOutletsByFilter: {
-    path: '/bmapi.outlets.outlet.OutletService/GetOutletsByFilter',
-    requestStream: false,
-    responseStream: false,
-    requestType: outlet_pb.GetOutletsByFilterRequestProto,
-    responseType: outlet_pb.GetOutletsByFilterResponseProto,
-    requestSerialize: serialize_bmapi_outlets_outlet_GetOutletsByFilterRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_outlet_GetOutletsByFilterRequestProto,
-    responseSerialize: serialize_bmapi_outlets_outlet_GetOutletsByFilterResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_outlet_GetOutletsByFilterResponseProto,
   },
 };
 

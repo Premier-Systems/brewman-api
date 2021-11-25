@@ -55,6 +55,52 @@ export namespace GetAllSalesAreasResponseProto {
     }
 }
 
+export class GetSalesAreaRequestProto extends jspb.Message { 
+    getTenantId(): string;
+    setTenantId(value: string): GetSalesAreaRequestProto;
+    getSalesAreaId(): string;
+    setSalesAreaId(value: string): GetSalesAreaRequestProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetSalesAreaRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetSalesAreaRequestProto): GetSalesAreaRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetSalesAreaRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetSalesAreaRequestProto;
+    static deserializeBinaryFromReader(message: GetSalesAreaRequestProto, reader: jspb.BinaryReader): GetSalesAreaRequestProto;
+}
+
+export namespace GetSalesAreaRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        salesAreaId: string,
+    }
+}
+
+export class GetSalesAreaResponseProto extends jspb.Message { 
+
+    hasSalesArea(): boolean;
+    clearSalesArea(): void;
+    getSalesArea(): SalesAreaProto | undefined;
+    setSalesArea(value?: SalesAreaProto): GetSalesAreaResponseProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetSalesAreaResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetSalesAreaResponseProto): GetSalesAreaResponseProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetSalesAreaResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetSalesAreaResponseProto;
+    static deserializeBinaryFromReader(message: GetSalesAreaResponseProto, reader: jspb.BinaryReader): GetSalesAreaResponseProto;
+}
+
+export namespace GetSalesAreaResponseProto {
+    export type AsObject = {
+        salesArea?: SalesAreaProto.AsObject,
+    }
+}
+
 export class GetSalesAreasRequestProto extends jspb.Message { 
     getTenantId(): string;
     setTenantId(value: string): GetSalesAreasRequestProto;
@@ -99,91 +145,6 @@ export class GetSalesAreasResponseProto extends jspb.Message {
 export namespace GetSalesAreasResponseProto {
     export type AsObject = {
         salesAreasList: Array<SalesAreaProto.AsObject>,
-    }
-}
-
-export class SaveSalesAreasRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SaveSalesAreasRequestProto;
-    clearSalesAreasList(): void;
-    getSalesAreasList(): Array<SalesAreaProto>;
-    setSalesAreasList(value: Array<SalesAreaProto>): SaveSalesAreasRequestProto;
-    addSalesAreas(value?: SalesAreaProto, index?: number): SalesAreaProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveSalesAreasRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveSalesAreasRequestProto): SaveSalesAreasRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveSalesAreasRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveSalesAreasRequestProto;
-    static deserializeBinaryFromReader(message: SaveSalesAreasRequestProto, reader: jspb.BinaryReader): SaveSalesAreasRequestProto;
-}
-
-export namespace SaveSalesAreasRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        salesAreasList: Array<SalesAreaProto.AsObject>,
-    }
-}
-
-export class SaveSalesAreasResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveSalesAreasResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveSalesAreasResponseProto): SaveSalesAreasResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveSalesAreasResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveSalesAreasResponseProto;
-    static deserializeBinaryFromReader(message: SaveSalesAreasResponseProto, reader: jspb.BinaryReader): SaveSalesAreasResponseProto;
-}
-
-export namespace SaveSalesAreasResponseProto {
-    export type AsObject = {
-    }
-}
-
-export class SetSalesAreaIsHiddenRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SetSalesAreaIsHiddenRequestProto;
-    getSalesAreaId(): string;
-    setSalesAreaId(value: string): SetSalesAreaIsHiddenRequestProto;
-    getHide(): boolean;
-    setHide(value: boolean): SetSalesAreaIsHiddenRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetSalesAreaIsHiddenRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetSalesAreaIsHiddenRequestProto): SetSalesAreaIsHiddenRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetSalesAreaIsHiddenRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetSalesAreaIsHiddenRequestProto;
-    static deserializeBinaryFromReader(message: SetSalesAreaIsHiddenRequestProto, reader: jspb.BinaryReader): SetSalesAreaIsHiddenRequestProto;
-}
-
-export namespace SetSalesAreaIsHiddenRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        salesAreaId: string,
-        hide: boolean,
-    }
-}
-
-export class SetSalesAreaIsHiddenResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetSalesAreaIsHiddenResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetSalesAreaIsHiddenResponseProto): SetSalesAreaIsHiddenResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetSalesAreaIsHiddenResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetSalesAreaIsHiddenResponseProto;
-    static deserializeBinaryFromReader(message: SetSalesAreaIsHiddenResponseProto, reader: jspb.BinaryReader): SetSalesAreaIsHiddenResponseProto;
-}
-
-export namespace SetSalesAreaIsHiddenResponseProto {
-    export type AsObject = {
     }
 }
 

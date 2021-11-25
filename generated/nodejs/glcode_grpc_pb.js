@@ -101,50 +101,6 @@ function deserialize_bmapi_stocks_glcode_GetGlCodesResponseProto(buffer_arg) {
   return glcode_pb.GetGlCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_glcode_SaveGlCodeRequestProto(arg) {
-  if (!(arg instanceof glcode_pb.SaveGlCodeRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.glcode.SaveGlCodeRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_glcode_SaveGlCodeRequestProto(buffer_arg) {
-  return glcode_pb.SaveGlCodeRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_glcode_SaveGlCodeResponseProto(arg) {
-  if (!(arg instanceof glcode_pb.SaveGlCodeResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.glcode.SaveGlCodeResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_glcode_SaveGlCodeResponseProto(buffer_arg) {
-  return glcode_pb.SaveGlCodeResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_glcode_SetGlCodeIsHiddenRequestProto(arg) {
-  if (!(arg instanceof glcode_pb.SetGlCodeIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.glcode.SetGlCodeIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_glcode_SetGlCodeIsHiddenRequestProto(buffer_arg) {
-  return glcode_pb.SetGlCodeIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_glcode_SetGlCodeIsHiddenResponseProto(arg) {
-  if (!(arg instanceof glcode_pb.SetGlCodeIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.glcode.SetGlCodeIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_glcode_SetGlCodeIsHiddenResponseProto(buffer_arg) {
-  return glcode_pb.SetGlCodeIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var GlCodeServiceService = exports.GlCodeServiceService = {
   // Gets all GlCodes
@@ -183,31 +139,7 @@ getGlCodes: {
     responseSerialize: serialize_bmapi_stocks_glcode_GetGlCodesResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_glcode_GetGlCodesResponseProto,
   },
-  // Saves a single GlCode
-saveGlCode: {
-    path: '/bmapi.stocks.glcode.GlCodeService/SaveGlCode',
-    requestStream: false,
-    responseStream: false,
-    requestType: glcode_pb.SaveGlCodeRequestProto,
-    responseType: glcode_pb.SaveGlCodeResponseProto,
-    requestSerialize: serialize_bmapi_stocks_glcode_SaveGlCodeRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_glcode_SaveGlCodeRequestProto,
-    responseSerialize: serialize_bmapi_stocks_glcode_SaveGlCodeResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_glcode_SaveGlCodeResponseProto,
-  },
-  // Hides or unhides the given GlCode.
-setGlCodeIsHidden: {
-    path: '/bmapi.stocks.glcode.GlCodeService/SetGlCodeIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: glcode_pb.SetGlCodeIsHiddenRequestProto,
-    responseType: glcode_pb.SetGlCodeIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_glcode_SetGlCodeIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_glcode_SetGlCodeIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_glcode_SetGlCodeIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_glcode_SetGlCodeIsHiddenResponseProto,
-  },
-  // Gets all undeleted GlCodeOverrides
+  // Gets all GlCodeOverrides
 getAllGlCodeOverrides: {
     path: '/bmapi.stocks.glcode.GlCodeService/GetAllGlCodeOverrides',
     requestStream: false,

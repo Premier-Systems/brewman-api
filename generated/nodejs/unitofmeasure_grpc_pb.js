@@ -79,50 +79,6 @@ function deserialize_bmapi_stocks_unitofmeasure_GetUnitsOfMeasureResponseProto(b
   return unitofmeasure_pb.GetUnitsOfMeasureResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureRequestProto(arg) {
-  if (!(arg instanceof unitofmeasure_pb.SaveUnitOfMeasureRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.unitofmeasure.SaveUnitOfMeasureRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureRequestProto(buffer_arg) {
-  return unitofmeasure_pb.SaveUnitOfMeasureRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureResponseProto(arg) {
-  if (!(arg instanceof unitofmeasure_pb.SaveUnitOfMeasureResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.unitofmeasure.SaveUnitOfMeasureResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureResponseProto(buffer_arg) {
-  return unitofmeasure_pb.SaveUnitOfMeasureResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenRequestProto(arg) {
-  if (!(arg instanceof unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.unitofmeasure.SetUnitOfMeasureIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenRequestProto(buffer_arg) {
-  return unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenResponseProto(arg) {
-  if (!(arg instanceof unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.unitofmeasure.SetUnitOfMeasureIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenResponseProto(buffer_arg) {
-  return unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var UnitOfMeasureServiceService = exports.UnitOfMeasureServiceService = {
   // Gets all UnitsOfMeasure
@@ -160,30 +116,6 @@ getUnitsOfMeasure: {
     requestDeserialize: deserialize_bmapi_stocks_unitofmeasure_GetUnitsOfMeasureRequestProto,
     responseSerialize: serialize_bmapi_stocks_unitofmeasure_GetUnitsOfMeasureResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_unitofmeasure_GetUnitsOfMeasureResponseProto,
-  },
-  // Saves a single UnitOfMeasure
-saveUnitOfMeasure: {
-    path: '/bmapi.stocks.unitofmeasure.UnitOfMeasureService/SaveUnitOfMeasure',
-    requestStream: false,
-    responseStream: false,
-    requestType: unitofmeasure_pb.SaveUnitOfMeasureRequestProto,
-    responseType: unitofmeasure_pb.SaveUnitOfMeasureResponseProto,
-    requestSerialize: serialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureRequestProto,
-    responseSerialize: serialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_unitofmeasure_SaveUnitOfMeasureResponseProto,
-  },
-  // Hides or unhides the given Unit of Measure.
-setUnitOfMeasureIsHidden: {
-    path: '/bmapi.stocks.unitofmeasure.UnitOfMeasureService/SetUnitOfMeasureIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto,
-    responseType: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_unitofmeasure_SetUnitOfMeasureIsHiddenResponseProto,
   },
 };
 

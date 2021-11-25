@@ -15,12 +15,10 @@ import "common/enumarrayvalues.generated.proto";
 service OutletRatingService {
     // Gets all outlet ratings.
     rpc GetAllOutletRatings(GetAllOutletRatingsRequestProto) returns (GetAllOutletRatingsResponseProto) {}
+    // Gets a specific outlet rating. (Errors if not found).
+    rpc GetOutletRating(GetOutletRatingRequestProto) returns (GetOutletRatingResponseProto) {}
     // Gets specific outlet ratings. (Errors if any not found).
     rpc GetOutletRatings(GetOutletRatingsRequestProto) returns (GetOutletRatingsResponseProto) {}
-    // Saves one or many outlet ratings
-    rpc SaveOutletRatings(SaveOutletRatingsRequestProto) returns (SaveOutletRatingsResponseProto) {}
-    // Hides or unhides the given OutletRating.
-    rpc SetOutletRatingIsHidden(SetOutletRatingIsHiddenRequestProto) returns (SetOutletRatingIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -34,6 +32,18 @@ message GetAllOutletRatingsResponseProto {
     repeated OutletRatingProto outlet_ratings = 1;
 }
 
+message GetOutletRatingRequestProto {
+    
+    string tenant_id = 1;
+    
+    string outlet_rating_id = 2;
+}
+
+message GetOutletRatingResponseProto {
+    
+    OutletRatingProto outlet_rating = 1;
+}
+
 message GetOutletRatingsRequestProto {
     
     string tenant_id = 1;
@@ -44,28 +54,6 @@ message GetOutletRatingsRequestProto {
 message GetOutletRatingsResponseProto {
     
     repeated OutletRatingProto outlet_ratings = 1;
-}
-
-message SaveOutletRatingsRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated OutletRatingProto outlet_ratings = 2;
-}
-
-message SaveOutletRatingsResponseProto {
-}
-
-message SetOutletRatingIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string outlet_rating_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetOutletRatingIsHiddenResponseProto {
 }
 
 

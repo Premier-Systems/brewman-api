@@ -18,8 +18,6 @@ interface IPackageTypeServiceService extends grpc.ServiceDefinition<grpc.Untyped
     getAllPackageTypes: IPackageTypeServiceService_IGetAllPackageTypes;
     getPackageType: IPackageTypeServiceService_IGetPackageType;
     getPackageTypes: IPackageTypeServiceService_IGetPackageTypes;
-    savePackageType: IPackageTypeServiceService_ISavePackageType;
-    setPackageTypeIsHidden: IPackageTypeServiceService_ISetPackageTypeIsHidden;
 }
 
 interface IPackageTypeServiceService_IGetAllPackageTypes extends grpc.MethodDefinition<packagetype_pb.GetAllPackageTypesRequestProto, packagetype_pb.GetAllPackageTypesResponseProto> {
@@ -49,24 +47,6 @@ interface IPackageTypeServiceService_IGetPackageTypes extends grpc.MethodDefinit
     responseSerialize: grpc.serialize<packagetype_pb.GetPackageTypesResponseProto>;
     responseDeserialize: grpc.deserialize<packagetype_pb.GetPackageTypesResponseProto>;
 }
-interface IPackageTypeServiceService_ISavePackageType extends grpc.MethodDefinition<packagetype_pb.SavePackageTypeRequestProto, packagetype_pb.SavePackageTypeResponseProto> {
-    path: "/bmapi.stocks.packagetype.PackageTypeService/SavePackageType";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<packagetype_pb.SavePackageTypeRequestProto>;
-    requestDeserialize: grpc.deserialize<packagetype_pb.SavePackageTypeRequestProto>;
-    responseSerialize: grpc.serialize<packagetype_pb.SavePackageTypeResponseProto>;
-    responseDeserialize: grpc.deserialize<packagetype_pb.SavePackageTypeResponseProto>;
-}
-interface IPackageTypeServiceService_ISetPackageTypeIsHidden extends grpc.MethodDefinition<packagetype_pb.SetPackageTypeIsHiddenRequestProto, packagetype_pb.SetPackageTypeIsHiddenResponseProto> {
-    path: "/bmapi.stocks.packagetype.PackageTypeService/SetPackageTypeIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<packagetype_pb.SetPackageTypeIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<packagetype_pb.SetPackageTypeIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<packagetype_pb.SetPackageTypeIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<packagetype_pb.SetPackageTypeIsHiddenResponseProto>;
-}
 
 export const PackageTypeServiceService: IPackageTypeServiceService;
 
@@ -74,8 +54,6 @@ export interface IPackageTypeServiceServer extends grpc.UntypedServiceImplementa
     getAllPackageTypes: grpc.handleUnaryCall<packagetype_pb.GetAllPackageTypesRequestProto, packagetype_pb.GetAllPackageTypesResponseProto>;
     getPackageType: grpc.handleUnaryCall<packagetype_pb.GetPackageTypeRequestProto, packagetype_pb.GetPackageTypeResponseProto>;
     getPackageTypes: grpc.handleUnaryCall<packagetype_pb.GetPackageTypesRequestProto, packagetype_pb.GetPackageTypesResponseProto>;
-    savePackageType: grpc.handleUnaryCall<packagetype_pb.SavePackageTypeRequestProto, packagetype_pb.SavePackageTypeResponseProto>;
-    setPackageTypeIsHidden: grpc.handleUnaryCall<packagetype_pb.SetPackageTypeIsHiddenRequestProto, packagetype_pb.SetPackageTypeIsHiddenResponseProto>;
 }
 
 export interface IPackageTypeServiceClient {
@@ -88,12 +66,6 @@ export interface IPackageTypeServiceClient {
     getPackageTypes(request: packagetype_pb.GetPackageTypesRequestProto, callback: (error: grpc.ServiceError | null, response: packagetype_pb.GetPackageTypesResponseProto) => void): grpc.ClientUnaryCall;
     getPackageTypes(request: packagetype_pb.GetPackageTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: packagetype_pb.GetPackageTypesResponseProto) => void): grpc.ClientUnaryCall;
     getPackageTypes(request: packagetype_pb.GetPackageTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: packagetype_pb.GetPackageTypesResponseProto) => void): grpc.ClientUnaryCall;
-    savePackageType(request: packagetype_pb.SavePackageTypeRequestProto, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SavePackageTypeResponseProto) => void): grpc.ClientUnaryCall;
-    savePackageType(request: packagetype_pb.SavePackageTypeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SavePackageTypeResponseProto) => void): grpc.ClientUnaryCall;
-    savePackageType(request: packagetype_pb.SavePackageTypeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SavePackageTypeResponseProto) => void): grpc.ClientUnaryCall;
-    setPackageTypeIsHidden(request: packagetype_pb.SetPackageTypeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SetPackageTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setPackageTypeIsHidden(request: packagetype_pb.SetPackageTypeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SetPackageTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setPackageTypeIsHidden(request: packagetype_pb.SetPackageTypeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SetPackageTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class PackageTypeServiceClient extends grpc.Client implements IPackageTypeServiceClient {
@@ -107,10 +79,4 @@ export class PackageTypeServiceClient extends grpc.Client implements IPackageTyp
     public getPackageTypes(request: packagetype_pb.GetPackageTypesRequestProto, callback: (error: grpc.ServiceError | null, response: packagetype_pb.GetPackageTypesResponseProto) => void): grpc.ClientUnaryCall;
     public getPackageTypes(request: packagetype_pb.GetPackageTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: packagetype_pb.GetPackageTypesResponseProto) => void): grpc.ClientUnaryCall;
     public getPackageTypes(request: packagetype_pb.GetPackageTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: packagetype_pb.GetPackageTypesResponseProto) => void): grpc.ClientUnaryCall;
-    public savePackageType(request: packagetype_pb.SavePackageTypeRequestProto, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SavePackageTypeResponseProto) => void): grpc.ClientUnaryCall;
-    public savePackageType(request: packagetype_pb.SavePackageTypeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SavePackageTypeResponseProto) => void): grpc.ClientUnaryCall;
-    public savePackageType(request: packagetype_pb.SavePackageTypeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SavePackageTypeResponseProto) => void): grpc.ClientUnaryCall;
-    public setPackageTypeIsHidden(request: packagetype_pb.SetPackageTypeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SetPackageTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setPackageTypeIsHidden(request: packagetype_pb.SetPackageTypeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SetPackageTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setPackageTypeIsHidden(request: packagetype_pb.SetPackageTypeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: packagetype_pb.SetPackageTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

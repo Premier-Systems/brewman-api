@@ -145,28 +145,6 @@ function deserialize_bmapi_stocks_stockitem_GetStockItemsResponseProto(buffer_ar
   return stockitem_pb.GetStockItemsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_stockitem_SetStockItemIsHiddenRequestProto(arg) {
-  if (!(arg instanceof stockitem_pb.SetStockItemIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stockitem.SetStockItemIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stockitem_SetStockItemIsHiddenRequestProto(buffer_arg) {
-  return stockitem_pb.SetStockItemIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_stockitem_SetStockItemIsHiddenResponseProto(arg) {
-  if (!(arg instanceof stockitem_pb.SetStockItemIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stockitem.SetStockItemIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stockitem_SetStockItemIsHiddenResponseProto(buffer_arg) {
-  return stockitem_pb.SetStockItemIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var StockItemServiceService = exports.StockItemServiceService = {
   // Gets all StockItems
@@ -240,18 +218,6 @@ getGlCodeOverridesForStockItem: {
     requestDeserialize: deserialize_bmapi_stocks_stockitem_GetGlCodeOverridesForStockItemRequestProto,
     responseSerialize: serialize_bmapi_stocks_stockitem_GetGlCodeOverridesForStockItemResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stockitem_GetGlCodeOverridesForStockItemResponseProto,
-  },
-  // Hides or unhides the given stock item.
-setStockItemIsHidden: {
-    path: '/bmapi.stocks.stockitem.StockItemService/SetStockItemIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: stockitem_pb.SetStockItemIsHiddenRequestProto,
-    responseType: stockitem_pb.SetStockItemIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_stockitem_SetStockItemIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_stockitem_SetStockItemIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_stockitem_SetStockItemIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_stockitem_SetStockItemIsHiddenResponseProto,
   },
 };
 

@@ -101,91 +101,48 @@ export namespace GetStockGroupResponseProto {
     }
 }
 
-export class SaveStockGroupRequestProto extends jspb.Message { 
+export class GetStockGroupsRequestProto extends jspb.Message { 
     getTenantId(): string;
-    setTenantId(value: string): SaveStockGroupRequestProto;
-
-    hasStockGroup(): boolean;
-    clearStockGroup(): void;
-    getStockGroup(): StockGroupProto | undefined;
-    setStockGroup(value?: StockGroupProto): SaveStockGroupRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveStockGroupRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveStockGroupRequestProto): SaveStockGroupRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveStockGroupRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveStockGroupRequestProto;
-    static deserializeBinaryFromReader(message: SaveStockGroupRequestProto, reader: jspb.BinaryReader): SaveStockGroupRequestProto;
-}
-
-export namespace SaveStockGroupRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        stockGroup?: StockGroupProto.AsObject,
-    }
-}
-
-export class SaveStockGroupResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveStockGroupResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveStockGroupResponseProto): SaveStockGroupResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveStockGroupResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveStockGroupResponseProto;
-    static deserializeBinaryFromReader(message: SaveStockGroupResponseProto, reader: jspb.BinaryReader): SaveStockGroupResponseProto;
-}
-
-export namespace SaveStockGroupResponseProto {
-    export type AsObject = {
-    }
-}
-
-export class GetStockGroupsByIdRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): GetStockGroupsByIdRequestProto;
+    setTenantId(value: string): GetStockGroupsRequestProto;
     clearStockGroupIdsList(): void;
     getStockGroupIdsList(): Array<string>;
-    setStockGroupIdsList(value: Array<string>): GetStockGroupsByIdRequestProto;
+    setStockGroupIdsList(value: Array<string>): GetStockGroupsRequestProto;
     addStockGroupIds(value: string, index?: number): string;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetStockGroupsByIdRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: GetStockGroupsByIdRequestProto): GetStockGroupsByIdRequestProto.AsObject;
+    toObject(includeInstance?: boolean): GetStockGroupsRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetStockGroupsRequestProto): GetStockGroupsRequestProto.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetStockGroupsByIdRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetStockGroupsByIdRequestProto;
-    static deserializeBinaryFromReader(message: GetStockGroupsByIdRequestProto, reader: jspb.BinaryReader): GetStockGroupsByIdRequestProto;
+    static serializeBinaryToWriter(message: GetStockGroupsRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetStockGroupsRequestProto;
+    static deserializeBinaryFromReader(message: GetStockGroupsRequestProto, reader: jspb.BinaryReader): GetStockGroupsRequestProto;
 }
 
-export namespace GetStockGroupsByIdRequestProto {
+export namespace GetStockGroupsRequestProto {
     export type AsObject = {
         tenantId: string,
         stockGroupIdsList: Array<string>,
     }
 }
 
-export class GetStockGroupsByIdResponseProto extends jspb.Message { 
+export class GetStockGroupsResponseProto extends jspb.Message { 
     clearStockGroupsList(): void;
     getStockGroupsList(): Array<StockGroupProto>;
-    setStockGroupsList(value: Array<StockGroupProto>): GetStockGroupsByIdResponseProto;
+    setStockGroupsList(value: Array<StockGroupProto>): GetStockGroupsResponseProto;
     addStockGroups(value?: StockGroupProto, index?: number): StockGroupProto;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetStockGroupsByIdResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: GetStockGroupsByIdResponseProto): GetStockGroupsByIdResponseProto.AsObject;
+    toObject(includeInstance?: boolean): GetStockGroupsResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetStockGroupsResponseProto): GetStockGroupsResponseProto.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetStockGroupsByIdResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetStockGroupsByIdResponseProto;
-    static deserializeBinaryFromReader(message: GetStockGroupsByIdResponseProto, reader: jspb.BinaryReader): GetStockGroupsByIdResponseProto;
+    static serializeBinaryToWriter(message: GetStockGroupsResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetStockGroupsResponseProto;
+    static deserializeBinaryFromReader(message: GetStockGroupsResponseProto, reader: jspb.BinaryReader): GetStockGroupsResponseProto;
 }
 
-export namespace GetStockGroupsByIdResponseProto {
+export namespace GetStockGroupsResponseProto {
     export type AsObject = {
         stockGroupsList: Array<StockGroupProto.AsObject>,
     }

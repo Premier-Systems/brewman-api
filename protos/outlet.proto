@@ -13,16 +13,12 @@ import "common/enums.generated.proto";
 import "common/enumarrayvalues.generated.proto";
 
 service OutletService {
-    // Gets all undeleted Outlets
+    // Gets all Outlets
     rpc GetAllOutlets(GetAllOutletsRequestProto) returns (GetAllOutletsResponseProto) {}
-    // Gets specific Outlets by Ids, including soft-deleted ones. (Errors if any not found).
+    // Gets specific Outlets by Ids. (Errors if any not found).
     rpc GetOutlets(GetOutletsRequestProto) returns (GetOutletsResponseProto) {}
-    // Gets a specific Outlet by Id, even if soft-deleted. (Errors if not found).
+    // Gets a specific Outlet by Id. (Errors if not found).
     rpc GetOutlet(GetOutletRequestProto) returns (GetOutletResponseProto) {}
-    // Hides or unhides the given Outlet.
-    rpc SetOutletIsHidden(SetOutletIsHiddenRequestProto) returns (SetOutletIsHiddenResponseProto) {}
-    // Get Outlets matching the given filter. (soft-deleted outlets are not returned).
-    rpc GetOutletsByFilter(GetOutletsByFilterRequestProto) returns (GetOutletsByFilterResponseProto) {}
 }
 
 // Service Messages 
@@ -60,30 +56,6 @@ message GetOutletRequestProto {
 message GetOutletResponseProto {
     
     OutletProto outlet = 1;
-}
-
-message SetOutletIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string outlet_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetOutletIsHiddenResponseProto {
-}
-
-message GetOutletsByFilterRequestProto {
-    
-    string tenant_id = 1;
-    
-    OutletFilterProto filter = 2;
-}
-
-message GetOutletsByFilterResponseProto {
-    
-    repeated OutletProto outlets = 1;
 }
 
 
@@ -318,12 +290,6 @@ message OutletProto {
 
     // The code used by the outlets group to identify this outlet. Will appear as a document tag for use on invoices and invoice data exchanges.
     string outlet_group_code = 107;
-}
-message OutletFilterProto {
-    bmapi.common.StringArrayValue limit_price_list_ids = 2;
-    bmapi.common.StringArrayValue limit_stock_location_ids = 4;
-    bmapi.common.StringArrayValue limit_vat_code_ids = 6;
-    bmapi.common.StringArrayValue limit_outlet_group_ids = 8;
 }
 message OutletReadOnlyProto {
 

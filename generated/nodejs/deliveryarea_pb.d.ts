@@ -101,88 +101,50 @@ export namespace GetDeliveryAreaResponseProto {
     }
 }
 
-export class SaveDeliveryAreasRequestProto extends jspb.Message { 
+export class GetDeliveryAreasRequestProto extends jspb.Message { 
     getTenantId(): string;
-    setTenantId(value: string): SaveDeliveryAreasRequestProto;
+    setTenantId(value: string): GetDeliveryAreasRequestProto;
+    clearDeliveryAreaIdsList(): void;
+    getDeliveryAreaIdsList(): Array<string>;
+    setDeliveryAreaIdsList(value: Array<string>): GetDeliveryAreasRequestProto;
+    addDeliveryAreaIds(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetDeliveryAreasRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetDeliveryAreasRequestProto): GetDeliveryAreasRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetDeliveryAreasRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetDeliveryAreasRequestProto;
+    static deserializeBinaryFromReader(message: GetDeliveryAreasRequestProto, reader: jspb.BinaryReader): GetDeliveryAreasRequestProto;
+}
+
+export namespace GetDeliveryAreasRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        deliveryAreaIdsList: Array<string>,
+    }
+}
+
+export class GetDeliveryAreasResponseProto extends jspb.Message { 
     clearDeliveryAreasList(): void;
     getDeliveryAreasList(): Array<DeliveryAreaProto>;
-    setDeliveryAreasList(value: Array<DeliveryAreaProto>): SaveDeliveryAreasRequestProto;
+    setDeliveryAreasList(value: Array<DeliveryAreaProto>): GetDeliveryAreasResponseProto;
     addDeliveryAreas(value?: DeliveryAreaProto, index?: number): DeliveryAreaProto;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveDeliveryAreasRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveDeliveryAreasRequestProto): SaveDeliveryAreasRequestProto.AsObject;
+    toObject(includeInstance?: boolean): GetDeliveryAreasResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetDeliveryAreasResponseProto): GetDeliveryAreasResponseProto.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveDeliveryAreasRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveDeliveryAreasRequestProto;
-    static deserializeBinaryFromReader(message: SaveDeliveryAreasRequestProto, reader: jspb.BinaryReader): SaveDeliveryAreasRequestProto;
+    static serializeBinaryToWriter(message: GetDeliveryAreasResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetDeliveryAreasResponseProto;
+    static deserializeBinaryFromReader(message: GetDeliveryAreasResponseProto, reader: jspb.BinaryReader): GetDeliveryAreasResponseProto;
 }
 
-export namespace SaveDeliveryAreasRequestProto {
+export namespace GetDeliveryAreasResponseProto {
     export type AsObject = {
-        tenantId: string,
         deliveryAreasList: Array<DeliveryAreaProto.AsObject>,
-    }
-}
-
-export class SaveDeliveryAreasResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveDeliveryAreasResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveDeliveryAreasResponseProto): SaveDeliveryAreasResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveDeliveryAreasResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveDeliveryAreasResponseProto;
-    static deserializeBinaryFromReader(message: SaveDeliveryAreasResponseProto, reader: jspb.BinaryReader): SaveDeliveryAreasResponseProto;
-}
-
-export namespace SaveDeliveryAreasResponseProto {
-    export type AsObject = {
-    }
-}
-
-export class SetDeliveryAreaIsHiddenRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SetDeliveryAreaIsHiddenRequestProto;
-    getDeliveryAreaId(): string;
-    setDeliveryAreaId(value: string): SetDeliveryAreaIsHiddenRequestProto;
-    getHide(): boolean;
-    setHide(value: boolean): SetDeliveryAreaIsHiddenRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetDeliveryAreaIsHiddenRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetDeliveryAreaIsHiddenRequestProto): SetDeliveryAreaIsHiddenRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetDeliveryAreaIsHiddenRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetDeliveryAreaIsHiddenRequestProto;
-    static deserializeBinaryFromReader(message: SetDeliveryAreaIsHiddenRequestProto, reader: jspb.BinaryReader): SetDeliveryAreaIsHiddenRequestProto;
-}
-
-export namespace SetDeliveryAreaIsHiddenRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        deliveryAreaId: string,
-        hide: boolean,
-    }
-}
-
-export class SetDeliveryAreaIsHiddenResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetDeliveryAreaIsHiddenResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetDeliveryAreaIsHiddenResponseProto): SetDeliveryAreaIsHiddenResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetDeliveryAreaIsHiddenResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetDeliveryAreaIsHiddenResponseProto;
-    static deserializeBinaryFromReader(message: SetDeliveryAreaIsHiddenResponseProto, reader: jspb.BinaryReader): SetDeliveryAreaIsHiddenResponseProto;
-}
-
-export namespace SetDeliveryAreaIsHiddenResponseProto {
-    export type AsObject = {
     }
 }
 

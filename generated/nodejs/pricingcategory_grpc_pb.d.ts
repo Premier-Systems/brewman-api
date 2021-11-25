@@ -17,8 +17,6 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 interface IPricingCategoryServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllPricingCategories: IPricingCategoryServiceService_IGetAllPricingCategories;
     getPricingCategory: IPricingCategoryServiceService_IGetPricingCategory;
-    savePricingCategory: IPricingCategoryServiceService_ISavePricingCategory;
-    setPricingCategoryIsHidden: IPricingCategoryServiceService_ISetPricingCategoryIsHidden;
     getPricingCategories: IPricingCategoryServiceService_IGetPricingCategories;
 }
 
@@ -40,24 +38,6 @@ interface IPricingCategoryServiceService_IGetPricingCategory extends grpc.Method
     responseSerialize: grpc.serialize<pricingcategory_pb.GetPricingCategoryResponseProto>;
     responseDeserialize: grpc.deserialize<pricingcategory_pb.GetPricingCategoryResponseProto>;
 }
-interface IPricingCategoryServiceService_ISavePricingCategory extends grpc.MethodDefinition<pricingcategory_pb.SavePricingCategoryRequestProto, pricingcategory_pb.SavePricingCategoryResponseProto> {
-    path: "/bmapi.price.pricingcategory.PricingCategoryService/SavePricingCategory";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<pricingcategory_pb.SavePricingCategoryRequestProto>;
-    requestDeserialize: grpc.deserialize<pricingcategory_pb.SavePricingCategoryRequestProto>;
-    responseSerialize: grpc.serialize<pricingcategory_pb.SavePricingCategoryResponseProto>;
-    responseDeserialize: grpc.deserialize<pricingcategory_pb.SavePricingCategoryResponseProto>;
-}
-interface IPricingCategoryServiceService_ISetPricingCategoryIsHidden extends grpc.MethodDefinition<pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto> {
-    path: "/bmapi.price.pricingcategory.PricingCategoryService/SetPricingCategoryIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto>;
-}
 interface IPricingCategoryServiceService_IGetPricingCategories extends grpc.MethodDefinition<pricingcategory_pb.GetPricingCategoriesRequestProto, pricingcategory_pb.GetPricingCategoriesResponseProto> {
     path: "/bmapi.price.pricingcategory.PricingCategoryService/GetPricingCategories";
     requestStream: false;
@@ -73,8 +53,6 @@ export const PricingCategoryServiceService: IPricingCategoryServiceService;
 export interface IPricingCategoryServiceServer extends grpc.UntypedServiceImplementation {
     getAllPricingCategories: grpc.handleUnaryCall<pricingcategory_pb.GetAllPricingCategoriesRequestProto, pricingcategory_pb.GetAllPricingCategoriesResponseProto>;
     getPricingCategory: grpc.handleUnaryCall<pricingcategory_pb.GetPricingCategoryRequestProto, pricingcategory_pb.GetPricingCategoryResponseProto>;
-    savePricingCategory: grpc.handleUnaryCall<pricingcategory_pb.SavePricingCategoryRequestProto, pricingcategory_pb.SavePricingCategoryResponseProto>;
-    setPricingCategoryIsHidden: grpc.handleUnaryCall<pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto>;
     getPricingCategories: grpc.handleUnaryCall<pricingcategory_pb.GetPricingCategoriesRequestProto, pricingcategory_pb.GetPricingCategoriesResponseProto>;
 }
 
@@ -85,12 +63,6 @@ export interface IPricingCategoryServiceClient {
     getPricingCategory(request: pricingcategory_pb.GetPricingCategoryRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
     getPricingCategory(request: pricingcategory_pb.GetPricingCategoryRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
     getPricingCategory(request: pricingcategory_pb.GetPricingCategoryRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    savePricingCategory(request: pricingcategory_pb.SavePricingCategoryRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SavePricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    savePricingCategory(request: pricingcategory_pb.SavePricingCategoryRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SavePricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    savePricingCategory(request: pricingcategory_pb.SavePricingCategoryRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SavePricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    setPricingCategoryIsHidden(request: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setPricingCategoryIsHidden(request: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setPricingCategoryIsHidden(request: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
     getPricingCategories(request: pricingcategory_pb.GetPricingCategoriesRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoriesResponseProto) => void): grpc.ClientUnaryCall;
     getPricingCategories(request: pricingcategory_pb.GetPricingCategoriesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoriesResponseProto) => void): grpc.ClientUnaryCall;
     getPricingCategories(request: pricingcategory_pb.GetPricingCategoriesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoriesResponseProto) => void): grpc.ClientUnaryCall;
@@ -104,12 +76,6 @@ export class PricingCategoryServiceClient extends grpc.Client implements IPricin
     public getPricingCategory(request: pricingcategory_pb.GetPricingCategoryRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
     public getPricingCategory(request: pricingcategory_pb.GetPricingCategoryRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
     public getPricingCategory(request: pricingcategory_pb.GetPricingCategoryRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    public savePricingCategory(request: pricingcategory_pb.SavePricingCategoryRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SavePricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    public savePricingCategory(request: pricingcategory_pb.SavePricingCategoryRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SavePricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    public savePricingCategory(request: pricingcategory_pb.SavePricingCategoryRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SavePricingCategoryResponseProto) => void): grpc.ClientUnaryCall;
-    public setPricingCategoryIsHidden(request: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setPricingCategoryIsHidden(request: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setPricingCategoryIsHidden(request: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
     public getPricingCategories(request: pricingcategory_pb.GetPricingCategoriesRequestProto, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoriesResponseProto) => void): grpc.ClientUnaryCall;
     public getPricingCategories(request: pricingcategory_pb.GetPricingCategoriesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoriesResponseProto) => void): grpc.ClientUnaryCall;
     public getPricingCategories(request: pricingcategory_pb.GetPricingCategoriesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: pricingcategory_pb.GetPricingCategoriesResponseProto) => void): grpc.ClientUnaryCall;

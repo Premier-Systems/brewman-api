@@ -18,8 +18,6 @@ interface IUnitOfMeasureServiceService extends grpc.ServiceDefinition<grpc.Untyp
     getAllUnitsOfMeasure: IUnitOfMeasureServiceService_IGetAllUnitsOfMeasure;
     getUnitOfMeasure: IUnitOfMeasureServiceService_IGetUnitOfMeasure;
     getUnitsOfMeasure: IUnitOfMeasureServiceService_IGetUnitsOfMeasure;
-    saveUnitOfMeasure: IUnitOfMeasureServiceService_ISaveUnitOfMeasure;
-    setUnitOfMeasureIsHidden: IUnitOfMeasureServiceService_ISetUnitOfMeasureIsHidden;
 }
 
 interface IUnitOfMeasureServiceService_IGetAllUnitsOfMeasure extends grpc.MethodDefinition<unitofmeasure_pb.GetAllUnitsOfMeasureRequestProto, unitofmeasure_pb.GetAllUnitsOfMeasureResponseProto> {
@@ -49,24 +47,6 @@ interface IUnitOfMeasureServiceService_IGetUnitsOfMeasure extends grpc.MethodDef
     responseSerialize: grpc.serialize<unitofmeasure_pb.GetUnitsOfMeasureResponseProto>;
     responseDeserialize: grpc.deserialize<unitofmeasure_pb.GetUnitsOfMeasureResponseProto>;
 }
-interface IUnitOfMeasureServiceService_ISaveUnitOfMeasure extends grpc.MethodDefinition<unitofmeasure_pb.SaveUnitOfMeasureRequestProto, unitofmeasure_pb.SaveUnitOfMeasureResponseProto> {
-    path: "/bmapi.stocks.unitofmeasure.UnitOfMeasureService/SaveUnitOfMeasure";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<unitofmeasure_pb.SaveUnitOfMeasureRequestProto>;
-    requestDeserialize: grpc.deserialize<unitofmeasure_pb.SaveUnitOfMeasureRequestProto>;
-    responseSerialize: grpc.serialize<unitofmeasure_pb.SaveUnitOfMeasureResponseProto>;
-    responseDeserialize: grpc.deserialize<unitofmeasure_pb.SaveUnitOfMeasureResponseProto>;
-}
-interface IUnitOfMeasureServiceService_ISetUnitOfMeasureIsHidden extends grpc.MethodDefinition<unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto> {
-    path: "/bmapi.stocks.unitofmeasure.UnitOfMeasureService/SetUnitOfMeasureIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto>;
-}
 
 export const UnitOfMeasureServiceService: IUnitOfMeasureServiceService;
 
@@ -74,8 +54,6 @@ export interface IUnitOfMeasureServiceServer extends grpc.UntypedServiceImplemen
     getAllUnitsOfMeasure: grpc.handleUnaryCall<unitofmeasure_pb.GetAllUnitsOfMeasureRequestProto, unitofmeasure_pb.GetAllUnitsOfMeasureResponseProto>;
     getUnitOfMeasure: grpc.handleUnaryCall<unitofmeasure_pb.GetUnitOfMeasureRequestProto, unitofmeasure_pb.GetUnitOfMeasureResponseProto>;
     getUnitsOfMeasure: grpc.handleUnaryCall<unitofmeasure_pb.GetUnitsOfMeasureRequestProto, unitofmeasure_pb.GetUnitsOfMeasureResponseProto>;
-    saveUnitOfMeasure: grpc.handleUnaryCall<unitofmeasure_pb.SaveUnitOfMeasureRequestProto, unitofmeasure_pb.SaveUnitOfMeasureResponseProto>;
-    setUnitOfMeasureIsHidden: grpc.handleUnaryCall<unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto>;
 }
 
 export interface IUnitOfMeasureServiceClient {
@@ -88,12 +66,6 @@ export interface IUnitOfMeasureServiceClient {
     getUnitsOfMeasure(request: unitofmeasure_pb.GetUnitsOfMeasureRequestProto, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.GetUnitsOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
     getUnitsOfMeasure(request: unitofmeasure_pb.GetUnitsOfMeasureRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.GetUnitsOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
     getUnitsOfMeasure(request: unitofmeasure_pb.GetUnitsOfMeasureRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.GetUnitsOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    saveUnitOfMeasure(request: unitofmeasure_pb.SaveUnitOfMeasureRequestProto, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SaveUnitOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    saveUnitOfMeasure(request: unitofmeasure_pb.SaveUnitOfMeasureRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SaveUnitOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    saveUnitOfMeasure(request: unitofmeasure_pb.SaveUnitOfMeasureRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SaveUnitOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    setUnitOfMeasureIsHidden(request: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setUnitOfMeasureIsHidden(request: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setUnitOfMeasureIsHidden(request: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class UnitOfMeasureServiceClient extends grpc.Client implements IUnitOfMeasureServiceClient {
@@ -107,10 +79,4 @@ export class UnitOfMeasureServiceClient extends grpc.Client implements IUnitOfMe
     public getUnitsOfMeasure(request: unitofmeasure_pb.GetUnitsOfMeasureRequestProto, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.GetUnitsOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
     public getUnitsOfMeasure(request: unitofmeasure_pb.GetUnitsOfMeasureRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.GetUnitsOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
     public getUnitsOfMeasure(request: unitofmeasure_pb.GetUnitsOfMeasureRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.GetUnitsOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    public saveUnitOfMeasure(request: unitofmeasure_pb.SaveUnitOfMeasureRequestProto, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SaveUnitOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    public saveUnitOfMeasure(request: unitofmeasure_pb.SaveUnitOfMeasureRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SaveUnitOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    public saveUnitOfMeasure(request: unitofmeasure_pb.SaveUnitOfMeasureRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SaveUnitOfMeasureResponseProto) => void): grpc.ClientUnaryCall;
-    public setUnitOfMeasureIsHidden(request: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setUnitOfMeasureIsHidden(request: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setUnitOfMeasureIsHidden(request: unitofmeasure_pb.SetUnitOfMeasureIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: unitofmeasure_pb.SetUnitOfMeasureIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

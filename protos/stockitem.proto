@@ -25,8 +25,6 @@ service StockItemService {
     rpc GetStockItemSummariesByFilter(GetStockItemSummariesByFilterRequestProto) returns (GetStockItemSummariesByFilterResponseProto) {}
     // Gets GlCodeOverrides for a specific Stock Item
     rpc GetGlCodeOverridesForStockItem(GetGlCodeOverridesForStockItemRequestProto) returns (GetGlCodeOverridesForStockItemResponseProto) {}
-    // Hides or unhides the given stock item.
-    rpc SetStockItemIsHidden(SetStockItemIsHiddenRequestProto) returns (SetStockItemIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -98,18 +96,6 @@ message GetGlCodeOverridesForStockItemRequestProto {
 message GetGlCodeOverridesForStockItemResponseProto {
     
     repeated GlCodeOverrideForStockItemProto gl_code_overrides = 1;
-}
-
-message SetStockItemIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string stock_item_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetStockItemIsHiddenResponseProto {
 }
 
 

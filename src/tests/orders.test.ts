@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import {
+  BuildOrderLinesRequestProto,
   CreateOrderRequestProto,
-  OrderLineProto,
+  ProductQuantityProto,
   SaveOrderRequestProto,
 } from "../../generated/nodejs/order_pb";
 import { OutletServiceClient } from "../../generated/nodejs/outlet_grpc_pb";
@@ -20,7 +21,6 @@ import {
   StockItemProto,
 } from "../../generated/nodejs/stockitem_pb";
 import { EnumStockItemTypeArrayValue } from "../../generated/nodejs/common/enumarrayvalues.generated_pb";
-import * as crypto from "crypto";
 
 // Staging testing credentials (use 'brewman.premiersystems.com' for production)
 // Tenant Group Name: ApiUnitTests
@@ -49,6 +49,7 @@ test("Can create order", (done) => {
     (error, response) => {
       if (error) {
         done(error);
+        return;
       }
 
       const breweryShopOutlet = response
@@ -75,6 +76,7 @@ test("Can create order", (done) => {
         (error, response) => {
           if (error) {
             done(error);
+            return;
           }
 
           stockItems = response.getResults().getStockItemsList();
@@ -89,7 +91,7 @@ test("Can create order", (done) => {
           createOrderRequest.setTenantId(tenantId);
           createOrderRequest.setExternalReference("");
           createOrderRequest.setOrderSource(
-            EnumOrderSource.ENUMORDERSOURCE_NONE
+            EnumOrderSource.ENUMORDERSOURCE_BREWMAN
           );
           createOrderRequest.setOutletId(breweryShopOutlet.getId());
           orderService.createOrder(
@@ -98,6 +100,7 @@ test("Can create order", (done) => {
             (error, response) => {
               if (error) {
                 done(error);
+                return;
               }
 
               // A new order will be created with suitable defaults (taken from the supplied outlet)
@@ -105,51 +108,52 @@ test("Can create order", (done) => {
               const newOrder = response.getOrder();
               newOrder.getHeader().setCustomerReference("My custom reference");
 
-              // Add lines
-
               const starCase12x500ml = stockItems.filter(
                 (si) => si.getCode().getValue() === "Star50012X500Case"
               )[0];
 
-              const orderLine = new OrderLineProto();
-              orderLine.setId(crypto.randomUUID()); // A unique guid to reference this line
-              orderLine.setOrderId(newOrder.getId());
-              orderLine.setStockItemId(starCase12x500ml.getId());
-              orderLine.setStockLocationId(breweryShopOutlet.getStockLocationId());
-              orderLine.setAbv(starCase12x500ml.getAbv());
-              orderLine.setAlcoholType(starCase12x500ml.getAlcoholType());
-              orderLine.setUnitOfMeasureId(starCase12x500ml.getUnitOfMeasureId());
-              orderLine.setGlCodeId(starCase12x500ml.getSalesGlCodeId().getValue());
-              orderLine.setManufacturerId(starCase12x500ml.getManufacturerId());
-              orderLine.setProductName(starCase12x500ml.getName());
-              orderLine.setProductCode(starCase12x500ml.getCode());
-              orderLine.setProductBrandId(starCase12x500ml.getProductBrandId());
-              orderLine.setVatCodeId(starCase12x500ml.getVatCodeId());
-              orderLine.setUnitDutiableLitres(starCase12x500ml.getDutiableLitres());
-              // Totals
-              orderLine.setQuantity(2);
-              orderLine.setVatPercentage(20);
-              orderLine.setLineCostNetPrice(starCase12x500ml.getCostPrice() * 2);
-              orderLine.setLineNetPrice(200);
-              orderLine.setLineVat(40);
-              orderLine.setUnitCostNetPrice(100);
+              const pluckyTShirt = stockItems.filter(
+                (si) => si.getCode().getValue() === "PluckBreweryTShirt"
+              )[0];
 
-              newOrder.addLines(orderLine);
-
-              const saveOrderRequest = new SaveOrderRequestProto();
-              saveOrderRequest.setTenantId(tenantId);
-              saveOrderRequest.setOrder(newOrder);
-              orderService.saveOrder(
-                saveOrderRequest,
+              // Add lines
+              const buildOrderLinesRequest = new BuildOrderLinesRequestProto();
+              buildOrderLinesRequest.setTenantId(tenantId);
+              buildOrderLinesRequest.setOrderHeader(newOrder.getHeader());
+              const line1 = new ProductQuantityProto();
+              line1.setStockItemId(starCase12x500ml.getId());
+              line1.setQuantity(2);
+              const line2 = new ProductQuantityProto();
+              line2.setStockItemId(pluckyTShirt.getId());
+              line2.setQuantity(4);
+              buildOrderLinesRequest.setItemsList([line1, line2]);
+              orderService.buildOrderLines(
+                buildOrderLinesRequest,
                 requestMetadata,
                 (error1, response1) => {
                   if (error1) {
                     done(error1);
+                    return;
                   }
 
-                  expect(response1.hasOrder()).toBeTruthy();
-                  console.log(newOrder.getHeader().getReadOnly().getOrderNumber())
-                  done();
+                  const saveOrderRequest = new SaveOrderRequestProto();
+                  saveOrderRequest.setTenantId(tenantId);
+                  saveOrderRequest.setOrder(response1.getResults());
+                  orderService.saveOrder(
+                    saveOrderRequest,
+                    requestMetadata,
+                    (error1, response1) => {
+                      if (error1) {
+                        done(error1);
+                      }
+
+                      expect(response1.hasOrder()).toBeTruthy();
+                      console.log(
+                        newOrder.getHeader().getReadOnly().getOrderNumber()
+                      );
+                      done();
+                    }
+                  );
                 }
               );
             }

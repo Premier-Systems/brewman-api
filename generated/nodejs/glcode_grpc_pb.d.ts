@@ -18,8 +18,6 @@ interface IGlCodeServiceService extends grpc.ServiceDefinition<grpc.UntypedServi
     getAllGlCodes: IGlCodeServiceService_IGetAllGlCodes;
     getGlCode: IGlCodeServiceService_IGetGlCode;
     getGlCodes: IGlCodeServiceService_IGetGlCodes;
-    saveGlCode: IGlCodeServiceService_ISaveGlCode;
-    setGlCodeIsHidden: IGlCodeServiceService_ISetGlCodeIsHidden;
     getAllGlCodeOverrides: IGlCodeServiceService_IGetAllGlCodeOverrides;
 }
 
@@ -50,24 +48,6 @@ interface IGlCodeServiceService_IGetGlCodes extends grpc.MethodDefinition<glcode
     responseSerialize: grpc.serialize<glcode_pb.GetGlCodesResponseProto>;
     responseDeserialize: grpc.deserialize<glcode_pb.GetGlCodesResponseProto>;
 }
-interface IGlCodeServiceService_ISaveGlCode extends grpc.MethodDefinition<glcode_pb.SaveGlCodeRequestProto, glcode_pb.SaveGlCodeResponseProto> {
-    path: "/bmapi.stocks.glcode.GlCodeService/SaveGlCode";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<glcode_pb.SaveGlCodeRequestProto>;
-    requestDeserialize: grpc.deserialize<glcode_pb.SaveGlCodeRequestProto>;
-    responseSerialize: grpc.serialize<glcode_pb.SaveGlCodeResponseProto>;
-    responseDeserialize: grpc.deserialize<glcode_pb.SaveGlCodeResponseProto>;
-}
-interface IGlCodeServiceService_ISetGlCodeIsHidden extends grpc.MethodDefinition<glcode_pb.SetGlCodeIsHiddenRequestProto, glcode_pb.SetGlCodeIsHiddenResponseProto> {
-    path: "/bmapi.stocks.glcode.GlCodeService/SetGlCodeIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<glcode_pb.SetGlCodeIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<glcode_pb.SetGlCodeIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<glcode_pb.SetGlCodeIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<glcode_pb.SetGlCodeIsHiddenResponseProto>;
-}
 interface IGlCodeServiceService_IGetAllGlCodeOverrides extends grpc.MethodDefinition<glcode_pb.GetAllGlCodeOverridesRequestProto, glcode_pb.GetAllGlCodeOverridesResponseProto> {
     path: "/bmapi.stocks.glcode.GlCodeService/GetAllGlCodeOverrides";
     requestStream: false;
@@ -84,8 +64,6 @@ export interface IGlCodeServiceServer extends grpc.UntypedServiceImplementation 
     getAllGlCodes: grpc.handleUnaryCall<glcode_pb.GetAllGlCodesRequestProto, glcode_pb.GetAllGlCodesResponseProto>;
     getGlCode: grpc.handleUnaryCall<glcode_pb.GetGlCodeRequestProto, glcode_pb.GetGlCodeResponseProto>;
     getGlCodes: grpc.handleUnaryCall<glcode_pb.GetGlCodesRequestProto, glcode_pb.GetGlCodesResponseProto>;
-    saveGlCode: grpc.handleUnaryCall<glcode_pb.SaveGlCodeRequestProto, glcode_pb.SaveGlCodeResponseProto>;
-    setGlCodeIsHidden: grpc.handleUnaryCall<glcode_pb.SetGlCodeIsHiddenRequestProto, glcode_pb.SetGlCodeIsHiddenResponseProto>;
     getAllGlCodeOverrides: grpc.handleUnaryCall<glcode_pb.GetAllGlCodeOverridesRequestProto, glcode_pb.GetAllGlCodeOverridesResponseProto>;
 }
 
@@ -99,12 +77,6 @@ export interface IGlCodeServiceClient {
     getGlCodes(request: glcode_pb.GetGlCodesRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetGlCodesResponseProto) => void): grpc.ClientUnaryCall;
     getGlCodes(request: glcode_pb.GetGlCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetGlCodesResponseProto) => void): grpc.ClientUnaryCall;
     getGlCodes(request: glcode_pb.GetGlCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetGlCodesResponseProto) => void): grpc.ClientUnaryCall;
-    saveGlCode(request: glcode_pb.SaveGlCodeRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.SaveGlCodeResponseProto) => void): grpc.ClientUnaryCall;
-    saveGlCode(request: glcode_pb.SaveGlCodeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.SaveGlCodeResponseProto) => void): grpc.ClientUnaryCall;
-    saveGlCode(request: glcode_pb.SaveGlCodeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.SaveGlCodeResponseProto) => void): grpc.ClientUnaryCall;
-    setGlCodeIsHidden(request: glcode_pb.SetGlCodeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.SetGlCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setGlCodeIsHidden(request: glcode_pb.SetGlCodeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.SetGlCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setGlCodeIsHidden(request: glcode_pb.SetGlCodeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.SetGlCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
     getAllGlCodeOverrides(request: glcode_pb.GetAllGlCodeOverridesRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetAllGlCodeOverridesResponseProto) => void): grpc.ClientUnaryCall;
     getAllGlCodeOverrides(request: glcode_pb.GetAllGlCodeOverridesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetAllGlCodeOverridesResponseProto) => void): grpc.ClientUnaryCall;
     getAllGlCodeOverrides(request: glcode_pb.GetAllGlCodeOverridesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetAllGlCodeOverridesResponseProto) => void): grpc.ClientUnaryCall;
@@ -121,12 +93,6 @@ export class GlCodeServiceClient extends grpc.Client implements IGlCodeServiceCl
     public getGlCodes(request: glcode_pb.GetGlCodesRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetGlCodesResponseProto) => void): grpc.ClientUnaryCall;
     public getGlCodes(request: glcode_pb.GetGlCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetGlCodesResponseProto) => void): grpc.ClientUnaryCall;
     public getGlCodes(request: glcode_pb.GetGlCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetGlCodesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveGlCode(request: glcode_pb.SaveGlCodeRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.SaveGlCodeResponseProto) => void): grpc.ClientUnaryCall;
-    public saveGlCode(request: glcode_pb.SaveGlCodeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.SaveGlCodeResponseProto) => void): grpc.ClientUnaryCall;
-    public saveGlCode(request: glcode_pb.SaveGlCodeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.SaveGlCodeResponseProto) => void): grpc.ClientUnaryCall;
-    public setGlCodeIsHidden(request: glcode_pb.SetGlCodeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.SetGlCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setGlCodeIsHidden(request: glcode_pb.SetGlCodeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.SetGlCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setGlCodeIsHidden(request: glcode_pb.SetGlCodeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.SetGlCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
     public getAllGlCodeOverrides(request: glcode_pb.GetAllGlCodeOverridesRequestProto, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetAllGlCodeOverridesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllGlCodeOverrides(request: glcode_pb.GetAllGlCodeOverridesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetAllGlCodeOverridesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllGlCodeOverrides(request: glcode_pb.GetAllGlCodeOverridesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: glcode_pb.GetAllGlCodeOverridesResponseProto) => void): grpc.ClientUnaryCall;

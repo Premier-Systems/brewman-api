@@ -79,50 +79,6 @@ function deserialize_bmapi_price_pricingcategory_GetPricingCategoryResponseProto
   return pricingcategory_pb.GetPricingCategoryResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_price_pricingcategory_SavePricingCategoryRequestProto(arg) {
-  if (!(arg instanceof pricingcategory_pb.SavePricingCategoryRequestProto)) {
-    throw new Error('Expected argument of type bmapi.price.pricingcategory.SavePricingCategoryRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_price_pricingcategory_SavePricingCategoryRequestProto(buffer_arg) {
-  return pricingcategory_pb.SavePricingCategoryRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_price_pricingcategory_SavePricingCategoryResponseProto(arg) {
-  if (!(arg instanceof pricingcategory_pb.SavePricingCategoryResponseProto)) {
-    throw new Error('Expected argument of type bmapi.price.pricingcategory.SavePricingCategoryResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_price_pricingcategory_SavePricingCategoryResponseProto(buffer_arg) {
-  return pricingcategory_pb.SavePricingCategoryResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenRequestProto(arg) {
-  if (!(arg instanceof pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.price.pricingcategory.SetPricingCategoryIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenRequestProto(buffer_arg) {
-  return pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenResponseProto(arg) {
-  if (!(arg instanceof pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.price.pricingcategory.SetPricingCategoryIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenResponseProto(buffer_arg) {
-  return pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var PricingCategoryServiceService = exports.PricingCategoryServiceService = {
   // Gets all pricing categories
@@ -148,30 +104,6 @@ getPricingCategory: {
     requestDeserialize: deserialize_bmapi_price_pricingcategory_GetPricingCategoryRequestProto,
     responseSerialize: serialize_bmapi_price_pricingcategory_GetPricingCategoryResponseProto,
     responseDeserialize: deserialize_bmapi_price_pricingcategory_GetPricingCategoryResponseProto,
-  },
-  // Saves a single PricingCategory
-savePricingCategory: {
-    path: '/bmapi.price.pricingcategory.PricingCategoryService/SavePricingCategory',
-    requestStream: false,
-    responseStream: false,
-    requestType: pricingcategory_pb.SavePricingCategoryRequestProto,
-    responseType: pricingcategory_pb.SavePricingCategoryResponseProto,
-    requestSerialize: serialize_bmapi_price_pricingcategory_SavePricingCategoryRequestProto,
-    requestDeserialize: deserialize_bmapi_price_pricingcategory_SavePricingCategoryRequestProto,
-    responseSerialize: serialize_bmapi_price_pricingcategory_SavePricingCategoryResponseProto,
-    responseDeserialize: deserialize_bmapi_price_pricingcategory_SavePricingCategoryResponseProto,
-  },
-  // Hides or unhides the given Pricing Category.
-setPricingCategoryIsHidden: {
-    path: '/bmapi.price.pricingcategory.PricingCategoryService/SetPricingCategoryIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: pricingcategory_pb.SetPricingCategoryIsHiddenRequestProto,
-    responseType: pricingcategory_pb.SetPricingCategoryIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_price_pricingcategory_SetPricingCategoryIsHiddenResponseProto,
   },
   // Gets specific pricing categories. (Errors if any not found).
 getPricingCategories: {

@@ -13,16 +13,12 @@ import "common/enums.generated.proto";
 import "common/enumarrayvalues.generated.proto";
 
 service CourierService {
-    // Gets all undeleted Couriers
+    // Gets all Couriers
     rpc GetAllCouriers(GetAllCouriersRequestProto) returns (GetAllCouriersResponseProto) {}
-    // Gets a specific Courier by Id, even if it has been soft-deleted. (Errors if not found).
+    // Gets a specific Courier by Id. (Errors if not found).
     rpc GetCourier(GetCourierRequestProto) returns (GetCourierResponseProto) {}
-    // Gets specific Couriers by Id, even if they has been soft-deleted. (Errors if not found).
+    // Gets specific Couriers by Id. (Errors if any not found).
     rpc GetCouriers(GetCouriersRequestProto) returns (GetCouriersResponseProto) {}
-    // Saves zero or more Couriers
-    rpc SaveCouriers(SaveCouriersRequestProto) returns (SaveCouriersResponseProto) {}
-    // Hides or unhides the given Courier.
-    rpc SetCourierIsHidden(SetCourierIsHiddenRequestProto) returns (SetCourierIsHiddenResponseProto) {}
     // Calculate the next despatch date by the given Courier id.
     rpc CalculateNextDespatchDateByCourier(CalculateNextDespatchDateByCourierRequestProto) returns (CalculateNextDespatchDateByCourierResponseProto) {}
 }
@@ -60,28 +56,6 @@ message GetCouriersRequestProto {
 message GetCouriersResponseProto {
     
     repeated CourierProto couriers = 1;
-}
-
-message SaveCouriersRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated CourierProto couriers = 2;
-}
-
-message SaveCouriersResponseProto {
-}
-
-message SetCourierIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string courier_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetCourierIsHiddenResponseProto {
 }
 
 message CalculateNextDespatchDateByCourierRequestProto {

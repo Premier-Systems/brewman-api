@@ -35,6 +35,28 @@ function deserialize_bmapi_outlets_salescode_GetAllSalesCodesResponseProto(buffe
   return salescode_pb.GetAllSalesCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_outlets_salescode_GetSalesCodeRequestProto(arg) {
+  if (!(arg instanceof salescode_pb.GetSalesCodeRequestProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.salescode.GetSalesCodeRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_salescode_GetSalesCodeRequestProto(buffer_arg) {
+  return salescode_pb.GetSalesCodeRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_outlets_salescode_GetSalesCodeResponseProto(arg) {
+  if (!(arg instanceof salescode_pb.GetSalesCodeResponseProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.salescode.GetSalesCodeResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_salescode_GetSalesCodeResponseProto(buffer_arg) {
+  return salescode_pb.GetSalesCodeResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_outlets_salescode_GetSalesCodesRequestProto(arg) {
   if (!(arg instanceof salescode_pb.GetSalesCodesRequestProto)) {
     throw new Error('Expected argument of type bmapi.outlets.salescode.GetSalesCodesRequestProto');
@@ -57,50 +79,6 @@ function deserialize_bmapi_outlets_salescode_GetSalesCodesResponseProto(buffer_a
   return salescode_pb.GetSalesCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_salescode_SaveSalesCodesRequestProto(arg) {
-  if (!(arg instanceof salescode_pb.SaveSalesCodesRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salescode.SaveSalesCodesRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salescode_SaveSalesCodesRequestProto(buffer_arg) {
-  return salescode_pb.SaveSalesCodesRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_salescode_SaveSalesCodesResponseProto(arg) {
-  if (!(arg instanceof salescode_pb.SaveSalesCodesResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salescode.SaveSalesCodesResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salescode_SaveSalesCodesResponseProto(buffer_arg) {
-  return salescode_pb.SaveSalesCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenRequestProto(arg) {
-  if (!(arg instanceof salescode_pb.SetSalesCodeIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salescode.SetSalesCodeIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenRequestProto(buffer_arg) {
-  return salescode_pb.SetSalesCodeIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenResponseProto(arg) {
-  if (!(arg instanceof salescode_pb.SetSalesCodeIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salescode.SetSalesCodeIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenResponseProto(buffer_arg) {
-  return salescode_pb.SetSalesCodeIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var SalesCodeServiceService = exports.SalesCodeServiceService = {
   // Gets all SalesCodes
@@ -115,6 +93,18 @@ getAllSalesCodes: {
     responseSerialize: serialize_bmapi_outlets_salescode_GetAllSalesCodesResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_salescode_GetAllSalesCodesResponseProto,
   },
+  // Gets a specific SalesCode. (Errors if not found).
+getSalesCode: {
+    path: '/bmapi.outlets.salescode.SalesCodeService/GetSalesCode',
+    requestStream: false,
+    responseStream: false,
+    requestType: salescode_pb.GetSalesCodeRequestProto,
+    responseType: salescode_pb.GetSalesCodeResponseProto,
+    requestSerialize: serialize_bmapi_outlets_salescode_GetSalesCodeRequestProto,
+    requestDeserialize: deserialize_bmapi_outlets_salescode_GetSalesCodeRequestProto,
+    responseSerialize: serialize_bmapi_outlets_salescode_GetSalesCodeResponseProto,
+    responseDeserialize: deserialize_bmapi_outlets_salescode_GetSalesCodeResponseProto,
+  },
   // Gets specific SalesCodes. (Errors if any not found).
 getSalesCodes: {
     path: '/bmapi.outlets.salescode.SalesCodeService/GetSalesCodes',
@@ -126,30 +116,6 @@ getSalesCodes: {
     requestDeserialize: deserialize_bmapi_outlets_salescode_GetSalesCodesRequestProto,
     responseSerialize: serialize_bmapi_outlets_salescode_GetSalesCodesResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_salescode_GetSalesCodesResponseProto,
-  },
-  // Saves one or many SalesCodes
-saveSalesCodes: {
-    path: '/bmapi.outlets.salescode.SalesCodeService/SaveSalesCodes',
-    requestStream: false,
-    responseStream: false,
-    requestType: salescode_pb.SaveSalesCodesRequestProto,
-    responseType: salescode_pb.SaveSalesCodesResponseProto,
-    requestSerialize: serialize_bmapi_outlets_salescode_SaveSalesCodesRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_salescode_SaveSalesCodesRequestProto,
-    responseSerialize: serialize_bmapi_outlets_salescode_SaveSalesCodesResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_salescode_SaveSalesCodesResponseProto,
-  },
-  // Hides or unhides the given Sales Code.
-setSalesCodeIsHidden: {
-    path: '/bmapi.outlets.salescode.SalesCodeService/SetSalesCodeIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: salescode_pb.SetSalesCodeIsHiddenRequestProto,
-    responseType: salescode_pb.SetSalesCodeIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_salescode_SetSalesCodeIsHiddenResponseProto,
   },
 };
 

@@ -18,8 +18,6 @@ interface ICreditTermServiceService extends grpc.ServiceDefinition<grpc.UntypedS
     getAllCreditTerms: ICreditTermServiceService_IGetAllCreditTerms;
     getCreditTerm: ICreditTermServiceService_IGetCreditTerm;
     getCreditTerms: ICreditTermServiceService_IGetCreditTerms;
-    saveCreditTerm: ICreditTermServiceService_ISaveCreditTerm;
-    setCreditTermIsHidden: ICreditTermServiceService_ISetCreditTermIsHidden;
 }
 
 interface ICreditTermServiceService_IGetAllCreditTerms extends grpc.MethodDefinition<creditterm_pb.GetAllCreditTermsRequestProto, creditterm_pb.GetAllCreditTermsResponseProto> {
@@ -49,24 +47,6 @@ interface ICreditTermServiceService_IGetCreditTerms extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<creditterm_pb.GetCreditTermsResponseProto>;
     responseDeserialize: grpc.deserialize<creditterm_pb.GetCreditTermsResponseProto>;
 }
-interface ICreditTermServiceService_ISaveCreditTerm extends grpc.MethodDefinition<creditterm_pb.SaveCreditTermRequestProto, creditterm_pb.SaveCreditTermResponseProto> {
-    path: "/bmapi.outlets.creditterm.CreditTermService/SaveCreditTerm";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<creditterm_pb.SaveCreditTermRequestProto>;
-    requestDeserialize: grpc.deserialize<creditterm_pb.SaveCreditTermRequestProto>;
-    responseSerialize: grpc.serialize<creditterm_pb.SaveCreditTermResponseProto>;
-    responseDeserialize: grpc.deserialize<creditterm_pb.SaveCreditTermResponseProto>;
-}
-interface ICreditTermServiceService_ISetCreditTermIsHidden extends grpc.MethodDefinition<creditterm_pb.SetCreditTermIsHiddenRequestProto, creditterm_pb.SetCreditTermIsHiddenResponseProto> {
-    path: "/bmapi.outlets.creditterm.CreditTermService/SetCreditTermIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<creditterm_pb.SetCreditTermIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<creditterm_pb.SetCreditTermIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<creditterm_pb.SetCreditTermIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<creditterm_pb.SetCreditTermIsHiddenResponseProto>;
-}
 
 export const CreditTermServiceService: ICreditTermServiceService;
 
@@ -74,8 +54,6 @@ export interface ICreditTermServiceServer extends grpc.UntypedServiceImplementat
     getAllCreditTerms: grpc.handleUnaryCall<creditterm_pb.GetAllCreditTermsRequestProto, creditterm_pb.GetAllCreditTermsResponseProto>;
     getCreditTerm: grpc.handleUnaryCall<creditterm_pb.GetCreditTermRequestProto, creditterm_pb.GetCreditTermResponseProto>;
     getCreditTerms: grpc.handleUnaryCall<creditterm_pb.GetCreditTermsRequestProto, creditterm_pb.GetCreditTermsResponseProto>;
-    saveCreditTerm: grpc.handleUnaryCall<creditterm_pb.SaveCreditTermRequestProto, creditterm_pb.SaveCreditTermResponseProto>;
-    setCreditTermIsHidden: grpc.handleUnaryCall<creditterm_pb.SetCreditTermIsHiddenRequestProto, creditterm_pb.SetCreditTermIsHiddenResponseProto>;
 }
 
 export interface ICreditTermServiceClient {
@@ -88,12 +66,6 @@ export interface ICreditTermServiceClient {
     getCreditTerms(request: creditterm_pb.GetCreditTermsRequestProto, callback: (error: grpc.ServiceError | null, response: creditterm_pb.GetCreditTermsResponseProto) => void): grpc.ClientUnaryCall;
     getCreditTerms(request: creditterm_pb.GetCreditTermsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: creditterm_pb.GetCreditTermsResponseProto) => void): grpc.ClientUnaryCall;
     getCreditTerms(request: creditterm_pb.GetCreditTermsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: creditterm_pb.GetCreditTermsResponseProto) => void): grpc.ClientUnaryCall;
-    saveCreditTerm(request: creditterm_pb.SaveCreditTermRequestProto, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SaveCreditTermResponseProto) => void): grpc.ClientUnaryCall;
-    saveCreditTerm(request: creditterm_pb.SaveCreditTermRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SaveCreditTermResponseProto) => void): grpc.ClientUnaryCall;
-    saveCreditTerm(request: creditterm_pb.SaveCreditTermRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SaveCreditTermResponseProto) => void): grpc.ClientUnaryCall;
-    setCreditTermIsHidden(request: creditterm_pb.SetCreditTermIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SetCreditTermIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setCreditTermIsHidden(request: creditterm_pb.SetCreditTermIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SetCreditTermIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setCreditTermIsHidden(request: creditterm_pb.SetCreditTermIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SetCreditTermIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class CreditTermServiceClient extends grpc.Client implements ICreditTermServiceClient {
@@ -107,10 +79,4 @@ export class CreditTermServiceClient extends grpc.Client implements ICreditTermS
     public getCreditTerms(request: creditterm_pb.GetCreditTermsRequestProto, callback: (error: grpc.ServiceError | null, response: creditterm_pb.GetCreditTermsResponseProto) => void): grpc.ClientUnaryCall;
     public getCreditTerms(request: creditterm_pb.GetCreditTermsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: creditterm_pb.GetCreditTermsResponseProto) => void): grpc.ClientUnaryCall;
     public getCreditTerms(request: creditterm_pb.GetCreditTermsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: creditterm_pb.GetCreditTermsResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCreditTerm(request: creditterm_pb.SaveCreditTermRequestProto, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SaveCreditTermResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCreditTerm(request: creditterm_pb.SaveCreditTermRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SaveCreditTermResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCreditTerm(request: creditterm_pb.SaveCreditTermRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SaveCreditTermResponseProto) => void): grpc.ClientUnaryCall;
-    public setCreditTermIsHidden(request: creditterm_pb.SetCreditTermIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SetCreditTermIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setCreditTermIsHidden(request: creditterm_pb.SetCreditTermIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SetCreditTermIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setCreditTermIsHidden(request: creditterm_pb.SetCreditTermIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: creditterm_pb.SetCreditTermIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

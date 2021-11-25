@@ -15,12 +15,10 @@ import "common/enumarrayvalues.generated.proto";
 service OutletTypeService {
     // Gets all outlet types.
     rpc GetAllOutletTypes(GetAllOutletTypesRequestProto) returns (GetAllOutletTypesResponseProto) {}
+    // Gets a specific outlet type. (Errors if not found).
+    rpc GetOutletType(GetOutletTypeRequestProto) returns (GetOutletTypeResponseProto) {}
     // Gets specific outlet types. (Errors if any not found).
     rpc GetOutletTypes(GetOutletTypesRequestProto) returns (GetOutletTypesResponseProto) {}
-    // Saves one or many outlet types
-    rpc SaveOutletTypes(SaveOutletTypesRequestProto) returns (SaveOutletTypesResponseProto) {}
-    // Hides or unhides the given Outlet Type.
-    rpc SetOutletTypeIsHidden(SetOutletTypeIsHiddenRequestProto) returns (SetOutletTypeIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -34,6 +32,18 @@ message GetAllOutletTypesResponseProto {
     repeated OutletTypeProto outlet_types = 1;
 }
 
+message GetOutletTypeRequestProto {
+    
+    string tenant_id = 1;
+    
+    string outlet_type_id = 2;
+}
+
+message GetOutletTypeResponseProto {
+    
+    OutletTypeProto outlet_type = 1;
+}
+
 message GetOutletTypesRequestProto {
     
     string tenant_id = 1;
@@ -44,28 +54,6 @@ message GetOutletTypesRequestProto {
 message GetOutletTypesResponseProto {
     
     repeated OutletTypeProto outlet_types = 1;
-}
-
-message SaveOutletTypesRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated OutletTypeProto outlet_types = 2;
-}
-
-message SaveOutletTypesResponseProto {
-}
-
-message SetOutletTypeIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string outlet_type_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetOutletTypeIsHiddenResponseProto {
 }
 
 

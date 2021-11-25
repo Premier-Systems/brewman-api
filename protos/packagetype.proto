@@ -13,16 +13,12 @@ import "common/enums.generated.proto";
 import "common/enumarrayvalues.generated.proto";
 
 service PackageTypeService {
-    // Gets all undeleted PackageTypes
+    // Gets all PackageTypes
     rpc GetAllPackageTypes(GetAllPackageTypesRequestProto) returns (GetAllPackageTypesResponseProto) {}
-    // Gets a specific PackageType by Id, even if it has been soft-deleted. (Errors if not found).
+    // Gets a specific PackageType by Id. (Errors if not found).
     rpc GetPackageType(GetPackageTypeRequestProto) returns (GetPackageTypeResponseProto) {}
-    // Gets specific PackageTypes by Ids, including soft-deleted ones. (Errors if any not found).
+    // Gets specific PackageTypes by Ids. (Errors if any not found).
     rpc GetPackageTypes(GetPackageTypesRequestProto) returns (GetPackageTypesResponseProto) {}
-    // Saves a single PackageType
-    rpc SavePackageType(SavePackageTypeRequestProto) returns (SavePackageTypeResponseProto) {}
-    // Hides or unhides the given Package Type.
-    rpc SetPackageTypeIsHidden(SetPackageTypeIsHiddenRequestProto) returns (SetPackageTypeIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -58,28 +54,6 @@ message GetPackageTypesRequestProto {
 message GetPackageTypesResponseProto {
     
     repeated PackageTypeProto package_types = 1;
-}
-
-message SavePackageTypeRequestProto {
-    
-    string tenant_id = 1;
-    
-    PackageTypeProto package_type = 2;
-}
-
-message SavePackageTypeResponseProto {
-}
-
-message SetPackageTypeIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string package_type_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetPackageTypeIsHiddenResponseProto {
 }
 
 

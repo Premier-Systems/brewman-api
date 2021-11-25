@@ -13,6 +13,28 @@ var common_arrayvalues_pb = require('./common/arrayvalues_pb.js');
 var common_enums_generated_pb = require('./common/enums.generated_pb.js');
 var common_enumarrayvalues_generated_pb = require('./common/enumarrayvalues.generated_pb.js');
 
+function serialize_bmapi_orders_order_BuildOrderLinesRequestProto(arg) {
+  if (!(arg instanceof order_pb.BuildOrderLinesRequestProto)) {
+    throw new Error('Expected argument of type bmapi.orders.order.BuildOrderLinesRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_orders_order_BuildOrderLinesRequestProto(buffer_arg) {
+  return order_pb.BuildOrderLinesRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_orders_order_BuildOrderLinesResponseProto(arg) {
+  if (!(arg instanceof order_pb.BuildOrderLinesResponseProto)) {
+    throw new Error('Expected argument of type bmapi.orders.order.BuildOrderLinesResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_orders_order_BuildOrderLinesResponseProto(buffer_arg) {
+  return order_pb.BuildOrderLinesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_orders_order_CreateOrderRequestProto(arg) {
   if (!(arg instanceof order_pb.CreateOrderRequestProto)) {
     throw new Error('Expected argument of type bmapi.orders.order.CreateOrderRequestProto');
@@ -101,28 +123,6 @@ function deserialize_bmapi_orders_order_GetOrdersResponseProto(buffer_arg) {
   return order_pb.GetOrdersResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_orders_order_PerformStandardOrderEvaluationRequestProto(arg) {
-  if (!(arg instanceof order_pb.PerformStandardOrderEvaluationRequestProto)) {
-    throw new Error('Expected argument of type bmapi.orders.order.PerformStandardOrderEvaluationRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_orders_order_PerformStandardOrderEvaluationRequestProto(buffer_arg) {
-  return order_pb.PerformStandardOrderEvaluationRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_orders_order_PerformStandardOrderEvaluationResponseProto(arg) {
-  if (!(arg instanceof order_pb.PerformStandardOrderEvaluationResponseProto)) {
-    throw new Error('Expected argument of type bmapi.orders.order.PerformStandardOrderEvaluationResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_orders_order_PerformStandardOrderEvaluationResponseProto(buffer_arg) {
-  return order_pb.PerformStandardOrderEvaluationResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_bmapi_orders_order_SaveOrderRequestProto(arg) {
   if (!(arg instanceof order_pb.SaveOrderRequestProto)) {
     throw new Error('Expected argument of type bmapi.orders.order.SaveOrderRequestProto');
@@ -207,17 +207,17 @@ getOrdersByFilter: {
     responseSerialize: serialize_bmapi_orders_order_GetOrdersByFilterResponseProto,
     responseDeserialize: deserialize_bmapi_orders_order_GetOrdersByFilterResponseProto,
   },
-  // Performs standard calculations and extractions on the lines of a provided V2Order and returns what the order would look like with recalculated pricing and recaptured stock item derived fields. The order is NOT saved to the database - this method is for unobtrusive WhatIf testing. The following fields are reevaluated : UnitListNetPrice, UnitListGrossPriceForRounding, UnitOfMeasureId, Abv, AlcoholType, DiscountBasis, GlCodeId, LineCostNetPrice, LineNetPrice, LineVat, ManufacturerId, ProductBrandId, ProductCode, PricingCategoryId, UnitCostNetPrice, UnitDutiableLitres, UnitLitres, UnitNetPrice, UnitWeight, VatPercentage, VatCodeId, DiscountLevel
-performStandardOrderEvaluation: {
-    path: '/bmapi.orders.order.OrderV2Service/PerformStandardOrderEvaluation',
+  // Performs standard calculations and extractions for simple addition of items to an Order. Returns what the order would look like with standard (BrewMan UI behaviour) of adding the given items to an order. The order is NOT saved to the database with the evaluated lines.  It can be easily saved by sending to the SaveOrder Api method, or can be adjusted as desired before saving.
+buildOrderLines: {
+    path: '/bmapi.orders.order.OrderV2Service/BuildOrderLines',
     requestStream: false,
     responseStream: false,
-    requestType: order_pb.PerformStandardOrderEvaluationRequestProto,
-    responseType: order_pb.PerformStandardOrderEvaluationResponseProto,
-    requestSerialize: serialize_bmapi_orders_order_PerformStandardOrderEvaluationRequestProto,
-    requestDeserialize: deserialize_bmapi_orders_order_PerformStandardOrderEvaluationRequestProto,
-    responseSerialize: serialize_bmapi_orders_order_PerformStandardOrderEvaluationResponseProto,
-    responseDeserialize: deserialize_bmapi_orders_order_PerformStandardOrderEvaluationResponseProto,
+    requestType: order_pb.BuildOrderLinesRequestProto,
+    responseType: order_pb.BuildOrderLinesResponseProto,
+    requestSerialize: serialize_bmapi_orders_order_BuildOrderLinesRequestProto,
+    requestDeserialize: deserialize_bmapi_orders_order_BuildOrderLinesRequestProto,
+    responseSerialize: serialize_bmapi_orders_order_BuildOrderLinesResponseProto,
+    responseDeserialize: deserialize_bmapi_orders_order_BuildOrderLinesResponseProto,
   },
 };
 

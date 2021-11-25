@@ -16,9 +16,8 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 
 interface ISalesAreaServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllSalesAreas: ISalesAreaServiceService_IGetAllSalesAreas;
+    getSalesArea: ISalesAreaServiceService_IGetSalesArea;
     getSalesAreas: ISalesAreaServiceService_IGetSalesAreas;
-    saveSalesAreas: ISalesAreaServiceService_ISaveSalesAreas;
-    setSalesAreaIsHidden: ISalesAreaServiceService_ISetSalesAreaIsHidden;
 }
 
 interface ISalesAreaServiceService_IGetAllSalesAreas extends grpc.MethodDefinition<salesarea_pb.GetAllSalesAreasRequestProto, salesarea_pb.GetAllSalesAreasResponseProto> {
@@ -30,6 +29,15 @@ interface ISalesAreaServiceService_IGetAllSalesAreas extends grpc.MethodDefiniti
     responseSerialize: grpc.serialize<salesarea_pb.GetAllSalesAreasResponseProto>;
     responseDeserialize: grpc.deserialize<salesarea_pb.GetAllSalesAreasResponseProto>;
 }
+interface ISalesAreaServiceService_IGetSalesArea extends grpc.MethodDefinition<salesarea_pb.GetSalesAreaRequestProto, salesarea_pb.GetSalesAreaResponseProto> {
+    path: "/bmapi.outlets.salesarea.SalesAreaService/GetSalesArea";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<salesarea_pb.GetSalesAreaRequestProto>;
+    requestDeserialize: grpc.deserialize<salesarea_pb.GetSalesAreaRequestProto>;
+    responseSerialize: grpc.serialize<salesarea_pb.GetSalesAreaResponseProto>;
+    responseDeserialize: grpc.deserialize<salesarea_pb.GetSalesAreaResponseProto>;
+}
 interface ISalesAreaServiceService_IGetSalesAreas extends grpc.MethodDefinition<salesarea_pb.GetSalesAreasRequestProto, salesarea_pb.GetSalesAreasResponseProto> {
     path: "/bmapi.outlets.salesarea.SalesAreaService/GetSalesAreas";
     requestStream: false;
@@ -39,47 +47,25 @@ interface ISalesAreaServiceService_IGetSalesAreas extends grpc.MethodDefinition<
     responseSerialize: grpc.serialize<salesarea_pb.GetSalesAreasResponseProto>;
     responseDeserialize: grpc.deserialize<salesarea_pb.GetSalesAreasResponseProto>;
 }
-interface ISalesAreaServiceService_ISaveSalesAreas extends grpc.MethodDefinition<salesarea_pb.SaveSalesAreasRequestProto, salesarea_pb.SaveSalesAreasResponseProto> {
-    path: "/bmapi.outlets.salesarea.SalesAreaService/SaveSalesAreas";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<salesarea_pb.SaveSalesAreasRequestProto>;
-    requestDeserialize: grpc.deserialize<salesarea_pb.SaveSalesAreasRequestProto>;
-    responseSerialize: grpc.serialize<salesarea_pb.SaveSalesAreasResponseProto>;
-    responseDeserialize: grpc.deserialize<salesarea_pb.SaveSalesAreasResponseProto>;
-}
-interface ISalesAreaServiceService_ISetSalesAreaIsHidden extends grpc.MethodDefinition<salesarea_pb.SetSalesAreaIsHiddenRequestProto, salesarea_pb.SetSalesAreaIsHiddenResponseProto> {
-    path: "/bmapi.outlets.salesarea.SalesAreaService/SetSalesAreaIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<salesarea_pb.SetSalesAreaIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<salesarea_pb.SetSalesAreaIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<salesarea_pb.SetSalesAreaIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<salesarea_pb.SetSalesAreaIsHiddenResponseProto>;
-}
 
 export const SalesAreaServiceService: ISalesAreaServiceService;
 
 export interface ISalesAreaServiceServer extends grpc.UntypedServiceImplementation {
     getAllSalesAreas: grpc.handleUnaryCall<salesarea_pb.GetAllSalesAreasRequestProto, salesarea_pb.GetAllSalesAreasResponseProto>;
+    getSalesArea: grpc.handleUnaryCall<salesarea_pb.GetSalesAreaRequestProto, salesarea_pb.GetSalesAreaResponseProto>;
     getSalesAreas: grpc.handleUnaryCall<salesarea_pb.GetSalesAreasRequestProto, salesarea_pb.GetSalesAreasResponseProto>;
-    saveSalesAreas: grpc.handleUnaryCall<salesarea_pb.SaveSalesAreasRequestProto, salesarea_pb.SaveSalesAreasResponseProto>;
-    setSalesAreaIsHidden: grpc.handleUnaryCall<salesarea_pb.SetSalesAreaIsHiddenRequestProto, salesarea_pb.SetSalesAreaIsHiddenResponseProto>;
 }
 
 export interface ISalesAreaServiceClient {
     getAllSalesAreas(request: salesarea_pb.GetAllSalesAreasRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetAllSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     getAllSalesAreas(request: salesarea_pb.GetAllSalesAreasRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetAllSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     getAllSalesAreas(request: salesarea_pb.GetAllSalesAreasRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetAllSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
+    getSalesArea(request: salesarea_pb.GetSalesAreaRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreaResponseProto) => void): grpc.ClientUnaryCall;
+    getSalesArea(request: salesarea_pb.GetSalesAreaRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreaResponseProto) => void): grpc.ClientUnaryCall;
+    getSalesArea(request: salesarea_pb.GetSalesAreaRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreaResponseProto) => void): grpc.ClientUnaryCall;
     getSalesAreas(request: salesarea_pb.GetSalesAreasRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     getSalesAreas(request: salesarea_pb.GetSalesAreasRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     getSalesAreas(request: salesarea_pb.GetSalesAreasRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    saveSalesAreas(request: salesarea_pb.SaveSalesAreasRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SaveSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    saveSalesAreas(request: salesarea_pb.SaveSalesAreasRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SaveSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    saveSalesAreas(request: salesarea_pb.SaveSalesAreasRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SaveSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    setSalesAreaIsHidden(request: salesarea_pb.SetSalesAreaIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SetSalesAreaIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setSalesAreaIsHidden(request: salesarea_pb.SetSalesAreaIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SetSalesAreaIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setSalesAreaIsHidden(request: salesarea_pb.SetSalesAreaIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SetSalesAreaIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class SalesAreaServiceClient extends grpc.Client implements ISalesAreaServiceClient {
@@ -87,13 +73,10 @@ export class SalesAreaServiceClient extends grpc.Client implements ISalesAreaSer
     public getAllSalesAreas(request: salesarea_pb.GetAllSalesAreasRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetAllSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     public getAllSalesAreas(request: salesarea_pb.GetAllSalesAreasRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetAllSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     public getAllSalesAreas(request: salesarea_pb.GetAllSalesAreasRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetAllSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
+    public getSalesArea(request: salesarea_pb.GetSalesAreaRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreaResponseProto) => void): grpc.ClientUnaryCall;
+    public getSalesArea(request: salesarea_pb.GetSalesAreaRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreaResponseProto) => void): grpc.ClientUnaryCall;
+    public getSalesArea(request: salesarea_pb.GetSalesAreaRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreaResponseProto) => void): grpc.ClientUnaryCall;
     public getSalesAreas(request: salesarea_pb.GetSalesAreasRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     public getSalesAreas(request: salesarea_pb.GetSalesAreasRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
     public getSalesAreas(request: salesarea_pb.GetSalesAreasRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.GetSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSalesAreas(request: salesarea_pb.SaveSalesAreasRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SaveSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSalesAreas(request: salesarea_pb.SaveSalesAreasRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SaveSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSalesAreas(request: salesarea_pb.SaveSalesAreasRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SaveSalesAreasResponseProto) => void): grpc.ClientUnaryCall;
-    public setSalesAreaIsHidden(request: salesarea_pb.SetSalesAreaIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SetSalesAreaIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setSalesAreaIsHidden(request: salesarea_pb.SetSalesAreaIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SetSalesAreaIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setSalesAreaIsHidden(request: salesarea_pb.SetSalesAreaIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salesarea_pb.SetSalesAreaIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

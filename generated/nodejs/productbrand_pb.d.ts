@@ -55,6 +55,52 @@ export namespace GetAllProductBrandsResponseProto {
     }
 }
 
+export class GetProductBrandRequestProto extends jspb.Message { 
+    getTenantId(): string;
+    setTenantId(value: string): GetProductBrandRequestProto;
+    getProductBrandId(): string;
+    setProductBrandId(value: string): GetProductBrandRequestProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetProductBrandRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetProductBrandRequestProto): GetProductBrandRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetProductBrandRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetProductBrandRequestProto;
+    static deserializeBinaryFromReader(message: GetProductBrandRequestProto, reader: jspb.BinaryReader): GetProductBrandRequestProto;
+}
+
+export namespace GetProductBrandRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        productBrandId: string,
+    }
+}
+
+export class GetProductBrandResponseProto extends jspb.Message { 
+
+    hasProductBrand(): boolean;
+    clearProductBrand(): void;
+    getProductBrand(): ProductBrandProto | undefined;
+    setProductBrand(value?: ProductBrandProto): GetProductBrandResponseProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetProductBrandResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetProductBrandResponseProto): GetProductBrandResponseProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetProductBrandResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetProductBrandResponseProto;
+    static deserializeBinaryFromReader(message: GetProductBrandResponseProto, reader: jspb.BinaryReader): GetProductBrandResponseProto;
+}
+
+export namespace GetProductBrandResponseProto {
+    export type AsObject = {
+        productBrand?: ProductBrandProto.AsObject,
+    }
+}
+
 export class GetProductBrandsRequestProto extends jspb.Message { 
     getTenantId(): string;
     setTenantId(value: string): GetProductBrandsRequestProto;
@@ -99,92 +145,6 @@ export class GetProductBrandsResponseProto extends jspb.Message {
 export namespace GetProductBrandsResponseProto {
     export type AsObject = {
         productBrandsList: Array<ProductBrandProto.AsObject>,
-    }
-}
-
-export class SaveProductBrandRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SaveProductBrandRequestProto;
-
-    hasProductBrand(): boolean;
-    clearProductBrand(): void;
-    getProductBrand(): ProductBrandProto | undefined;
-    setProductBrand(value?: ProductBrandProto): SaveProductBrandRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveProductBrandRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveProductBrandRequestProto): SaveProductBrandRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveProductBrandRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveProductBrandRequestProto;
-    static deserializeBinaryFromReader(message: SaveProductBrandRequestProto, reader: jspb.BinaryReader): SaveProductBrandRequestProto;
-}
-
-export namespace SaveProductBrandRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        productBrand?: ProductBrandProto.AsObject,
-    }
-}
-
-export class SaveProductBrandResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveProductBrandResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveProductBrandResponseProto): SaveProductBrandResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveProductBrandResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveProductBrandResponseProto;
-    static deserializeBinaryFromReader(message: SaveProductBrandResponseProto, reader: jspb.BinaryReader): SaveProductBrandResponseProto;
-}
-
-export namespace SaveProductBrandResponseProto {
-    export type AsObject = {
-    }
-}
-
-export class SetProductBrandIsHiddenRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SetProductBrandIsHiddenRequestProto;
-    getProductBrandId(): string;
-    setProductBrandId(value: string): SetProductBrandIsHiddenRequestProto;
-    getHide(): boolean;
-    setHide(value: boolean): SetProductBrandIsHiddenRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetProductBrandIsHiddenRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetProductBrandIsHiddenRequestProto): SetProductBrandIsHiddenRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetProductBrandIsHiddenRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetProductBrandIsHiddenRequestProto;
-    static deserializeBinaryFromReader(message: SetProductBrandIsHiddenRequestProto, reader: jspb.BinaryReader): SetProductBrandIsHiddenRequestProto;
-}
-
-export namespace SetProductBrandIsHiddenRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        productBrandId: string,
-        hide: boolean,
-    }
-}
-
-export class SetProductBrandIsHiddenResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetProductBrandIsHiddenResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetProductBrandIsHiddenResponseProto): SetProductBrandIsHiddenResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetProductBrandIsHiddenResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetProductBrandIsHiddenResponseProto;
-    static deserializeBinaryFromReader(message: SetProductBrandIsHiddenResponseProto, reader: jspb.BinaryReader): SetProductBrandIsHiddenResponseProto;
-}
-
-export namespace SetProductBrandIsHiddenResponseProto {
-    export type AsObject = {
     }
 }
 

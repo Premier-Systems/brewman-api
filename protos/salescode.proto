@@ -15,12 +15,10 @@ import "common/enumarrayvalues.generated.proto";
 service SalesCodeService {
     // Gets all SalesCodes
     rpc GetAllSalesCodes(GetAllSalesCodesRequestProto) returns (GetAllSalesCodesResponseProto) {}
+    // Gets a specific SalesCode. (Errors if not found).
+    rpc GetSalesCode(GetSalesCodeRequestProto) returns (GetSalesCodeResponseProto) {}
     // Gets specific SalesCodes. (Errors if any not found).
     rpc GetSalesCodes(GetSalesCodesRequestProto) returns (GetSalesCodesResponseProto) {}
-    // Saves one or many SalesCodes
-    rpc SaveSalesCodes(SaveSalesCodesRequestProto) returns (SaveSalesCodesResponseProto) {}
-    // Hides or unhides the given Sales Code.
-    rpc SetSalesCodeIsHidden(SetSalesCodeIsHiddenRequestProto) returns (SetSalesCodeIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -34,6 +32,18 @@ message GetAllSalesCodesResponseProto {
     repeated SalesCodeProto sales_codes = 1;
 }
 
+message GetSalesCodeRequestProto {
+    
+    string tenant_id = 1;
+    
+    string sales_code_id = 2;
+}
+
+message GetSalesCodeResponseProto {
+    
+    SalesCodeProto sales_code = 1;
+}
+
 message GetSalesCodesRequestProto {
     
     string tenant_id = 1;
@@ -44,28 +54,6 @@ message GetSalesCodesRequestProto {
 message GetSalesCodesResponseProto {
     
     repeated SalesCodeProto sales_codes = 1;
-}
-
-message SaveSalesCodesRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated SalesCodeProto sales_codes = 2;
-}
-
-message SaveSalesCodesResponseProto {
-}
-
-message SetSalesCodeIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string sales_code_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetSalesCodeIsHiddenResponseProto {
 }
 
 

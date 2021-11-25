@@ -35,6 +35,28 @@ function deserialize_bmapi_stocks_productbrand_GetAllProductBrandsResponseProto(
   return productbrand_pb.GetAllProductBrandsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_stocks_productbrand_GetProductBrandRequestProto(arg) {
+  if (!(arg instanceof productbrand_pb.GetProductBrandRequestProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.productbrand.GetProductBrandRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_stocks_productbrand_GetProductBrandRequestProto(buffer_arg) {
+  return productbrand_pb.GetProductBrandRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_stocks_productbrand_GetProductBrandResponseProto(arg) {
+  if (!(arg instanceof productbrand_pb.GetProductBrandResponseProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.productbrand.GetProductBrandResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_stocks_productbrand_GetProductBrandResponseProto(buffer_arg) {
+  return productbrand_pb.GetProductBrandResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_stocks_productbrand_GetProductBrandsRequestProto(arg) {
   if (!(arg instanceof productbrand_pb.GetProductBrandsRequestProto)) {
     throw new Error('Expected argument of type bmapi.stocks.productbrand.GetProductBrandsRequestProto');
@@ -57,50 +79,6 @@ function deserialize_bmapi_stocks_productbrand_GetProductBrandsResponseProto(buf
   return productbrand_pb.GetProductBrandsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_productbrand_SaveProductBrandRequestProto(arg) {
-  if (!(arg instanceof productbrand_pb.SaveProductBrandRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.productbrand.SaveProductBrandRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_productbrand_SaveProductBrandRequestProto(buffer_arg) {
-  return productbrand_pb.SaveProductBrandRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_productbrand_SaveProductBrandResponseProto(arg) {
-  if (!(arg instanceof productbrand_pb.SaveProductBrandResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.productbrand.SaveProductBrandResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_productbrand_SaveProductBrandResponseProto(buffer_arg) {
-  return productbrand_pb.SaveProductBrandResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenRequestProto(arg) {
-  if (!(arg instanceof productbrand_pb.SetProductBrandIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.productbrand.SetProductBrandIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenRequestProto(buffer_arg) {
-  return productbrand_pb.SetProductBrandIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenResponseProto(arg) {
-  if (!(arg instanceof productbrand_pb.SetProductBrandIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.productbrand.SetProductBrandIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenResponseProto(buffer_arg) {
-  return productbrand_pb.SetProductBrandIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var ProductBrandServiceService = exports.ProductBrandServiceService = {
   // Gets all ProductBrands
@@ -115,7 +93,19 @@ getAllProductBrands: {
     responseSerialize: serialize_bmapi_stocks_productbrand_GetAllProductBrandsResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_productbrand_GetAllProductBrandsResponseProto,
   },
-  // Gets specific ProductBrands
+  // Gets a specific ProductBrand. (Errors if not found).
+getProductBrand: {
+    path: '/bmapi.stocks.productbrand.ProductBrandService/GetProductBrand',
+    requestStream: false,
+    responseStream: false,
+    requestType: productbrand_pb.GetProductBrandRequestProto,
+    responseType: productbrand_pb.GetProductBrandResponseProto,
+    requestSerialize: serialize_bmapi_stocks_productbrand_GetProductBrandRequestProto,
+    requestDeserialize: deserialize_bmapi_stocks_productbrand_GetProductBrandRequestProto,
+    responseSerialize: serialize_bmapi_stocks_productbrand_GetProductBrandResponseProto,
+    responseDeserialize: deserialize_bmapi_stocks_productbrand_GetProductBrandResponseProto,
+  },
+  // Gets specific ProductBrands. (Errors if any not found).
 getProductBrands: {
     path: '/bmapi.stocks.productbrand.ProductBrandService/GetProductBrands',
     requestStream: false,
@@ -126,30 +116,6 @@ getProductBrands: {
     requestDeserialize: deserialize_bmapi_stocks_productbrand_GetProductBrandsRequestProto,
     responseSerialize: serialize_bmapi_stocks_productbrand_GetProductBrandsResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_productbrand_GetProductBrandsResponseProto,
-  },
-  // Saves a ProductBrand
-saveProductBrand: {
-    path: '/bmapi.stocks.productbrand.ProductBrandService/SaveProductBrand',
-    requestStream: false,
-    responseStream: false,
-    requestType: productbrand_pb.SaveProductBrandRequestProto,
-    responseType: productbrand_pb.SaveProductBrandResponseProto,
-    requestSerialize: serialize_bmapi_stocks_productbrand_SaveProductBrandRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_productbrand_SaveProductBrandRequestProto,
-    responseSerialize: serialize_bmapi_stocks_productbrand_SaveProductBrandResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_productbrand_SaveProductBrandResponseProto,
-  },
-  // Hides or unhides the given product brand.
-setProductBrandIsHidden: {
-    path: '/bmapi.stocks.productbrand.ProductBrandService/SetProductBrandIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: productbrand_pb.SetProductBrandIsHiddenRequestProto,
-    responseType: productbrand_pb.SetProductBrandIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_productbrand_SetProductBrandIsHiddenResponseProto,
   },
 };
 

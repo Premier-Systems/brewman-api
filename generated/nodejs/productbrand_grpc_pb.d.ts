@@ -16,9 +16,8 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 
 interface IProductBrandServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllProductBrands: IProductBrandServiceService_IGetAllProductBrands;
+    getProductBrand: IProductBrandServiceService_IGetProductBrand;
     getProductBrands: IProductBrandServiceService_IGetProductBrands;
-    saveProductBrand: IProductBrandServiceService_ISaveProductBrand;
-    setProductBrandIsHidden: IProductBrandServiceService_ISetProductBrandIsHidden;
 }
 
 interface IProductBrandServiceService_IGetAllProductBrands extends grpc.MethodDefinition<productbrand_pb.GetAllProductBrandsRequestProto, productbrand_pb.GetAllProductBrandsResponseProto> {
@@ -30,6 +29,15 @@ interface IProductBrandServiceService_IGetAllProductBrands extends grpc.MethodDe
     responseSerialize: grpc.serialize<productbrand_pb.GetAllProductBrandsResponseProto>;
     responseDeserialize: grpc.deserialize<productbrand_pb.GetAllProductBrandsResponseProto>;
 }
+interface IProductBrandServiceService_IGetProductBrand extends grpc.MethodDefinition<productbrand_pb.GetProductBrandRequestProto, productbrand_pb.GetProductBrandResponseProto> {
+    path: "/bmapi.stocks.productbrand.ProductBrandService/GetProductBrand";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<productbrand_pb.GetProductBrandRequestProto>;
+    requestDeserialize: grpc.deserialize<productbrand_pb.GetProductBrandRequestProto>;
+    responseSerialize: grpc.serialize<productbrand_pb.GetProductBrandResponseProto>;
+    responseDeserialize: grpc.deserialize<productbrand_pb.GetProductBrandResponseProto>;
+}
 interface IProductBrandServiceService_IGetProductBrands extends grpc.MethodDefinition<productbrand_pb.GetProductBrandsRequestProto, productbrand_pb.GetProductBrandsResponseProto> {
     path: "/bmapi.stocks.productbrand.ProductBrandService/GetProductBrands";
     requestStream: false;
@@ -39,47 +47,25 @@ interface IProductBrandServiceService_IGetProductBrands extends grpc.MethodDefin
     responseSerialize: grpc.serialize<productbrand_pb.GetProductBrandsResponseProto>;
     responseDeserialize: grpc.deserialize<productbrand_pb.GetProductBrandsResponseProto>;
 }
-interface IProductBrandServiceService_ISaveProductBrand extends grpc.MethodDefinition<productbrand_pb.SaveProductBrandRequestProto, productbrand_pb.SaveProductBrandResponseProto> {
-    path: "/bmapi.stocks.productbrand.ProductBrandService/SaveProductBrand";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<productbrand_pb.SaveProductBrandRequestProto>;
-    requestDeserialize: grpc.deserialize<productbrand_pb.SaveProductBrandRequestProto>;
-    responseSerialize: grpc.serialize<productbrand_pb.SaveProductBrandResponseProto>;
-    responseDeserialize: grpc.deserialize<productbrand_pb.SaveProductBrandResponseProto>;
-}
-interface IProductBrandServiceService_ISetProductBrandIsHidden extends grpc.MethodDefinition<productbrand_pb.SetProductBrandIsHiddenRequestProto, productbrand_pb.SetProductBrandIsHiddenResponseProto> {
-    path: "/bmapi.stocks.productbrand.ProductBrandService/SetProductBrandIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<productbrand_pb.SetProductBrandIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<productbrand_pb.SetProductBrandIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<productbrand_pb.SetProductBrandIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<productbrand_pb.SetProductBrandIsHiddenResponseProto>;
-}
 
 export const ProductBrandServiceService: IProductBrandServiceService;
 
 export interface IProductBrandServiceServer extends grpc.UntypedServiceImplementation {
     getAllProductBrands: grpc.handleUnaryCall<productbrand_pb.GetAllProductBrandsRequestProto, productbrand_pb.GetAllProductBrandsResponseProto>;
+    getProductBrand: grpc.handleUnaryCall<productbrand_pb.GetProductBrandRequestProto, productbrand_pb.GetProductBrandResponseProto>;
     getProductBrands: grpc.handleUnaryCall<productbrand_pb.GetProductBrandsRequestProto, productbrand_pb.GetProductBrandsResponseProto>;
-    saveProductBrand: grpc.handleUnaryCall<productbrand_pb.SaveProductBrandRequestProto, productbrand_pb.SaveProductBrandResponseProto>;
-    setProductBrandIsHidden: grpc.handleUnaryCall<productbrand_pb.SetProductBrandIsHiddenRequestProto, productbrand_pb.SetProductBrandIsHiddenResponseProto>;
 }
 
 export interface IProductBrandServiceClient {
     getAllProductBrands(request: productbrand_pb.GetAllProductBrandsRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetAllProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     getAllProductBrands(request: productbrand_pb.GetAllProductBrandsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetAllProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     getAllProductBrands(request: productbrand_pb.GetAllProductBrandsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetAllProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
+    getProductBrand(request: productbrand_pb.GetProductBrandRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandResponseProto) => void): grpc.ClientUnaryCall;
+    getProductBrand(request: productbrand_pb.GetProductBrandRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandResponseProto) => void): grpc.ClientUnaryCall;
+    getProductBrand(request: productbrand_pb.GetProductBrandRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandResponseProto) => void): grpc.ClientUnaryCall;
     getProductBrands(request: productbrand_pb.GetProductBrandsRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     getProductBrands(request: productbrand_pb.GetProductBrandsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     getProductBrands(request: productbrand_pb.GetProductBrandsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
-    saveProductBrand(request: productbrand_pb.SaveProductBrandRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SaveProductBrandResponseProto) => void): grpc.ClientUnaryCall;
-    saveProductBrand(request: productbrand_pb.SaveProductBrandRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SaveProductBrandResponseProto) => void): grpc.ClientUnaryCall;
-    saveProductBrand(request: productbrand_pb.SaveProductBrandRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SaveProductBrandResponseProto) => void): grpc.ClientUnaryCall;
-    setProductBrandIsHidden(request: productbrand_pb.SetProductBrandIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SetProductBrandIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setProductBrandIsHidden(request: productbrand_pb.SetProductBrandIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SetProductBrandIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setProductBrandIsHidden(request: productbrand_pb.SetProductBrandIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SetProductBrandIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class ProductBrandServiceClient extends grpc.Client implements IProductBrandServiceClient {
@@ -87,13 +73,10 @@ export class ProductBrandServiceClient extends grpc.Client implements IProductBr
     public getAllProductBrands(request: productbrand_pb.GetAllProductBrandsRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetAllProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     public getAllProductBrands(request: productbrand_pb.GetAllProductBrandsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetAllProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     public getAllProductBrands(request: productbrand_pb.GetAllProductBrandsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetAllProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
+    public getProductBrand(request: productbrand_pb.GetProductBrandRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandResponseProto) => void): grpc.ClientUnaryCall;
+    public getProductBrand(request: productbrand_pb.GetProductBrandRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandResponseProto) => void): grpc.ClientUnaryCall;
+    public getProductBrand(request: productbrand_pb.GetProductBrandRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandResponseProto) => void): grpc.ClientUnaryCall;
     public getProductBrands(request: productbrand_pb.GetProductBrandsRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     public getProductBrands(request: productbrand_pb.GetProductBrandsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
     public getProductBrands(request: productbrand_pb.GetProductBrandsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.GetProductBrandsResponseProto) => void): grpc.ClientUnaryCall;
-    public saveProductBrand(request: productbrand_pb.SaveProductBrandRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SaveProductBrandResponseProto) => void): grpc.ClientUnaryCall;
-    public saveProductBrand(request: productbrand_pb.SaveProductBrandRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SaveProductBrandResponseProto) => void): grpc.ClientUnaryCall;
-    public saveProductBrand(request: productbrand_pb.SaveProductBrandRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SaveProductBrandResponseProto) => void): grpc.ClientUnaryCall;
-    public setProductBrandIsHidden(request: productbrand_pb.SetProductBrandIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SetProductBrandIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setProductBrandIsHidden(request: productbrand_pb.SetProductBrandIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SetProductBrandIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setProductBrandIsHidden(request: productbrand_pb.SetProductBrandIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: productbrand_pb.SetProductBrandIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

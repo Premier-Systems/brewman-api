@@ -291,49 +291,6 @@ export namespace GetGlCodeOverridesForStockItemResponseProto {
     }
 }
 
-export class SetStockItemIsHiddenRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SetStockItemIsHiddenRequestProto;
-    getStockItemId(): string;
-    setStockItemId(value: string): SetStockItemIsHiddenRequestProto;
-    getHide(): boolean;
-    setHide(value: boolean): SetStockItemIsHiddenRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetStockItemIsHiddenRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetStockItemIsHiddenRequestProto): SetStockItemIsHiddenRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetStockItemIsHiddenRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetStockItemIsHiddenRequestProto;
-    static deserializeBinaryFromReader(message: SetStockItemIsHiddenRequestProto, reader: jspb.BinaryReader): SetStockItemIsHiddenRequestProto;
-}
-
-export namespace SetStockItemIsHiddenRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        stockItemId: string,
-        hide: boolean,
-    }
-}
-
-export class SetStockItemIsHiddenResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetStockItemIsHiddenResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetStockItemIsHiddenResponseProto): SetStockItemIsHiddenResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetStockItemIsHiddenResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetStockItemIsHiddenResponseProto;
-    static deserializeBinaryFromReader(message: SetStockItemIsHiddenResponseProto, reader: jspb.BinaryReader): SetStockItemIsHiddenResponseProto;
-}
-
-export namespace SetStockItemIsHiddenResponseProto {
-    export type AsObject = {
-    }
-}
-
 export class StockItemProto extends jspb.Message { 
     getVersion(): number;
     setVersion(value: number): StockItemProto;

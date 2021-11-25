@@ -15,12 +15,10 @@ import "common/enumarrayvalues.generated.proto";
 service ProductBrandService {
     // Gets all ProductBrands
     rpc GetAllProductBrands(GetAllProductBrandsRequestProto) returns (GetAllProductBrandsResponseProto) {}
-    // Gets specific ProductBrands
+    // Gets a specific ProductBrand. (Errors if not found).
+    rpc GetProductBrand(GetProductBrandRequestProto) returns (GetProductBrandResponseProto) {}
+    // Gets specific ProductBrands. (Errors if any not found).
     rpc GetProductBrands(GetProductBrandsRequestProto) returns (GetProductBrandsResponseProto) {}
-    // Saves a ProductBrand
-    rpc SaveProductBrand(SaveProductBrandRequestProto) returns (SaveProductBrandResponseProto) {}
-    // Hides or unhides the given product brand.
-    rpc SetProductBrandIsHidden(SetProductBrandIsHiddenRequestProto) returns (SetProductBrandIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -34,6 +32,18 @@ message GetAllProductBrandsResponseProto {
     repeated ProductBrandProto product_brands = 1;
 }
 
+message GetProductBrandRequestProto {
+    
+    string tenant_id = 1;
+    
+    string product_brand_id = 2;
+}
+
+message GetProductBrandResponseProto {
+    
+    ProductBrandProto product_brand = 1;
+}
+
 message GetProductBrandsRequestProto {
     
     string tenant_id = 1;
@@ -44,28 +54,6 @@ message GetProductBrandsRequestProto {
 message GetProductBrandsResponseProto {
     
     repeated ProductBrandProto product_brands = 1;
-}
-
-message SaveProductBrandRequestProto {
-    
-    string tenant_id = 1;
-    
-    ProductBrandProto product_brand = 2;
-}
-
-message SaveProductBrandResponseProto {
-}
-
-message SetProductBrandIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string product_brand_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetProductBrandIsHiddenResponseProto {
 }
 
 

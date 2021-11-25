@@ -13,16 +13,12 @@ import "common/enums.generated.proto";
 import "common/enumarrayvalues.generated.proto";
 
 service CreditTermService {
-    // Gets all undeleted CreditTerms
+    // Gets all CreditTerms
     rpc GetAllCreditTerms(GetAllCreditTermsRequestProto) returns (GetAllCreditTermsResponseProto) {}
     // Gets a specific CreditTerm by Id. (Errors if not found).
     rpc GetCreditTerm(GetCreditTermRequestProto) returns (GetCreditTermResponseProto) {}
     // Gets specific CreditTerms by Ids. (Errors if any not found).
     rpc GetCreditTerms(GetCreditTermsRequestProto) returns (GetCreditTermsResponseProto) {}
-    // Saves a single CreditTerm
-    rpc SaveCreditTerm(SaveCreditTermRequestProto) returns (SaveCreditTermResponseProto) {}
-    // Hides or unhides the given CreditTerm.
-    rpc SetCreditTermIsHidden(SetCreditTermIsHiddenRequestProto) returns (SetCreditTermIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -58,28 +54,6 @@ message GetCreditTermsRequestProto {
 message GetCreditTermsResponseProto {
     
     repeated CreditTermProto credit_terms = 1;
-}
-
-message SaveCreditTermRequestProto {
-    
-    string tenant_id = 1;
-    
-    CreditTermProto credit_term = 2;
-}
-
-message SaveCreditTermResponseProto {
-}
-
-message SetCreditTermIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string credit_term_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetCreditTermIsHiddenResponseProto {
 }
 
 

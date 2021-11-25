@@ -20,7 +20,7 @@ interface IOrderV2ServiceService extends grpc.ServiceDefinition<grpc.UntypedServ
     getOrder: IOrderV2ServiceService_IGetOrder;
     getOrders: IOrderV2ServiceService_IGetOrders;
     getOrdersByFilter: IOrderV2ServiceService_IGetOrdersByFilter;
-    performStandardOrderEvaluation: IOrderV2ServiceService_IPerformStandardOrderEvaluation;
+    buildOrderLines: IOrderV2ServiceService_IBuildOrderLines;
 }
 
 interface IOrderV2ServiceService_ICreateOrder extends grpc.MethodDefinition<order_pb.CreateOrderRequestProto, order_pb.CreateOrderResponseProto> {
@@ -68,14 +68,14 @@ interface IOrderV2ServiceService_IGetOrdersByFilter extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<order_pb.GetOrdersByFilterResponseProto>;
     responseDeserialize: grpc.deserialize<order_pb.GetOrdersByFilterResponseProto>;
 }
-interface IOrderV2ServiceService_IPerformStandardOrderEvaluation extends grpc.MethodDefinition<order_pb.PerformStandardOrderEvaluationRequestProto, order_pb.PerformStandardOrderEvaluationResponseProto> {
-    path: "/bmapi.orders.order.OrderV2Service/PerformStandardOrderEvaluation";
+interface IOrderV2ServiceService_IBuildOrderLines extends grpc.MethodDefinition<order_pb.BuildOrderLinesRequestProto, order_pb.BuildOrderLinesResponseProto> {
+    path: "/bmapi.orders.order.OrderV2Service/BuildOrderLines";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<order_pb.PerformStandardOrderEvaluationRequestProto>;
-    requestDeserialize: grpc.deserialize<order_pb.PerformStandardOrderEvaluationRequestProto>;
-    responseSerialize: grpc.serialize<order_pb.PerformStandardOrderEvaluationResponseProto>;
-    responseDeserialize: grpc.deserialize<order_pb.PerformStandardOrderEvaluationResponseProto>;
+    requestSerialize: grpc.serialize<order_pb.BuildOrderLinesRequestProto>;
+    requestDeserialize: grpc.deserialize<order_pb.BuildOrderLinesRequestProto>;
+    responseSerialize: grpc.serialize<order_pb.BuildOrderLinesResponseProto>;
+    responseDeserialize: grpc.deserialize<order_pb.BuildOrderLinesResponseProto>;
 }
 
 export const OrderV2ServiceService: IOrderV2ServiceService;
@@ -86,7 +86,7 @@ export interface IOrderV2ServiceServer extends grpc.UntypedServiceImplementation
     getOrder: grpc.handleUnaryCall<order_pb.GetOrderRequestProto, order_pb.GetOrderResponseProto>;
     getOrders: grpc.handleUnaryCall<order_pb.GetOrdersRequestProto, order_pb.GetOrdersResponseProto>;
     getOrdersByFilter: grpc.handleUnaryCall<order_pb.GetOrdersByFilterRequestProto, order_pb.GetOrdersByFilterResponseProto>;
-    performStandardOrderEvaluation: grpc.handleUnaryCall<order_pb.PerformStandardOrderEvaluationRequestProto, order_pb.PerformStandardOrderEvaluationResponseProto>;
+    buildOrderLines: grpc.handleUnaryCall<order_pb.BuildOrderLinesRequestProto, order_pb.BuildOrderLinesResponseProto>;
 }
 
 export interface IOrderV2ServiceClient {
@@ -105,9 +105,9 @@ export interface IOrderV2ServiceClient {
     getOrdersByFilter(request: order_pb.GetOrdersByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: order_pb.GetOrdersByFilterResponseProto) => void): grpc.ClientUnaryCall;
     getOrdersByFilter(request: order_pb.GetOrdersByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.GetOrdersByFilterResponseProto) => void): grpc.ClientUnaryCall;
     getOrdersByFilter(request: order_pb.GetOrdersByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.GetOrdersByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    performStandardOrderEvaluation(request: order_pb.PerformStandardOrderEvaluationRequestProto, callback: (error: grpc.ServiceError | null, response: order_pb.PerformStandardOrderEvaluationResponseProto) => void): grpc.ClientUnaryCall;
-    performStandardOrderEvaluation(request: order_pb.PerformStandardOrderEvaluationRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.PerformStandardOrderEvaluationResponseProto) => void): grpc.ClientUnaryCall;
-    performStandardOrderEvaluation(request: order_pb.PerformStandardOrderEvaluationRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.PerformStandardOrderEvaluationResponseProto) => void): grpc.ClientUnaryCall;
+    buildOrderLines(request: order_pb.BuildOrderLinesRequestProto, callback: (error: grpc.ServiceError | null, response: order_pb.BuildOrderLinesResponseProto) => void): grpc.ClientUnaryCall;
+    buildOrderLines(request: order_pb.BuildOrderLinesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.BuildOrderLinesResponseProto) => void): grpc.ClientUnaryCall;
+    buildOrderLines(request: order_pb.BuildOrderLinesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.BuildOrderLinesResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class OrderV2ServiceClient extends grpc.Client implements IOrderV2ServiceClient {
@@ -127,7 +127,7 @@ export class OrderV2ServiceClient extends grpc.Client implements IOrderV2Service
     public getOrdersByFilter(request: order_pb.GetOrdersByFilterRequestProto, callback: (error: grpc.ServiceError | null, response: order_pb.GetOrdersByFilterResponseProto) => void): grpc.ClientUnaryCall;
     public getOrdersByFilter(request: order_pb.GetOrdersByFilterRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.GetOrdersByFilterResponseProto) => void): grpc.ClientUnaryCall;
     public getOrdersByFilter(request: order_pb.GetOrdersByFilterRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.GetOrdersByFilterResponseProto) => void): grpc.ClientUnaryCall;
-    public performStandardOrderEvaluation(request: order_pb.PerformStandardOrderEvaluationRequestProto, callback: (error: grpc.ServiceError | null, response: order_pb.PerformStandardOrderEvaluationResponseProto) => void): grpc.ClientUnaryCall;
-    public performStandardOrderEvaluation(request: order_pb.PerformStandardOrderEvaluationRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.PerformStandardOrderEvaluationResponseProto) => void): grpc.ClientUnaryCall;
-    public performStandardOrderEvaluation(request: order_pb.PerformStandardOrderEvaluationRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.PerformStandardOrderEvaluationResponseProto) => void): grpc.ClientUnaryCall;
+    public buildOrderLines(request: order_pb.BuildOrderLinesRequestProto, callback: (error: grpc.ServiceError | null, response: order_pb.BuildOrderLinesResponseProto) => void): grpc.ClientUnaryCall;
+    public buildOrderLines(request: order_pb.BuildOrderLinesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: order_pb.BuildOrderLinesResponseProto) => void): grpc.ClientUnaryCall;
+    public buildOrderLines(request: order_pb.BuildOrderLinesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: order_pb.BuildOrderLinesResponseProto) => void): grpc.ClientUnaryCall;
 }

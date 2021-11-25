@@ -101,53 +101,9 @@ function deserialize_bmapi_distribution_courier_GetCouriersResponseProto(buffer_
   return courier_pb.GetCouriersResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_distribution_courier_SaveCouriersRequestProto(arg) {
-  if (!(arg instanceof courier_pb.SaveCouriersRequestProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.courier.SaveCouriersRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_distribution_courier_SaveCouriersRequestProto(buffer_arg) {
-  return courier_pb.SaveCouriersRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_distribution_courier_SaveCouriersResponseProto(arg) {
-  if (!(arg instanceof courier_pb.SaveCouriersResponseProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.courier.SaveCouriersResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_distribution_courier_SaveCouriersResponseProto(buffer_arg) {
-  return courier_pb.SaveCouriersResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_distribution_courier_SetCourierIsHiddenRequestProto(arg) {
-  if (!(arg instanceof courier_pb.SetCourierIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.courier.SetCourierIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_distribution_courier_SetCourierIsHiddenRequestProto(buffer_arg) {
-  return courier_pb.SetCourierIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_distribution_courier_SetCourierIsHiddenResponseProto(arg) {
-  if (!(arg instanceof courier_pb.SetCourierIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.courier.SetCourierIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_distribution_courier_SetCourierIsHiddenResponseProto(buffer_arg) {
-  return courier_pb.SetCourierIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var CourierServiceService = exports.CourierServiceService = {
-  // Gets all undeleted Couriers
+  // Gets all Couriers
 getAllCouriers: {
     path: '/bmapi.distribution.courier.CourierService/GetAllCouriers',
     requestStream: false,
@@ -159,7 +115,7 @@ getAllCouriers: {
     responseSerialize: serialize_bmapi_distribution_courier_GetAllCouriersResponseProto,
     responseDeserialize: deserialize_bmapi_distribution_courier_GetAllCouriersResponseProto,
   },
-  // Gets a specific Courier by Id, even if it has been soft-deleted. (Errors if not found).
+  // Gets a specific Courier by Id. (Errors if not found).
 getCourier: {
     path: '/bmapi.distribution.courier.CourierService/GetCourier',
     requestStream: false,
@@ -171,7 +127,7 @@ getCourier: {
     responseSerialize: serialize_bmapi_distribution_courier_GetCourierResponseProto,
     responseDeserialize: deserialize_bmapi_distribution_courier_GetCourierResponseProto,
   },
-  // Gets specific Couriers by Id, even if they has been soft-deleted. (Errors if not found).
+  // Gets specific Couriers by Id. (Errors if any not found).
 getCouriers: {
     path: '/bmapi.distribution.courier.CourierService/GetCouriers',
     requestStream: false,
@@ -182,30 +138,6 @@ getCouriers: {
     requestDeserialize: deserialize_bmapi_distribution_courier_GetCouriersRequestProto,
     responseSerialize: serialize_bmapi_distribution_courier_GetCouriersResponseProto,
     responseDeserialize: deserialize_bmapi_distribution_courier_GetCouriersResponseProto,
-  },
-  // Saves zero or more Couriers
-saveCouriers: {
-    path: '/bmapi.distribution.courier.CourierService/SaveCouriers',
-    requestStream: false,
-    responseStream: false,
-    requestType: courier_pb.SaveCouriersRequestProto,
-    responseType: courier_pb.SaveCouriersResponseProto,
-    requestSerialize: serialize_bmapi_distribution_courier_SaveCouriersRequestProto,
-    requestDeserialize: deserialize_bmapi_distribution_courier_SaveCouriersRequestProto,
-    responseSerialize: serialize_bmapi_distribution_courier_SaveCouriersResponseProto,
-    responseDeserialize: deserialize_bmapi_distribution_courier_SaveCouriersResponseProto,
-  },
-  // Hides or unhides the given Courier.
-setCourierIsHidden: {
-    path: '/bmapi.distribution.courier.CourierService/SetCourierIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: courier_pb.SetCourierIsHiddenRequestProto,
-    responseType: courier_pb.SetCourierIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_distribution_courier_SetCourierIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_distribution_courier_SetCourierIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_distribution_courier_SetCourierIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_distribution_courier_SetCourierIsHiddenResponseProto,
   },
   // Calculate the next despatch date by the given Courier id.
 calculateNextDespatchDateByCourier: {

@@ -55,6 +55,52 @@ export namespace GetAllOutletTypesResponseProto {
     }
 }
 
+export class GetOutletTypeRequestProto extends jspb.Message { 
+    getTenantId(): string;
+    setTenantId(value: string): GetOutletTypeRequestProto;
+    getOutletTypeId(): string;
+    setOutletTypeId(value: string): GetOutletTypeRequestProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetOutletTypeRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetOutletTypeRequestProto): GetOutletTypeRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetOutletTypeRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetOutletTypeRequestProto;
+    static deserializeBinaryFromReader(message: GetOutletTypeRequestProto, reader: jspb.BinaryReader): GetOutletTypeRequestProto;
+}
+
+export namespace GetOutletTypeRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        outletTypeId: string,
+    }
+}
+
+export class GetOutletTypeResponseProto extends jspb.Message { 
+
+    hasOutletType(): boolean;
+    clearOutletType(): void;
+    getOutletType(): OutletTypeProto | undefined;
+    setOutletType(value?: OutletTypeProto): GetOutletTypeResponseProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetOutletTypeResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetOutletTypeResponseProto): GetOutletTypeResponseProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetOutletTypeResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetOutletTypeResponseProto;
+    static deserializeBinaryFromReader(message: GetOutletTypeResponseProto, reader: jspb.BinaryReader): GetOutletTypeResponseProto;
+}
+
+export namespace GetOutletTypeResponseProto {
+    export type AsObject = {
+        outletType?: OutletTypeProto.AsObject,
+    }
+}
+
 export class GetOutletTypesRequestProto extends jspb.Message { 
     getTenantId(): string;
     setTenantId(value: string): GetOutletTypesRequestProto;
@@ -99,91 +145,6 @@ export class GetOutletTypesResponseProto extends jspb.Message {
 export namespace GetOutletTypesResponseProto {
     export type AsObject = {
         outletTypesList: Array<OutletTypeProto.AsObject>,
-    }
-}
-
-export class SaveOutletTypesRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SaveOutletTypesRequestProto;
-    clearOutletTypesList(): void;
-    getOutletTypesList(): Array<OutletTypeProto>;
-    setOutletTypesList(value: Array<OutletTypeProto>): SaveOutletTypesRequestProto;
-    addOutletTypes(value?: OutletTypeProto, index?: number): OutletTypeProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveOutletTypesRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveOutletTypesRequestProto): SaveOutletTypesRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveOutletTypesRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveOutletTypesRequestProto;
-    static deserializeBinaryFromReader(message: SaveOutletTypesRequestProto, reader: jspb.BinaryReader): SaveOutletTypesRequestProto;
-}
-
-export namespace SaveOutletTypesRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        outletTypesList: Array<OutletTypeProto.AsObject>,
-    }
-}
-
-export class SaveOutletTypesResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveOutletTypesResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveOutletTypesResponseProto): SaveOutletTypesResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveOutletTypesResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveOutletTypesResponseProto;
-    static deserializeBinaryFromReader(message: SaveOutletTypesResponseProto, reader: jspb.BinaryReader): SaveOutletTypesResponseProto;
-}
-
-export namespace SaveOutletTypesResponseProto {
-    export type AsObject = {
-    }
-}
-
-export class SetOutletTypeIsHiddenRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SetOutletTypeIsHiddenRequestProto;
-    getOutletTypeId(): string;
-    setOutletTypeId(value: string): SetOutletTypeIsHiddenRequestProto;
-    getHide(): boolean;
-    setHide(value: boolean): SetOutletTypeIsHiddenRequestProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetOutletTypeIsHiddenRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetOutletTypeIsHiddenRequestProto): SetOutletTypeIsHiddenRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetOutletTypeIsHiddenRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetOutletTypeIsHiddenRequestProto;
-    static deserializeBinaryFromReader(message: SetOutletTypeIsHiddenRequestProto, reader: jspb.BinaryReader): SetOutletTypeIsHiddenRequestProto;
-}
-
-export namespace SetOutletTypeIsHiddenRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        outletTypeId: string,
-        hide: boolean,
-    }
-}
-
-export class SetOutletTypeIsHiddenResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SetOutletTypeIsHiddenResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SetOutletTypeIsHiddenResponseProto): SetOutletTypeIsHiddenResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SetOutletTypeIsHiddenResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SetOutletTypeIsHiddenResponseProto;
-    static deserializeBinaryFromReader(message: SetOutletTypeIsHiddenResponseProto, reader: jspb.BinaryReader): SetOutletTypeIsHiddenResponseProto;
-}
-
-export namespace SetOutletTypeIsHiddenResponseProto {
-    export type AsObject = {
     }
 }
 

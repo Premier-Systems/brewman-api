@@ -16,9 +16,9 @@ service CollectionTimeService {
     
     rpc GetAllCollectionTimes(GetAllCollectionTimesRequestProto) returns (GetAllCollectionTimesResponseProto) {}
     
+    rpc GetCollectionTime(GetCollectionTimeRequestProto) returns (GetCollectionTimeResponseProto) {}
+    
     rpc GetCollectionTimes(GetCollectionTimesRequestProto) returns (GetCollectionTimesResponseProto) {}
-    // Saves one or many collection times
-    rpc SaveCollectionTimes(SaveCollectionTimesRequestProto) returns (SaveCollectionTimesResponseProto) {}
 }
 
 // Service Messages 
@@ -32,6 +32,18 @@ message GetAllCollectionTimesResponseProto {
     repeated CollectionTimeProto collection_times = 1;
 }
 
+message GetCollectionTimeRequestProto {
+    
+    string tenant_id = 1;
+    
+    string collection_time_id = 2;
+}
+
+message GetCollectionTimeResponseProto {
+    
+    CollectionTimeProto collection_time = 1;
+}
+
 message GetCollectionTimesRequestProto {
     
     string tenant_id = 1;
@@ -42,16 +54,6 @@ message GetCollectionTimesRequestProto {
 message GetCollectionTimesResponseProto {
     
     repeated CollectionTimeProto collection_times = 1;
-}
-
-message SaveCollectionTimesRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated CollectionTimeProto collection_times = 2;
-}
-
-message SaveCollectionTimesResponseProto {
 }
 
 

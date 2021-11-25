@@ -16,8 +16,8 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 
 interface ICollectionTimeServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllCollectionTimes: ICollectionTimeServiceService_IGetAllCollectionTimes;
+    getCollectionTime: ICollectionTimeServiceService_IGetCollectionTime;
     getCollectionTimes: ICollectionTimeServiceService_IGetCollectionTimes;
-    saveCollectionTimes: ICollectionTimeServiceService_ISaveCollectionTimes;
 }
 
 interface ICollectionTimeServiceService_IGetAllCollectionTimes extends grpc.MethodDefinition<collectiontime_pb.GetAllCollectionTimesRequestProto, collectiontime_pb.GetAllCollectionTimesResponseProto> {
@@ -29,6 +29,15 @@ interface ICollectionTimeServiceService_IGetAllCollectionTimes extends grpc.Meth
     responseSerialize: grpc.serialize<collectiontime_pb.GetAllCollectionTimesResponseProto>;
     responseDeserialize: grpc.deserialize<collectiontime_pb.GetAllCollectionTimesResponseProto>;
 }
+interface ICollectionTimeServiceService_IGetCollectionTime extends grpc.MethodDefinition<collectiontime_pb.GetCollectionTimeRequestProto, collectiontime_pb.GetCollectionTimeResponseProto> {
+    path: "/bmapi.orders.collectiontime.CollectionTimeService/GetCollectionTime";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<collectiontime_pb.GetCollectionTimeRequestProto>;
+    requestDeserialize: grpc.deserialize<collectiontime_pb.GetCollectionTimeRequestProto>;
+    responseSerialize: grpc.serialize<collectiontime_pb.GetCollectionTimeResponseProto>;
+    responseDeserialize: grpc.deserialize<collectiontime_pb.GetCollectionTimeResponseProto>;
+}
 interface ICollectionTimeServiceService_IGetCollectionTimes extends grpc.MethodDefinition<collectiontime_pb.GetCollectionTimesRequestProto, collectiontime_pb.GetCollectionTimesResponseProto> {
     path: "/bmapi.orders.collectiontime.CollectionTimeService/GetCollectionTimes";
     requestStream: false;
@@ -38,34 +47,25 @@ interface ICollectionTimeServiceService_IGetCollectionTimes extends grpc.MethodD
     responseSerialize: grpc.serialize<collectiontime_pb.GetCollectionTimesResponseProto>;
     responseDeserialize: grpc.deserialize<collectiontime_pb.GetCollectionTimesResponseProto>;
 }
-interface ICollectionTimeServiceService_ISaveCollectionTimes extends grpc.MethodDefinition<collectiontime_pb.SaveCollectionTimesRequestProto, collectiontime_pb.SaveCollectionTimesResponseProto> {
-    path: "/bmapi.orders.collectiontime.CollectionTimeService/SaveCollectionTimes";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<collectiontime_pb.SaveCollectionTimesRequestProto>;
-    requestDeserialize: grpc.deserialize<collectiontime_pb.SaveCollectionTimesRequestProto>;
-    responseSerialize: grpc.serialize<collectiontime_pb.SaveCollectionTimesResponseProto>;
-    responseDeserialize: grpc.deserialize<collectiontime_pb.SaveCollectionTimesResponseProto>;
-}
 
 export const CollectionTimeServiceService: ICollectionTimeServiceService;
 
 export interface ICollectionTimeServiceServer extends grpc.UntypedServiceImplementation {
     getAllCollectionTimes: grpc.handleUnaryCall<collectiontime_pb.GetAllCollectionTimesRequestProto, collectiontime_pb.GetAllCollectionTimesResponseProto>;
+    getCollectionTime: grpc.handleUnaryCall<collectiontime_pb.GetCollectionTimeRequestProto, collectiontime_pb.GetCollectionTimeResponseProto>;
     getCollectionTimes: grpc.handleUnaryCall<collectiontime_pb.GetCollectionTimesRequestProto, collectiontime_pb.GetCollectionTimesResponseProto>;
-    saveCollectionTimes: grpc.handleUnaryCall<collectiontime_pb.SaveCollectionTimesRequestProto, collectiontime_pb.SaveCollectionTimesResponseProto>;
 }
 
 export interface ICollectionTimeServiceClient {
     getAllCollectionTimes(request: collectiontime_pb.GetAllCollectionTimesRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetAllCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     getAllCollectionTimes(request: collectiontime_pb.GetAllCollectionTimesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetAllCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     getAllCollectionTimes(request: collectiontime_pb.GetAllCollectionTimesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetAllCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
+    getCollectionTime(request: collectiontime_pb.GetCollectionTimeRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimeResponseProto) => void): grpc.ClientUnaryCall;
+    getCollectionTime(request: collectiontime_pb.GetCollectionTimeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimeResponseProto) => void): grpc.ClientUnaryCall;
+    getCollectionTime(request: collectiontime_pb.GetCollectionTimeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimeResponseProto) => void): grpc.ClientUnaryCall;
     getCollectionTimes(request: collectiontime_pb.GetCollectionTimesRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     getCollectionTimes(request: collectiontime_pb.GetCollectionTimesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     getCollectionTimes(request: collectiontime_pb.GetCollectionTimesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
-    saveCollectionTimes(request: collectiontime_pb.SaveCollectionTimesRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.SaveCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
-    saveCollectionTimes(request: collectiontime_pb.SaveCollectionTimesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.SaveCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
-    saveCollectionTimes(request: collectiontime_pb.SaveCollectionTimesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.SaveCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class CollectionTimeServiceClient extends grpc.Client implements ICollectionTimeServiceClient {
@@ -73,10 +73,10 @@ export class CollectionTimeServiceClient extends grpc.Client implements ICollect
     public getAllCollectionTimes(request: collectiontime_pb.GetAllCollectionTimesRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetAllCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllCollectionTimes(request: collectiontime_pb.GetAllCollectionTimesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetAllCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllCollectionTimes(request: collectiontime_pb.GetAllCollectionTimesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetAllCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
+    public getCollectionTime(request: collectiontime_pb.GetCollectionTimeRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimeResponseProto) => void): grpc.ClientUnaryCall;
+    public getCollectionTime(request: collectiontime_pb.GetCollectionTimeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimeResponseProto) => void): grpc.ClientUnaryCall;
+    public getCollectionTime(request: collectiontime_pb.GetCollectionTimeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimeResponseProto) => void): grpc.ClientUnaryCall;
     public getCollectionTimes(request: collectiontime_pb.GetCollectionTimesRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     public getCollectionTimes(request: collectiontime_pb.GetCollectionTimesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
     public getCollectionTimes(request: collectiontime_pb.GetCollectionTimesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.GetCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCollectionTimes(request: collectiontime_pb.SaveCollectionTimesRequestProto, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.SaveCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCollectionTimes(request: collectiontime_pb.SaveCollectionTimesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.SaveCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCollectionTimes(request: collectiontime_pb.SaveCollectionTimesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: collectiontime_pb.SaveCollectionTimesResponseProto) => void): grpc.ClientUnaryCall;
 }

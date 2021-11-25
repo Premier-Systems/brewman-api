@@ -23,8 +23,8 @@ service OrderV2Service {
     rpc GetOrders(GetOrdersRequestProto) returns (GetOrdersResponseProto) {}
     // Gets full orders (header plus lines) by a given filter.
     rpc GetOrdersByFilter(GetOrdersByFilterRequestProto) returns (GetOrdersByFilterResponseProto) {}
-    // Performs standard calculations and extractions on the lines of a provided V2Order and returns what the order would look like with recalculated pricing and recaptured stock item derived fields. The order is NOT saved to the database - this method is for unobtrusive WhatIf testing. The following fields are reevaluated : UnitListNetPrice, UnitListGrossPriceForRounding, UnitOfMeasureId, Abv, AlcoholType, DiscountBasis, GlCodeId, LineCostNetPrice, LineNetPrice, LineVat, ManufacturerId, ProductBrandId, ProductCode, PricingCategoryId, UnitCostNetPrice, UnitDutiableLitres, UnitLitres, UnitNetPrice, UnitWeight, VatPercentage, VatCodeId, DiscountLevel
-    rpc PerformStandardOrderEvaluation(PerformStandardOrderEvaluationRequestProto) returns (PerformStandardOrderEvaluationResponseProto) {}
+    // Performs standard calculations and extractions for simple addition of items to an Order. Returns what the order would look like with standard (BrewMan UI behaviour) of adding the given items to an order. The order is NOT saved to the database with the evaluated lines.  It can be easily saved by sending to the SaveOrder Api method, or can be adjusted as desired before saving.
+    rpc BuildOrderLines(BuildOrderLinesRequestProto) returns (BuildOrderLinesResponseProto) {}
 }
 
 // Service Messages 
@@ -92,14 +92,16 @@ message GetOrdersByFilterResponseProto {
     FilteredOrdersResultProto results = 1;
 }
 
-message PerformStandardOrderEvaluationRequestProto {
+message BuildOrderLinesRequestProto {
     
     string tenant_id = 1;
     
-    OrderProto order = 2;
+    OrderHeaderProto order_header = 2;
+    
+    repeated ProductQuantityProto items = 3;
 }
 
-message PerformStandardOrderEvaluationResponseProto {
+message BuildOrderLinesResponseProto {
     
     OrderProto results = 1;
 }
@@ -293,6 +295,12 @@ message OrderHeaderProto {
 
     // Private notes relating to dispatch of this order. Not displayed to customer. Copies from Outlet by default.
     string internal_dispatch_notes = 59;
+}
+message ProductQuantityProto {
+
+    // Id of Stock Item, which should be a Product
+    string stock_item_id = 1;
+    double quantity = 2;
 }
 message OrderLineProto {
     string id = 1;

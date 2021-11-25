@@ -35,6 +35,28 @@ function deserialize_bmapi_outlets_salesarea_GetAllSalesAreasResponseProto(buffe
   return salesarea_pb.GetAllSalesAreasResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_outlets_salesarea_GetSalesAreaRequestProto(arg) {
+  if (!(arg instanceof salesarea_pb.GetSalesAreaRequestProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.salesarea.GetSalesAreaRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_salesarea_GetSalesAreaRequestProto(buffer_arg) {
+  return salesarea_pb.GetSalesAreaRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_outlets_salesarea_GetSalesAreaResponseProto(arg) {
+  if (!(arg instanceof salesarea_pb.GetSalesAreaResponseProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.salesarea.GetSalesAreaResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_salesarea_GetSalesAreaResponseProto(buffer_arg) {
+  return salesarea_pb.GetSalesAreaResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_outlets_salesarea_GetSalesAreasRequestProto(arg) {
   if (!(arg instanceof salesarea_pb.GetSalesAreasRequestProto)) {
     throw new Error('Expected argument of type bmapi.outlets.salesarea.GetSalesAreasRequestProto');
@@ -57,50 +79,6 @@ function deserialize_bmapi_outlets_salesarea_GetSalesAreasResponseProto(buffer_a
   return salesarea_pb.GetSalesAreasResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_salesarea_SaveSalesAreasRequestProto(arg) {
-  if (!(arg instanceof salesarea_pb.SaveSalesAreasRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salesarea.SaveSalesAreasRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salesarea_SaveSalesAreasRequestProto(buffer_arg) {
-  return salesarea_pb.SaveSalesAreasRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_salesarea_SaveSalesAreasResponseProto(arg) {
-  if (!(arg instanceof salesarea_pb.SaveSalesAreasResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salesarea.SaveSalesAreasResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salesarea_SaveSalesAreasResponseProto(buffer_arg) {
-  return salesarea_pb.SaveSalesAreasResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenRequestProto(arg) {
-  if (!(arg instanceof salesarea_pb.SetSalesAreaIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salesarea.SetSalesAreaIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenRequestProto(buffer_arg) {
-  return salesarea_pb.SetSalesAreaIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenResponseProto(arg) {
-  if (!(arg instanceof salesarea_pb.SetSalesAreaIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.salesarea.SetSalesAreaIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenResponseProto(buffer_arg) {
-  return salesarea_pb.SetSalesAreaIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var SalesAreaServiceService = exports.SalesAreaServiceService = {
   // Gets all SalesAreas
@@ -115,6 +93,18 @@ getAllSalesAreas: {
     responseSerialize: serialize_bmapi_outlets_salesarea_GetAllSalesAreasResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_salesarea_GetAllSalesAreasResponseProto,
   },
+  // Gets a specific SalesArea. (Errors if not found).
+getSalesArea: {
+    path: '/bmapi.outlets.salesarea.SalesAreaService/GetSalesArea',
+    requestStream: false,
+    responseStream: false,
+    requestType: salesarea_pb.GetSalesAreaRequestProto,
+    responseType: salesarea_pb.GetSalesAreaResponseProto,
+    requestSerialize: serialize_bmapi_outlets_salesarea_GetSalesAreaRequestProto,
+    requestDeserialize: deserialize_bmapi_outlets_salesarea_GetSalesAreaRequestProto,
+    responseSerialize: serialize_bmapi_outlets_salesarea_GetSalesAreaResponseProto,
+    responseDeserialize: deserialize_bmapi_outlets_salesarea_GetSalesAreaResponseProto,
+  },
   // Gets specific SalesAreas. (Errors if any not found).
 getSalesAreas: {
     path: '/bmapi.outlets.salesarea.SalesAreaService/GetSalesAreas',
@@ -126,30 +116,6 @@ getSalesAreas: {
     requestDeserialize: deserialize_bmapi_outlets_salesarea_GetSalesAreasRequestProto,
     responseSerialize: serialize_bmapi_outlets_salesarea_GetSalesAreasResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_salesarea_GetSalesAreasResponseProto,
-  },
-  // Saves one or many SalesAreas
-saveSalesAreas: {
-    path: '/bmapi.outlets.salesarea.SalesAreaService/SaveSalesAreas',
-    requestStream: false,
-    responseStream: false,
-    requestType: salesarea_pb.SaveSalesAreasRequestProto,
-    responseType: salesarea_pb.SaveSalesAreasResponseProto,
-    requestSerialize: serialize_bmapi_outlets_salesarea_SaveSalesAreasRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_salesarea_SaveSalesAreasRequestProto,
-    responseSerialize: serialize_bmapi_outlets_salesarea_SaveSalesAreasResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_salesarea_SaveSalesAreasResponseProto,
-  },
-  // Hides or unhides the given Sales Area.
-setSalesAreaIsHidden: {
-    path: '/bmapi.outlets.salesarea.SalesAreaService/SetSalesAreaIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: salesarea_pb.SetSalesAreaIsHiddenRequestProto,
-    responseType: salesarea_pb.SetSalesAreaIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_salesarea_SetSalesAreaIsHiddenResponseProto,
   },
 };
 

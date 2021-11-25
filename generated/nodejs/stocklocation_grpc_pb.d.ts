@@ -18,8 +18,6 @@ interface IStockLocationServiceService extends grpc.ServiceDefinition<grpc.Untyp
     getAllStockLocations: IStockLocationServiceService_IGetAllStockLocations;
     getStockLocation: IStockLocationServiceService_IGetStockLocation;
     getStockLocations: IStockLocationServiceService_IGetStockLocations;
-    saveStockLocations: IStockLocationServiceService_ISaveStockLocations;
-    setStockLocationIsHidden: IStockLocationServiceService_ISetStockLocationIsHidden;
 }
 
 interface IStockLocationServiceService_IGetAllStockLocations extends grpc.MethodDefinition<stocklocation_pb.GetAllStockLocationsRequestProto, stocklocation_pb.GetAllStockLocationsResponseProto> {
@@ -49,24 +47,6 @@ interface IStockLocationServiceService_IGetStockLocations extends grpc.MethodDef
     responseSerialize: grpc.serialize<stocklocation_pb.GetStockLocationsResponseProto>;
     responseDeserialize: grpc.deserialize<stocklocation_pb.GetStockLocationsResponseProto>;
 }
-interface IStockLocationServiceService_ISaveStockLocations extends grpc.MethodDefinition<stocklocation_pb.SaveStockLocationsRequestProto, stocklocation_pb.SaveStockLocationsResponseProto> {
-    path: "/bmapi.stocks.stocklocation.StockLocationService/SaveStockLocations";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<stocklocation_pb.SaveStockLocationsRequestProto>;
-    requestDeserialize: grpc.deserialize<stocklocation_pb.SaveStockLocationsRequestProto>;
-    responseSerialize: grpc.serialize<stocklocation_pb.SaveStockLocationsResponseProto>;
-    responseDeserialize: grpc.deserialize<stocklocation_pb.SaveStockLocationsResponseProto>;
-}
-interface IStockLocationServiceService_ISetStockLocationIsHidden extends grpc.MethodDefinition<stocklocation_pb.SetStockLocationIsHiddenRequestProto, stocklocation_pb.SetStockLocationIsHiddenResponseProto> {
-    path: "/bmapi.stocks.stocklocation.StockLocationService/SetStockLocationIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<stocklocation_pb.SetStockLocationIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<stocklocation_pb.SetStockLocationIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<stocklocation_pb.SetStockLocationIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<stocklocation_pb.SetStockLocationIsHiddenResponseProto>;
-}
 
 export const StockLocationServiceService: IStockLocationServiceService;
 
@@ -74,8 +54,6 @@ export interface IStockLocationServiceServer extends grpc.UntypedServiceImplemen
     getAllStockLocations: grpc.handleUnaryCall<stocklocation_pb.GetAllStockLocationsRequestProto, stocklocation_pb.GetAllStockLocationsResponseProto>;
     getStockLocation: grpc.handleUnaryCall<stocklocation_pb.GetStockLocationRequestProto, stocklocation_pb.GetStockLocationResponseProto>;
     getStockLocations: grpc.handleUnaryCall<stocklocation_pb.GetStockLocationsRequestProto, stocklocation_pb.GetStockLocationsResponseProto>;
-    saveStockLocations: grpc.handleUnaryCall<stocklocation_pb.SaveStockLocationsRequestProto, stocklocation_pb.SaveStockLocationsResponseProto>;
-    setStockLocationIsHidden: grpc.handleUnaryCall<stocklocation_pb.SetStockLocationIsHiddenRequestProto, stocklocation_pb.SetStockLocationIsHiddenResponseProto>;
 }
 
 export interface IStockLocationServiceClient {
@@ -88,12 +66,6 @@ export interface IStockLocationServiceClient {
     getStockLocations(request: stocklocation_pb.GetStockLocationsRequestProto, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.GetStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
     getStockLocations(request: stocklocation_pb.GetStockLocationsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.GetStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
     getStockLocations(request: stocklocation_pb.GetStockLocationsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.GetStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    saveStockLocations(request: stocklocation_pb.SaveStockLocationsRequestProto, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SaveStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    saveStockLocations(request: stocklocation_pb.SaveStockLocationsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SaveStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    saveStockLocations(request: stocklocation_pb.SaveStockLocationsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SaveStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    setStockLocationIsHidden(request: stocklocation_pb.SetStockLocationIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SetStockLocationIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setStockLocationIsHidden(request: stocklocation_pb.SetStockLocationIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SetStockLocationIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setStockLocationIsHidden(request: stocklocation_pb.SetStockLocationIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SetStockLocationIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class StockLocationServiceClient extends grpc.Client implements IStockLocationServiceClient {
@@ -107,10 +79,4 @@ export class StockLocationServiceClient extends grpc.Client implements IStockLoc
     public getStockLocations(request: stocklocation_pb.GetStockLocationsRequestProto, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.GetStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
     public getStockLocations(request: stocklocation_pb.GetStockLocationsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.GetStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
     public getStockLocations(request: stocklocation_pb.GetStockLocationsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.GetStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    public saveStockLocations(request: stocklocation_pb.SaveStockLocationsRequestProto, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SaveStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    public saveStockLocations(request: stocklocation_pb.SaveStockLocationsRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SaveStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    public saveStockLocations(request: stocklocation_pb.SaveStockLocationsRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SaveStockLocationsResponseProto) => void): grpc.ClientUnaryCall;
-    public setStockLocationIsHidden(request: stocklocation_pb.SetStockLocationIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SetStockLocationIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setStockLocationIsHidden(request: stocklocation_pb.SetStockLocationIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SetStockLocationIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setStockLocationIsHidden(request: stocklocation_pb.SetStockLocationIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: stocklocation_pb.SetStockLocationIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

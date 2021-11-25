@@ -256,50 +256,55 @@ export namespace GetOrdersByFilterResponseProto {
     }
 }
 
-export class PerformStandardOrderEvaluationRequestProto extends jspb.Message { 
+export class BuildOrderLinesRequestProto extends jspb.Message { 
     getTenantId(): string;
-    setTenantId(value: string): PerformStandardOrderEvaluationRequestProto;
+    setTenantId(value: string): BuildOrderLinesRequestProto;
 
-    hasOrder(): boolean;
-    clearOrder(): void;
-    getOrder(): OrderProto | undefined;
-    setOrder(value?: OrderProto): PerformStandardOrderEvaluationRequestProto;
+    hasOrderHeader(): boolean;
+    clearOrderHeader(): void;
+    getOrderHeader(): OrderHeaderProto | undefined;
+    setOrderHeader(value?: OrderHeaderProto): BuildOrderLinesRequestProto;
+    clearItemsList(): void;
+    getItemsList(): Array<ProductQuantityProto>;
+    setItemsList(value: Array<ProductQuantityProto>): BuildOrderLinesRequestProto;
+    addItems(value?: ProductQuantityProto, index?: number): ProductQuantityProto;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): PerformStandardOrderEvaluationRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: PerformStandardOrderEvaluationRequestProto): PerformStandardOrderEvaluationRequestProto.AsObject;
+    toObject(includeInstance?: boolean): BuildOrderLinesRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: BuildOrderLinesRequestProto): BuildOrderLinesRequestProto.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: PerformStandardOrderEvaluationRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): PerformStandardOrderEvaluationRequestProto;
-    static deserializeBinaryFromReader(message: PerformStandardOrderEvaluationRequestProto, reader: jspb.BinaryReader): PerformStandardOrderEvaluationRequestProto;
+    static serializeBinaryToWriter(message: BuildOrderLinesRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BuildOrderLinesRequestProto;
+    static deserializeBinaryFromReader(message: BuildOrderLinesRequestProto, reader: jspb.BinaryReader): BuildOrderLinesRequestProto;
 }
 
-export namespace PerformStandardOrderEvaluationRequestProto {
+export namespace BuildOrderLinesRequestProto {
     export type AsObject = {
         tenantId: string,
-        order?: OrderProto.AsObject,
+        orderHeader?: OrderHeaderProto.AsObject,
+        itemsList: Array<ProductQuantityProto.AsObject>,
     }
 }
 
-export class PerformStandardOrderEvaluationResponseProto extends jspb.Message { 
+export class BuildOrderLinesResponseProto extends jspb.Message { 
 
     hasResults(): boolean;
     clearResults(): void;
     getResults(): OrderProto | undefined;
-    setResults(value?: OrderProto): PerformStandardOrderEvaluationResponseProto;
+    setResults(value?: OrderProto): BuildOrderLinesResponseProto;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): PerformStandardOrderEvaluationResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: PerformStandardOrderEvaluationResponseProto): PerformStandardOrderEvaluationResponseProto.AsObject;
+    toObject(includeInstance?: boolean): BuildOrderLinesResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: BuildOrderLinesResponseProto): BuildOrderLinesResponseProto.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: PerformStandardOrderEvaluationResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): PerformStandardOrderEvaluationResponseProto;
-    static deserializeBinaryFromReader(message: PerformStandardOrderEvaluationResponseProto, reader: jspb.BinaryReader): PerformStandardOrderEvaluationResponseProto;
+    static serializeBinaryToWriter(message: BuildOrderLinesResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BuildOrderLinesResponseProto;
+    static deserializeBinaryFromReader(message: BuildOrderLinesResponseProto, reader: jspb.BinaryReader): BuildOrderLinesResponseProto;
 }
 
-export namespace PerformStandardOrderEvaluationResponseProto {
+export namespace BuildOrderLinesResponseProto {
     export type AsObject = {
         results?: OrderProto.AsObject,
     }
@@ -680,6 +685,29 @@ export namespace OrderHeaderProto {
         vatCodeId: string,
         readOnly?: OrderHeaderReadOnlyProto.AsObject,
         internalDispatchNotes: string,
+    }
+}
+
+export class ProductQuantityProto extends jspb.Message { 
+    getStockItemId(): string;
+    setStockItemId(value: string): ProductQuantityProto;
+    getQuantity(): number;
+    setQuantity(value: number): ProductQuantityProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ProductQuantityProto.AsObject;
+    static toObject(includeInstance: boolean, msg: ProductQuantityProto): ProductQuantityProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ProductQuantityProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ProductQuantityProto;
+    static deserializeBinaryFromReader(message: ProductQuantityProto, reader: jspb.BinaryReader): ProductQuantityProto;
+}
+
+export namespace ProductQuantityProto {
+    export type AsObject = {
+        stockItemId: string,
+        quantity: number,
     }
 }
 

@@ -16,9 +16,8 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 
 interface IOutletTypeServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllOutletTypes: IOutletTypeServiceService_IGetAllOutletTypes;
+    getOutletType: IOutletTypeServiceService_IGetOutletType;
     getOutletTypes: IOutletTypeServiceService_IGetOutletTypes;
-    saveOutletTypes: IOutletTypeServiceService_ISaveOutletTypes;
-    setOutletTypeIsHidden: IOutletTypeServiceService_ISetOutletTypeIsHidden;
 }
 
 interface IOutletTypeServiceService_IGetAllOutletTypes extends grpc.MethodDefinition<outlettype_pb.GetAllOutletTypesRequestProto, outlettype_pb.GetAllOutletTypesResponseProto> {
@@ -30,6 +29,15 @@ interface IOutletTypeServiceService_IGetAllOutletTypes extends grpc.MethodDefini
     responseSerialize: grpc.serialize<outlettype_pb.GetAllOutletTypesResponseProto>;
     responseDeserialize: grpc.deserialize<outlettype_pb.GetAllOutletTypesResponseProto>;
 }
+interface IOutletTypeServiceService_IGetOutletType extends grpc.MethodDefinition<outlettype_pb.GetOutletTypeRequestProto, outlettype_pb.GetOutletTypeResponseProto> {
+    path: "/bmapi.outlets.outlettype.OutletTypeService/GetOutletType";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<outlettype_pb.GetOutletTypeRequestProto>;
+    requestDeserialize: grpc.deserialize<outlettype_pb.GetOutletTypeRequestProto>;
+    responseSerialize: grpc.serialize<outlettype_pb.GetOutletTypeResponseProto>;
+    responseDeserialize: grpc.deserialize<outlettype_pb.GetOutletTypeResponseProto>;
+}
 interface IOutletTypeServiceService_IGetOutletTypes extends grpc.MethodDefinition<outlettype_pb.GetOutletTypesRequestProto, outlettype_pb.GetOutletTypesResponseProto> {
     path: "/bmapi.outlets.outlettype.OutletTypeService/GetOutletTypes";
     requestStream: false;
@@ -39,47 +47,25 @@ interface IOutletTypeServiceService_IGetOutletTypes extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<outlettype_pb.GetOutletTypesResponseProto>;
     responseDeserialize: grpc.deserialize<outlettype_pb.GetOutletTypesResponseProto>;
 }
-interface IOutletTypeServiceService_ISaveOutletTypes extends grpc.MethodDefinition<outlettype_pb.SaveOutletTypesRequestProto, outlettype_pb.SaveOutletTypesResponseProto> {
-    path: "/bmapi.outlets.outlettype.OutletTypeService/SaveOutletTypes";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<outlettype_pb.SaveOutletTypesRequestProto>;
-    requestDeserialize: grpc.deserialize<outlettype_pb.SaveOutletTypesRequestProto>;
-    responseSerialize: grpc.serialize<outlettype_pb.SaveOutletTypesResponseProto>;
-    responseDeserialize: grpc.deserialize<outlettype_pb.SaveOutletTypesResponseProto>;
-}
-interface IOutletTypeServiceService_ISetOutletTypeIsHidden extends grpc.MethodDefinition<outlettype_pb.SetOutletTypeIsHiddenRequestProto, outlettype_pb.SetOutletTypeIsHiddenResponseProto> {
-    path: "/bmapi.outlets.outlettype.OutletTypeService/SetOutletTypeIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<outlettype_pb.SetOutletTypeIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<outlettype_pb.SetOutletTypeIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<outlettype_pb.SetOutletTypeIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<outlettype_pb.SetOutletTypeIsHiddenResponseProto>;
-}
 
 export const OutletTypeServiceService: IOutletTypeServiceService;
 
 export interface IOutletTypeServiceServer extends grpc.UntypedServiceImplementation {
     getAllOutletTypes: grpc.handleUnaryCall<outlettype_pb.GetAllOutletTypesRequestProto, outlettype_pb.GetAllOutletTypesResponseProto>;
+    getOutletType: grpc.handleUnaryCall<outlettype_pb.GetOutletTypeRequestProto, outlettype_pb.GetOutletTypeResponseProto>;
     getOutletTypes: grpc.handleUnaryCall<outlettype_pb.GetOutletTypesRequestProto, outlettype_pb.GetOutletTypesResponseProto>;
-    saveOutletTypes: grpc.handleUnaryCall<outlettype_pb.SaveOutletTypesRequestProto, outlettype_pb.SaveOutletTypesResponseProto>;
-    setOutletTypeIsHidden: grpc.handleUnaryCall<outlettype_pb.SetOutletTypeIsHiddenRequestProto, outlettype_pb.SetOutletTypeIsHiddenResponseProto>;
 }
 
 export interface IOutletTypeServiceClient {
     getAllOutletTypes(request: outlettype_pb.GetAllOutletTypesRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetAllOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     getAllOutletTypes(request: outlettype_pb.GetAllOutletTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetAllOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     getAllOutletTypes(request: outlettype_pb.GetAllOutletTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetAllOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
+    getOutletType(request: outlettype_pb.GetOutletTypeRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypeResponseProto) => void): grpc.ClientUnaryCall;
+    getOutletType(request: outlettype_pb.GetOutletTypeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypeResponseProto) => void): grpc.ClientUnaryCall;
+    getOutletType(request: outlettype_pb.GetOutletTypeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypeResponseProto) => void): grpc.ClientUnaryCall;
     getOutletTypes(request: outlettype_pb.GetOutletTypesRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     getOutletTypes(request: outlettype_pb.GetOutletTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     getOutletTypes(request: outlettype_pb.GetOutletTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    saveOutletTypes(request: outlettype_pb.SaveOutletTypesRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SaveOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    saveOutletTypes(request: outlettype_pb.SaveOutletTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SaveOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    saveOutletTypes(request: outlettype_pb.SaveOutletTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SaveOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    setOutletTypeIsHidden(request: outlettype_pb.SetOutletTypeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SetOutletTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setOutletTypeIsHidden(request: outlettype_pb.SetOutletTypeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SetOutletTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setOutletTypeIsHidden(request: outlettype_pb.SetOutletTypeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SetOutletTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class OutletTypeServiceClient extends grpc.Client implements IOutletTypeServiceClient {
@@ -87,13 +73,10 @@ export class OutletTypeServiceClient extends grpc.Client implements IOutletTypeS
     public getAllOutletTypes(request: outlettype_pb.GetAllOutletTypesRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetAllOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllOutletTypes(request: outlettype_pb.GetAllOutletTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetAllOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllOutletTypes(request: outlettype_pb.GetAllOutletTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetAllOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
+    public getOutletType(request: outlettype_pb.GetOutletTypeRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypeResponseProto) => void): grpc.ClientUnaryCall;
+    public getOutletType(request: outlettype_pb.GetOutletTypeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypeResponseProto) => void): grpc.ClientUnaryCall;
+    public getOutletType(request: outlettype_pb.GetOutletTypeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypeResponseProto) => void): grpc.ClientUnaryCall;
     public getOutletTypes(request: outlettype_pb.GetOutletTypesRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     public getOutletTypes(request: outlettype_pb.GetOutletTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
     public getOutletTypes(request: outlettype_pb.GetOutletTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.GetOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveOutletTypes(request: outlettype_pb.SaveOutletTypesRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SaveOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveOutletTypes(request: outlettype_pb.SaveOutletTypesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SaveOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveOutletTypes(request: outlettype_pb.SaveOutletTypesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SaveOutletTypesResponseProto) => void): grpc.ClientUnaryCall;
-    public setOutletTypeIsHidden(request: outlettype_pb.SetOutletTypeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SetOutletTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setOutletTypeIsHidden(request: outlettype_pb.SetOutletTypeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SetOutletTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setOutletTypeIsHidden(request: outlettype_pb.SetOutletTypeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: outlettype_pb.SetOutletTypeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

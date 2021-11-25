@@ -79,50 +79,6 @@ function deserialize_bmapi_stocks_stocklocation_GetStockLocationsResponseProto(b
   return stocklocation_pb.GetStockLocationsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_stocklocation_SaveStockLocationsRequestProto(arg) {
-  if (!(arg instanceof stocklocation_pb.SaveStockLocationsRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stocklocation.SaveStockLocationsRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stocklocation_SaveStockLocationsRequestProto(buffer_arg) {
-  return stocklocation_pb.SaveStockLocationsRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_stocklocation_SaveStockLocationsResponseProto(arg) {
-  if (!(arg instanceof stocklocation_pb.SaveStockLocationsResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stocklocation.SaveStockLocationsResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stocklocation_SaveStockLocationsResponseProto(buffer_arg) {
-  return stocklocation_pb.SaveStockLocationsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenRequestProto(arg) {
-  if (!(arg instanceof stocklocation_pb.SetStockLocationIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stocklocation.SetStockLocationIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenRequestProto(buffer_arg) {
-  return stocklocation_pb.SetStockLocationIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenResponseProto(arg) {
-  if (!(arg instanceof stocklocation_pb.SetStockLocationIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.stocklocation.SetStockLocationIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenResponseProto(buffer_arg) {
-  return stocklocation_pb.SetStockLocationIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var StockLocationServiceService = exports.StockLocationServiceService = {
   // Gets all StockLocations
@@ -160,30 +116,6 @@ getStockLocations: {
     requestDeserialize: deserialize_bmapi_stocks_stocklocation_GetStockLocationsRequestProto,
     responseSerialize: serialize_bmapi_stocks_stocklocation_GetStockLocationsResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_stocklocation_GetStockLocationsResponseProto,
-  },
-  // Saves one or many StockLocations
-saveStockLocations: {
-    path: '/bmapi.stocks.stocklocation.StockLocationService/SaveStockLocations',
-    requestStream: false,
-    responseStream: false,
-    requestType: stocklocation_pb.SaveStockLocationsRequestProto,
-    responseType: stocklocation_pb.SaveStockLocationsResponseProto,
-    requestSerialize: serialize_bmapi_stocks_stocklocation_SaveStockLocationsRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_stocklocation_SaveStockLocationsRequestProto,
-    responseSerialize: serialize_bmapi_stocks_stocklocation_SaveStockLocationsResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_stocklocation_SaveStockLocationsResponseProto,
-  },
-  // Hides or unhides the given Stock Location.
-setStockLocationIsHidden: {
-    path: '/bmapi.stocks.stocklocation.StockLocationService/SetStockLocationIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: stocklocation_pb.SetStockLocationIsHiddenRequestProto,
-    responseType: stocklocation_pb.SetStockLocationIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_stocklocation_SetStockLocationIsHiddenResponseProto,
   },
 };
 

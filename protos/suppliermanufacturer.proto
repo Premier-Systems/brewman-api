@@ -19,12 +19,6 @@ service SupplierManufacturerService {
     rpc GetSupplierManufacturer(GetSupplierManufacturerRequestProto) returns (GetSupplierManufacturerResponseProto) {}
     // Gets specific SupplierManufacturers by Ids. (Errors if any not found).
     rpc GetSupplierManufacturers(GetSupplierManufacturersRequestProto) returns (GetSupplierManufacturersResponseProto) {}
-    // Saves a SupplierManufacturer
-    rpc SaveSupplierManufacturer(SaveSupplierManufacturerRequestProto) returns (SaveSupplierManufacturerResponseProto) {}
-    // Hides or unhides the given Supplier Manufacturer
-    rpc SetSupplierManufacturerIsHidden(SetSupplierManufacturerIsHiddenRequestProto) returns (SetSupplierManufacturerIsHiddenResponseProto) {}
-    // Get Suppliers and Manufacturers matching the given filter.
-    rpc GetSupplierManufacturersByFilter(GetSupplierManufacturersByFilterRequestProto) returns (GetSupplierManufacturersByFilterResponseProto) {}
 }
 
 // Service Messages 
@@ -58,40 +52,6 @@ message GetSupplierManufacturersRequestProto {
 }
 
 message GetSupplierManufacturersResponseProto {
-    
-    repeated SupplierManufacturerProto supplier_manufacturers = 1;
-}
-
-message SaveSupplierManufacturerRequestProto {
-    
-    string tenant_id = 1;
-    
-    SupplierManufacturerProto supplier_manufacturer = 2;
-}
-
-message SaveSupplierManufacturerResponseProto {
-}
-
-message SetSupplierManufacturerIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string supplier_manufacturer_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetSupplierManufacturerIsHiddenResponseProto {
-}
-
-message GetSupplierManufacturersByFilterRequestProto {
-    
-    string tenant_id = 1;
-    
-    SupplierManufacturerFilterProto filter = 2;
-}
-
-message GetSupplierManufacturersByFilterResponseProto {
     
     repeated SupplierManufacturerProto supplier_manufacturers = 1;
 }
@@ -167,9 +127,6 @@ message SupplierManufacturerProto {
 
     // Bank Identification Code
     string bic = 33;
-}
-message SupplierManufacturerFilterProto {
-    bmapi.common.StringArrayValue limit_vat_code_ids = 2;
 }
 message AnnualProductionEntryProto {
 

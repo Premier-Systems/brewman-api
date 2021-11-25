@@ -55,6 +55,52 @@ export namespace GetAllCollectionTimesResponseProto {
     }
 }
 
+export class GetCollectionTimeRequestProto extends jspb.Message { 
+    getTenantId(): string;
+    setTenantId(value: string): GetCollectionTimeRequestProto;
+    getCollectionTimeId(): string;
+    setCollectionTimeId(value: string): GetCollectionTimeRequestProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetCollectionTimeRequestProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetCollectionTimeRequestProto): GetCollectionTimeRequestProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetCollectionTimeRequestProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetCollectionTimeRequestProto;
+    static deserializeBinaryFromReader(message: GetCollectionTimeRequestProto, reader: jspb.BinaryReader): GetCollectionTimeRequestProto;
+}
+
+export namespace GetCollectionTimeRequestProto {
+    export type AsObject = {
+        tenantId: string,
+        collectionTimeId: string,
+    }
+}
+
+export class GetCollectionTimeResponseProto extends jspb.Message { 
+
+    hasCollectionTime(): boolean;
+    clearCollectionTime(): void;
+    getCollectionTime(): CollectionTimeProto | undefined;
+    setCollectionTime(value?: CollectionTimeProto): GetCollectionTimeResponseProto;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetCollectionTimeResponseProto.AsObject;
+    static toObject(includeInstance: boolean, msg: GetCollectionTimeResponseProto): GetCollectionTimeResponseProto.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetCollectionTimeResponseProto, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetCollectionTimeResponseProto;
+    static deserializeBinaryFromReader(message: GetCollectionTimeResponseProto, reader: jspb.BinaryReader): GetCollectionTimeResponseProto;
+}
+
+export namespace GetCollectionTimeResponseProto {
+    export type AsObject = {
+        collectionTime?: CollectionTimeProto.AsObject,
+    }
+}
+
 export class GetCollectionTimesRequestProto extends jspb.Message { 
     getTenantId(): string;
     setTenantId(value: string): GetCollectionTimesRequestProto;
@@ -99,48 +145,6 @@ export class GetCollectionTimesResponseProto extends jspb.Message {
 export namespace GetCollectionTimesResponseProto {
     export type AsObject = {
         collectionTimesList: Array<CollectionTimeProto.AsObject>,
-    }
-}
-
-export class SaveCollectionTimesRequestProto extends jspb.Message { 
-    getTenantId(): string;
-    setTenantId(value: string): SaveCollectionTimesRequestProto;
-    clearCollectionTimesList(): void;
-    getCollectionTimesList(): Array<CollectionTimeProto>;
-    setCollectionTimesList(value: Array<CollectionTimeProto>): SaveCollectionTimesRequestProto;
-    addCollectionTimes(value?: CollectionTimeProto, index?: number): CollectionTimeProto;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveCollectionTimesRequestProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveCollectionTimesRequestProto): SaveCollectionTimesRequestProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveCollectionTimesRequestProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveCollectionTimesRequestProto;
-    static deserializeBinaryFromReader(message: SaveCollectionTimesRequestProto, reader: jspb.BinaryReader): SaveCollectionTimesRequestProto;
-}
-
-export namespace SaveCollectionTimesRequestProto {
-    export type AsObject = {
-        tenantId: string,
-        collectionTimesList: Array<CollectionTimeProto.AsObject>,
-    }
-}
-
-export class SaveCollectionTimesResponseProto extends jspb.Message { 
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SaveCollectionTimesResponseProto.AsObject;
-    static toObject(includeInstance: boolean, msg: SaveCollectionTimesResponseProto): SaveCollectionTimesResponseProto.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SaveCollectionTimesResponseProto, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SaveCollectionTimesResponseProto;
-    static deserializeBinaryFromReader(message: SaveCollectionTimesResponseProto, reader: jspb.BinaryReader): SaveCollectionTimesResponseProto;
-}
-
-export namespace SaveCollectionTimesResponseProto {
-    export type AsObject = {
     }
 }
 

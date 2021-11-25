@@ -17,10 +17,8 @@ service StockGroupService {
     rpc GetAllStockGroups(GetAllStockGroupsRequestProto) returns (GetAllStockGroupsResponseProto) {}
     // Gets a specific stock group. (Errors if not found).
     rpc GetStockGroup(GetStockGroupRequestProto) returns (GetStockGroupResponseProto) {}
-    // Saves a StockGroup
-    rpc SaveStockGroup(SaveStockGroupRequestProto) returns (SaveStockGroupResponseProto) {}
     // Get specific stock groups. (Errors if any not found).
-    rpc GetStockGroupsById(GetStockGroupsByIdRequestProto) returns (GetStockGroupsByIdResponseProto) {}
+    rpc GetStockGroups(GetStockGroupsRequestProto) returns (GetStockGroupsResponseProto) {}
 }
 
 // Service Messages 
@@ -46,24 +44,14 @@ message GetStockGroupResponseProto {
     StockGroupProto stock_group = 1;
 }
 
-message SaveStockGroupRequestProto {
-    
-    string tenant_id = 1;
-    
-    StockGroupProto stock_group = 2;
-}
-
-message SaveStockGroupResponseProto {
-}
-
-message GetStockGroupsByIdRequestProto {
+message GetStockGroupsRequestProto {
     
     string tenant_id = 1;
     
     repeated string stock_group_ids = 2;
 }
 
-message GetStockGroupsByIdResponseProto {
+message GetStockGroupsResponseProto {
     
     repeated StockGroupProto stock_groups = 1;
 }

@@ -79,53 +79,31 @@ function deserialize_bmapi_distribution_deliveryarea_GetDeliveryAreaResponseProt
   return deliveryarea_pb.GetDeliveryAreaResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasRequestProto(arg) {
-  if (!(arg instanceof deliveryarea_pb.SaveDeliveryAreasRequestProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.deliveryarea.SaveDeliveryAreasRequestProto');
+function serialize_bmapi_distribution_deliveryarea_GetDeliveryAreasRequestProto(arg) {
+  if (!(arg instanceof deliveryarea_pb.GetDeliveryAreasRequestProto)) {
+    throw new Error('Expected argument of type bmapi.distribution.deliveryarea.GetDeliveryAreasRequestProto');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasRequestProto(buffer_arg) {
-  return deliveryarea_pb.SaveDeliveryAreasRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_bmapi_distribution_deliveryarea_GetDeliveryAreasRequestProto(buffer_arg) {
+  return deliveryarea_pb.GetDeliveryAreasRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasResponseProto(arg) {
-  if (!(arg instanceof deliveryarea_pb.SaveDeliveryAreasResponseProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.deliveryarea.SaveDeliveryAreasResponseProto');
+function serialize_bmapi_distribution_deliveryarea_GetDeliveryAreasResponseProto(arg) {
+  if (!(arg instanceof deliveryarea_pb.GetDeliveryAreasResponseProto)) {
+    throw new Error('Expected argument of type bmapi.distribution.deliveryarea.GetDeliveryAreasResponseProto');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasResponseProto(buffer_arg) {
-  return deliveryarea_pb.SaveDeliveryAreasResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenRequestProto(arg) {
-  if (!(arg instanceof deliveryarea_pb.SetDeliveryAreaIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.deliveryarea.SetDeliveryAreaIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenRequestProto(buffer_arg) {
-  return deliveryarea_pb.SetDeliveryAreaIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenResponseProto(arg) {
-  if (!(arg instanceof deliveryarea_pb.SetDeliveryAreaIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.distribution.deliveryarea.SetDeliveryAreaIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenResponseProto(buffer_arg) {
-  return deliveryarea_pb.SetDeliveryAreaIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_bmapi_distribution_deliveryarea_GetDeliveryAreasResponseProto(buffer_arg) {
+  return deliveryarea_pb.GetDeliveryAreasResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 var DeliveryAreaServiceService = exports.DeliveryAreaServiceService = {
-  // Gets all undeleted DeliveryAreas
+  // Gets all DeliveryAreas
 getAllDeliveryAreas: {
     path: '/bmapi.distribution.deliveryarea.DeliveryAreaService/GetAllDeliveryAreas',
     requestStream: false,
@@ -137,7 +115,7 @@ getAllDeliveryAreas: {
     responseSerialize: serialize_bmapi_distribution_deliveryarea_GetAllDeliveryAreasResponseProto,
     responseDeserialize: deserialize_bmapi_distribution_deliveryarea_GetAllDeliveryAreasResponseProto,
   },
-  // Gets a specific DeliveryArea by Id, even if it has been soft-deleted. (Errors if not found).
+  // Gets a specific DeliveryArea by Id. (Errors if not found).
 getDeliveryArea: {
     path: '/bmapi.distribution.deliveryarea.DeliveryAreaService/GetDeliveryArea',
     requestStream: false,
@@ -149,29 +127,17 @@ getDeliveryArea: {
     responseSerialize: serialize_bmapi_distribution_deliveryarea_GetDeliveryAreaResponseProto,
     responseDeserialize: deserialize_bmapi_distribution_deliveryarea_GetDeliveryAreaResponseProto,
   },
-  // Saves zero or more Delivery Areas
-saveDeliveryAreas: {
-    path: '/bmapi.distribution.deliveryarea.DeliveryAreaService/SaveDeliveryAreas',
+  // Gets specific DeliveryAreas by Id. (Errors if any not found).
+getDeliveryAreas: {
+    path: '/bmapi.distribution.deliveryarea.DeliveryAreaService/GetDeliveryAreas',
     requestStream: false,
     responseStream: false,
-    requestType: deliveryarea_pb.SaveDeliveryAreasRequestProto,
-    responseType: deliveryarea_pb.SaveDeliveryAreasResponseProto,
-    requestSerialize: serialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasRequestProto,
-    requestDeserialize: deserialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasRequestProto,
-    responseSerialize: serialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasResponseProto,
-    responseDeserialize: deserialize_bmapi_distribution_deliveryarea_SaveDeliveryAreasResponseProto,
-  },
-  // Hides or unhides the given Delivery Area
-setDeliveryAreaIsHidden: {
-    path: '/bmapi.distribution.deliveryarea.DeliveryAreaService/SetDeliveryAreaIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: deliveryarea_pb.SetDeliveryAreaIsHiddenRequestProto,
-    responseType: deliveryarea_pb.SetDeliveryAreaIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_distribution_deliveryarea_SetDeliveryAreaIsHiddenResponseProto,
+    requestType: deliveryarea_pb.GetDeliveryAreasRequestProto,
+    responseType: deliveryarea_pb.GetDeliveryAreasResponseProto,
+    requestSerialize: serialize_bmapi_distribution_deliveryarea_GetDeliveryAreasRequestProto,
+    requestDeserialize: deserialize_bmapi_distribution_deliveryarea_GetDeliveryAreasRequestProto,
+    responseSerialize: serialize_bmapi_distribution_deliveryarea_GetDeliveryAreasResponseProto,
+    responseDeserialize: deserialize_bmapi_distribution_deliveryarea_GetDeliveryAreasResponseProto,
   },
   // Calculate the next despatch date by the given Delivery Area id.
 calculateNextDespatchDateByDeliveryArea: {

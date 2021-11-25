@@ -15,12 +15,10 @@ import "common/enumarrayvalues.generated.proto";
 service SalesAreaService {
     // Gets all SalesAreas
     rpc GetAllSalesAreas(GetAllSalesAreasRequestProto) returns (GetAllSalesAreasResponseProto) {}
+    // Gets a specific SalesArea. (Errors if not found).
+    rpc GetSalesArea(GetSalesAreaRequestProto) returns (GetSalesAreaResponseProto) {}
     // Gets specific SalesAreas. (Errors if any not found).
     rpc GetSalesAreas(GetSalesAreasRequestProto) returns (GetSalesAreasResponseProto) {}
-    // Saves one or many SalesAreas
-    rpc SaveSalesAreas(SaveSalesAreasRequestProto) returns (SaveSalesAreasResponseProto) {}
-    // Hides or unhides the given Sales Area.
-    rpc SetSalesAreaIsHidden(SetSalesAreaIsHiddenRequestProto) returns (SetSalesAreaIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -34,6 +32,18 @@ message GetAllSalesAreasResponseProto {
     repeated SalesAreaProto sales_areas = 1;
 }
 
+message GetSalesAreaRequestProto {
+    
+    string tenant_id = 1;
+    
+    string sales_area_id = 2;
+}
+
+message GetSalesAreaResponseProto {
+    
+    SalesAreaProto sales_area = 1;
+}
+
 message GetSalesAreasRequestProto {
     
     string tenant_id = 1;
@@ -44,28 +54,6 @@ message GetSalesAreasRequestProto {
 message GetSalesAreasResponseProto {
     
     repeated SalesAreaProto sales_areas = 1;
-}
-
-message SaveSalesAreasRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated SalesAreaProto sales_areas = 2;
-}
-
-message SaveSalesAreasResponseProto {
-}
-
-message SetSalesAreaIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string sales_area_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetSalesAreaIsHiddenResponseProto {
 }
 
 

@@ -35,6 +35,28 @@ function deserialize_bmapi_stocks_vatcode_GetAllVatCodesResponseProto(buffer_arg
   return vatcode_pb.GetAllVatCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_stocks_vatcode_GetVatCodeRequestProto(arg) {
+  if (!(arg instanceof vatcode_pb.GetVatCodeRequestProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.vatcode.GetVatCodeRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_stocks_vatcode_GetVatCodeRequestProto(buffer_arg) {
+  return vatcode_pb.GetVatCodeRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_stocks_vatcode_GetVatCodeResponseProto(arg) {
+  if (!(arg instanceof vatcode_pb.GetVatCodeResponseProto)) {
+    throw new Error('Expected argument of type bmapi.stocks.vatcode.GetVatCodeResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_stocks_vatcode_GetVatCodeResponseProto(buffer_arg) {
+  return vatcode_pb.GetVatCodeResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_stocks_vatcode_GetVatCodesRequestProto(arg) {
   if (!(arg instanceof vatcode_pb.GetVatCodesRequestProto)) {
     throw new Error('Expected argument of type bmapi.stocks.vatcode.GetVatCodesRequestProto');
@@ -57,50 +79,6 @@ function deserialize_bmapi_stocks_vatcode_GetVatCodesResponseProto(buffer_arg) {
   return vatcode_pb.GetVatCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_stocks_vatcode_SaveVatCodesRequestProto(arg) {
-  if (!(arg instanceof vatcode_pb.SaveVatCodesRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.vatcode.SaveVatCodesRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_vatcode_SaveVatCodesRequestProto(buffer_arg) {
-  return vatcode_pb.SaveVatCodesRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_vatcode_SaveVatCodesResponseProto(arg) {
-  if (!(arg instanceof vatcode_pb.SaveVatCodesResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.vatcode.SaveVatCodesResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_vatcode_SaveVatCodesResponseProto(buffer_arg) {
-  return vatcode_pb.SaveVatCodesResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenRequestProto(arg) {
-  if (!(arg instanceof vatcode_pb.SetVatCodeIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.vatcode.SetVatCodeIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenRequestProto(buffer_arg) {
-  return vatcode_pb.SetVatCodeIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenResponseProto(arg) {
-  if (!(arg instanceof vatcode_pb.SetVatCodeIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.stocks.vatcode.SetVatCodeIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenResponseProto(buffer_arg) {
-  return vatcode_pb.SetVatCodeIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var VatCodeServiceService = exports.VatCodeServiceService = {
   // Gets all vat codes
@@ -115,6 +93,18 @@ getAllVatCodes: {
     responseSerialize: serialize_bmapi_stocks_vatcode_GetAllVatCodesResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_vatcode_GetAllVatCodesResponseProto,
   },
+  // Gets a specific vat code. (Errors if not found).
+getVatCode: {
+    path: '/bmapi.stocks.vatcode.VatCodeService/GetVatCode',
+    requestStream: false,
+    responseStream: false,
+    requestType: vatcode_pb.GetVatCodeRequestProto,
+    responseType: vatcode_pb.GetVatCodeResponseProto,
+    requestSerialize: serialize_bmapi_stocks_vatcode_GetVatCodeRequestProto,
+    requestDeserialize: deserialize_bmapi_stocks_vatcode_GetVatCodeRequestProto,
+    responseSerialize: serialize_bmapi_stocks_vatcode_GetVatCodeResponseProto,
+    responseDeserialize: deserialize_bmapi_stocks_vatcode_GetVatCodeResponseProto,
+  },
   // Gets specific vat codes. (Errors if any not found).
 getVatCodes: {
     path: '/bmapi.stocks.vatcode.VatCodeService/GetVatCodes',
@@ -126,30 +116,6 @@ getVatCodes: {
     requestDeserialize: deserialize_bmapi_stocks_vatcode_GetVatCodesRequestProto,
     responseSerialize: serialize_bmapi_stocks_vatcode_GetVatCodesResponseProto,
     responseDeserialize: deserialize_bmapi_stocks_vatcode_GetVatCodesResponseProto,
-  },
-  // Saves one or many VatCodes
-saveVatCodes: {
-    path: '/bmapi.stocks.vatcode.VatCodeService/SaveVatCodes',
-    requestStream: false,
-    responseStream: false,
-    requestType: vatcode_pb.SaveVatCodesRequestProto,
-    responseType: vatcode_pb.SaveVatCodesResponseProto,
-    requestSerialize: serialize_bmapi_stocks_vatcode_SaveVatCodesRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_vatcode_SaveVatCodesRequestProto,
-    responseSerialize: serialize_bmapi_stocks_vatcode_SaveVatCodesResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_vatcode_SaveVatCodesResponseProto,
-  },
-  // Hides or unhides the given Vat Code.
-setVatCodeIsHidden: {
-    path: '/bmapi.stocks.vatcode.VatCodeService/SetVatCodeIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: vatcode_pb.SetVatCodeIsHiddenRequestProto,
-    responseType: vatcode_pb.SetVatCodeIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_stocks_vatcode_SetVatCodeIsHiddenResponseProto,
   },
 };
 

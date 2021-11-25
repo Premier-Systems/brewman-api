@@ -16,9 +16,8 @@ import * as common_enumarrayvalues_generated_pb from "./common/enumarrayvalues.g
 
 interface ISalesCodeServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getAllSalesCodes: ISalesCodeServiceService_IGetAllSalesCodes;
+    getSalesCode: ISalesCodeServiceService_IGetSalesCode;
     getSalesCodes: ISalesCodeServiceService_IGetSalesCodes;
-    saveSalesCodes: ISalesCodeServiceService_ISaveSalesCodes;
-    setSalesCodeIsHidden: ISalesCodeServiceService_ISetSalesCodeIsHidden;
 }
 
 interface ISalesCodeServiceService_IGetAllSalesCodes extends grpc.MethodDefinition<salescode_pb.GetAllSalesCodesRequestProto, salescode_pb.GetAllSalesCodesResponseProto> {
@@ -30,6 +29,15 @@ interface ISalesCodeServiceService_IGetAllSalesCodes extends grpc.MethodDefiniti
     responseSerialize: grpc.serialize<salescode_pb.GetAllSalesCodesResponseProto>;
     responseDeserialize: grpc.deserialize<salescode_pb.GetAllSalesCodesResponseProto>;
 }
+interface ISalesCodeServiceService_IGetSalesCode extends grpc.MethodDefinition<salescode_pb.GetSalesCodeRequestProto, salescode_pb.GetSalesCodeResponseProto> {
+    path: "/bmapi.outlets.salescode.SalesCodeService/GetSalesCode";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<salescode_pb.GetSalesCodeRequestProto>;
+    requestDeserialize: grpc.deserialize<salescode_pb.GetSalesCodeRequestProto>;
+    responseSerialize: grpc.serialize<salescode_pb.GetSalesCodeResponseProto>;
+    responseDeserialize: grpc.deserialize<salescode_pb.GetSalesCodeResponseProto>;
+}
 interface ISalesCodeServiceService_IGetSalesCodes extends grpc.MethodDefinition<salescode_pb.GetSalesCodesRequestProto, salescode_pb.GetSalesCodesResponseProto> {
     path: "/bmapi.outlets.salescode.SalesCodeService/GetSalesCodes";
     requestStream: false;
@@ -39,47 +47,25 @@ interface ISalesCodeServiceService_IGetSalesCodes extends grpc.MethodDefinition<
     responseSerialize: grpc.serialize<salescode_pb.GetSalesCodesResponseProto>;
     responseDeserialize: grpc.deserialize<salescode_pb.GetSalesCodesResponseProto>;
 }
-interface ISalesCodeServiceService_ISaveSalesCodes extends grpc.MethodDefinition<salescode_pb.SaveSalesCodesRequestProto, salescode_pb.SaveSalesCodesResponseProto> {
-    path: "/bmapi.outlets.salescode.SalesCodeService/SaveSalesCodes";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<salescode_pb.SaveSalesCodesRequestProto>;
-    requestDeserialize: grpc.deserialize<salescode_pb.SaveSalesCodesRequestProto>;
-    responseSerialize: grpc.serialize<salescode_pb.SaveSalesCodesResponseProto>;
-    responseDeserialize: grpc.deserialize<salescode_pb.SaveSalesCodesResponseProto>;
-}
-interface ISalesCodeServiceService_ISetSalesCodeIsHidden extends grpc.MethodDefinition<salescode_pb.SetSalesCodeIsHiddenRequestProto, salescode_pb.SetSalesCodeIsHiddenResponseProto> {
-    path: "/bmapi.outlets.salescode.SalesCodeService/SetSalesCodeIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<salescode_pb.SetSalesCodeIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<salescode_pb.SetSalesCodeIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<salescode_pb.SetSalesCodeIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<salescode_pb.SetSalesCodeIsHiddenResponseProto>;
-}
 
 export const SalesCodeServiceService: ISalesCodeServiceService;
 
 export interface ISalesCodeServiceServer extends grpc.UntypedServiceImplementation {
     getAllSalesCodes: grpc.handleUnaryCall<salescode_pb.GetAllSalesCodesRequestProto, salescode_pb.GetAllSalesCodesResponseProto>;
+    getSalesCode: grpc.handleUnaryCall<salescode_pb.GetSalesCodeRequestProto, salescode_pb.GetSalesCodeResponseProto>;
     getSalesCodes: grpc.handleUnaryCall<salescode_pb.GetSalesCodesRequestProto, salescode_pb.GetSalesCodesResponseProto>;
-    saveSalesCodes: grpc.handleUnaryCall<salescode_pb.SaveSalesCodesRequestProto, salescode_pb.SaveSalesCodesResponseProto>;
-    setSalesCodeIsHidden: grpc.handleUnaryCall<salescode_pb.SetSalesCodeIsHiddenRequestProto, salescode_pb.SetSalesCodeIsHiddenResponseProto>;
 }
 
 export interface ISalesCodeServiceClient {
     getAllSalesCodes(request: salescode_pb.GetAllSalesCodesRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetAllSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     getAllSalesCodes(request: salescode_pb.GetAllSalesCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetAllSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     getAllSalesCodes(request: salescode_pb.GetAllSalesCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetAllSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
+    getSalesCode(request: salescode_pb.GetSalesCodeRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodeResponseProto) => void): grpc.ClientUnaryCall;
+    getSalesCode(request: salescode_pb.GetSalesCodeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodeResponseProto) => void): grpc.ClientUnaryCall;
+    getSalesCode(request: salescode_pb.GetSalesCodeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodeResponseProto) => void): grpc.ClientUnaryCall;
     getSalesCodes(request: salescode_pb.GetSalesCodesRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     getSalesCodes(request: salescode_pb.GetSalesCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     getSalesCodes(request: salescode_pb.GetSalesCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    saveSalesCodes(request: salescode_pb.SaveSalesCodesRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.SaveSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    saveSalesCodes(request: salescode_pb.SaveSalesCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.SaveSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    saveSalesCodes(request: salescode_pb.SaveSalesCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.SaveSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    setSalesCodeIsHidden(request: salescode_pb.SetSalesCodeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.SetSalesCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setSalesCodeIsHidden(request: salescode_pb.SetSalesCodeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.SetSalesCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setSalesCodeIsHidden(request: salescode_pb.SetSalesCodeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.SetSalesCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }
 
 export class SalesCodeServiceClient extends grpc.Client implements ISalesCodeServiceClient {
@@ -87,13 +73,10 @@ export class SalesCodeServiceClient extends grpc.Client implements ISalesCodeSer
     public getAllSalesCodes(request: salescode_pb.GetAllSalesCodesRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetAllSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllSalesCodes(request: salescode_pb.GetAllSalesCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetAllSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     public getAllSalesCodes(request: salescode_pb.GetAllSalesCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetAllSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
+    public getSalesCode(request: salescode_pb.GetSalesCodeRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodeResponseProto) => void): grpc.ClientUnaryCall;
+    public getSalesCode(request: salescode_pb.GetSalesCodeRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodeResponseProto) => void): grpc.ClientUnaryCall;
+    public getSalesCode(request: salescode_pb.GetSalesCodeRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodeResponseProto) => void): grpc.ClientUnaryCall;
     public getSalesCodes(request: salescode_pb.GetSalesCodesRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     public getSalesCodes(request: salescode_pb.GetSalesCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
     public getSalesCodes(request: salescode_pb.GetSalesCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.GetSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSalesCodes(request: salescode_pb.SaveSalesCodesRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.SaveSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSalesCodes(request: salescode_pb.SaveSalesCodesRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.SaveSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    public saveSalesCodes(request: salescode_pb.SaveSalesCodesRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.SaveSalesCodesResponseProto) => void): grpc.ClientUnaryCall;
-    public setSalesCodeIsHidden(request: salescode_pb.SetSalesCodeIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: salescode_pb.SetSalesCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setSalesCodeIsHidden(request: salescode_pb.SetSalesCodeIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: salescode_pb.SetSalesCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setSalesCodeIsHidden(request: salescode_pb.SetSalesCodeIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: salescode_pb.SetSalesCodeIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
 }

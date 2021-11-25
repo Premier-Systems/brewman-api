@@ -79,53 +79,9 @@ function deserialize_bmapi_outlets_creditterm_GetCreditTermsResponseProto(buffer
   return creditterm_pb.GetCreditTermsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_creditterm_SaveCreditTermRequestProto(arg) {
-  if (!(arg instanceof creditterm_pb.SaveCreditTermRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.creditterm.SaveCreditTermRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_creditterm_SaveCreditTermRequestProto(buffer_arg) {
-  return creditterm_pb.SaveCreditTermRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_creditterm_SaveCreditTermResponseProto(arg) {
-  if (!(arg instanceof creditterm_pb.SaveCreditTermResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.creditterm.SaveCreditTermResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_creditterm_SaveCreditTermResponseProto(buffer_arg) {
-  return creditterm_pb.SaveCreditTermResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenRequestProto(arg) {
-  if (!(arg instanceof creditterm_pb.SetCreditTermIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.creditterm.SetCreditTermIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenRequestProto(buffer_arg) {
-  return creditterm_pb.SetCreditTermIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenResponseProto(arg) {
-  if (!(arg instanceof creditterm_pb.SetCreditTermIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.creditterm.SetCreditTermIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenResponseProto(buffer_arg) {
-  return creditterm_pb.SetCreditTermIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var CreditTermServiceService = exports.CreditTermServiceService = {
-  // Gets all undeleted CreditTerms
+  // Gets all CreditTerms
 getAllCreditTerms: {
     path: '/bmapi.outlets.creditterm.CreditTermService/GetAllCreditTerms',
     requestStream: false,
@@ -160,30 +116,6 @@ getCreditTerms: {
     requestDeserialize: deserialize_bmapi_outlets_creditterm_GetCreditTermsRequestProto,
     responseSerialize: serialize_bmapi_outlets_creditterm_GetCreditTermsResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_creditterm_GetCreditTermsResponseProto,
-  },
-  // Saves a single CreditTerm
-saveCreditTerm: {
-    path: '/bmapi.outlets.creditterm.CreditTermService/SaveCreditTerm',
-    requestStream: false,
-    responseStream: false,
-    requestType: creditterm_pb.SaveCreditTermRequestProto,
-    responseType: creditterm_pb.SaveCreditTermResponseProto,
-    requestSerialize: serialize_bmapi_outlets_creditterm_SaveCreditTermRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_creditterm_SaveCreditTermRequestProto,
-    responseSerialize: serialize_bmapi_outlets_creditterm_SaveCreditTermResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_creditterm_SaveCreditTermResponseProto,
-  },
-  // Hides or unhides the given CreditTerm.
-setCreditTermIsHidden: {
-    path: '/bmapi.outlets.creditterm.CreditTermService/SetCreditTermIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: creditterm_pb.SetCreditTermIsHiddenRequestProto,
-    responseType: creditterm_pb.SetCreditTermIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_creditterm_SetCreditTermIsHiddenResponseProto,
   },
 };
 

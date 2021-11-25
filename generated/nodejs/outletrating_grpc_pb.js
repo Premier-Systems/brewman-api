@@ -35,6 +35,28 @@ function deserialize_bmapi_outlets_outletrating_GetAllOutletRatingsResponseProto
   return outletrating_pb.GetAllOutletRatingsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bmapi_outlets_outletrating_GetOutletRatingRequestProto(arg) {
+  if (!(arg instanceof outletrating_pb.GetOutletRatingRequestProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.outletrating.GetOutletRatingRequestProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_outletrating_GetOutletRatingRequestProto(buffer_arg) {
+  return outletrating_pb.GetOutletRatingRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bmapi_outlets_outletrating_GetOutletRatingResponseProto(arg) {
+  if (!(arg instanceof outletrating_pb.GetOutletRatingResponseProto)) {
+    throw new Error('Expected argument of type bmapi.outlets.outletrating.GetOutletRatingResponseProto');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bmapi_outlets_outletrating_GetOutletRatingResponseProto(buffer_arg) {
+  return outletrating_pb.GetOutletRatingResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bmapi_outlets_outletrating_GetOutletRatingsRequestProto(arg) {
   if (!(arg instanceof outletrating_pb.GetOutletRatingsRequestProto)) {
     throw new Error('Expected argument of type bmapi.outlets.outletrating.GetOutletRatingsRequestProto');
@@ -57,50 +79,6 @@ function deserialize_bmapi_outlets_outletrating_GetOutletRatingsResponseProto(bu
   return outletrating_pb.GetOutletRatingsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_bmapi_outlets_outletrating_SaveOutletRatingsRequestProto(arg) {
-  if (!(arg instanceof outletrating_pb.SaveOutletRatingsRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outletrating.SaveOutletRatingsRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outletrating_SaveOutletRatingsRequestProto(buffer_arg) {
-  return outletrating_pb.SaveOutletRatingsRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outletrating_SaveOutletRatingsResponseProto(arg) {
-  if (!(arg instanceof outletrating_pb.SaveOutletRatingsResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outletrating.SaveOutletRatingsResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outletrating_SaveOutletRatingsResponseProto(buffer_arg) {
-  return outletrating_pb.SaveOutletRatingsResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenRequestProto(arg) {
-  if (!(arg instanceof outletrating_pb.SetOutletRatingIsHiddenRequestProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outletrating.SetOutletRatingIsHiddenRequestProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenRequestProto(buffer_arg) {
-  return outletrating_pb.SetOutletRatingIsHiddenRequestProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenResponseProto(arg) {
-  if (!(arg instanceof outletrating_pb.SetOutletRatingIsHiddenResponseProto)) {
-    throw new Error('Expected argument of type bmapi.outlets.outletrating.SetOutletRatingIsHiddenResponseProto');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenResponseProto(buffer_arg) {
-  return outletrating_pb.SetOutletRatingIsHiddenResponseProto.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 var OutletRatingServiceService = exports.OutletRatingServiceService = {
   // Gets all outlet ratings.
@@ -115,6 +93,18 @@ getAllOutletRatings: {
     responseSerialize: serialize_bmapi_outlets_outletrating_GetAllOutletRatingsResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outletrating_GetAllOutletRatingsResponseProto,
   },
+  // Gets a specific outlet rating. (Errors if not found).
+getOutletRating: {
+    path: '/bmapi.outlets.outletrating.OutletRatingService/GetOutletRating',
+    requestStream: false,
+    responseStream: false,
+    requestType: outletrating_pb.GetOutletRatingRequestProto,
+    responseType: outletrating_pb.GetOutletRatingResponseProto,
+    requestSerialize: serialize_bmapi_outlets_outletrating_GetOutletRatingRequestProto,
+    requestDeserialize: deserialize_bmapi_outlets_outletrating_GetOutletRatingRequestProto,
+    responseSerialize: serialize_bmapi_outlets_outletrating_GetOutletRatingResponseProto,
+    responseDeserialize: deserialize_bmapi_outlets_outletrating_GetOutletRatingResponseProto,
+  },
   // Gets specific outlet ratings. (Errors if any not found).
 getOutletRatings: {
     path: '/bmapi.outlets.outletrating.OutletRatingService/GetOutletRatings',
@@ -126,30 +116,6 @@ getOutletRatings: {
     requestDeserialize: deserialize_bmapi_outlets_outletrating_GetOutletRatingsRequestProto,
     responseSerialize: serialize_bmapi_outlets_outletrating_GetOutletRatingsResponseProto,
     responseDeserialize: deserialize_bmapi_outlets_outletrating_GetOutletRatingsResponseProto,
-  },
-  // Saves one or many outlet ratings
-saveOutletRatings: {
-    path: '/bmapi.outlets.outletrating.OutletRatingService/SaveOutletRatings',
-    requestStream: false,
-    responseStream: false,
-    requestType: outletrating_pb.SaveOutletRatingsRequestProto,
-    responseType: outletrating_pb.SaveOutletRatingsResponseProto,
-    requestSerialize: serialize_bmapi_outlets_outletrating_SaveOutletRatingsRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_outletrating_SaveOutletRatingsRequestProto,
-    responseSerialize: serialize_bmapi_outlets_outletrating_SaveOutletRatingsResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_outletrating_SaveOutletRatingsResponseProto,
-  },
-  // Hides or unhides the given OutletRating.
-setOutletRatingIsHidden: {
-    path: '/bmapi.outlets.outletrating.OutletRatingService/SetOutletRatingIsHidden',
-    requestStream: false,
-    responseStream: false,
-    requestType: outletrating_pb.SetOutletRatingIsHiddenRequestProto,
-    responseType: outletrating_pb.SetOutletRatingIsHiddenResponseProto,
-    requestSerialize: serialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenRequestProto,
-    requestDeserialize: deserialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenRequestProto,
-    responseSerialize: serialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenResponseProto,
-    responseDeserialize: deserialize_bmapi_outlets_outletrating_SetOutletRatingIsHiddenResponseProto,
   },
 };
 

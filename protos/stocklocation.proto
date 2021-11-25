@@ -19,10 +19,6 @@ service StockLocationService {
     rpc GetStockLocation(GetStockLocationRequestProto) returns (GetStockLocationResponseProto) {}
     // Gets specific stock locations. (Errors if any not found).
     rpc GetStockLocations(GetStockLocationsRequestProto) returns (GetStockLocationsResponseProto) {}
-    // Saves one or many StockLocations
-    rpc SaveStockLocations(SaveStockLocationsRequestProto) returns (SaveStockLocationsResponseProto) {}
-    // Hides or unhides the given Stock Location.
-    rpc SetStockLocationIsHidden(SetStockLocationIsHiddenRequestProto) returns (SetStockLocationIsHiddenResponseProto) {}
 }
 
 // Service Messages 
@@ -58,28 +54,6 @@ message GetStockLocationsRequestProto {
 message GetStockLocationsResponseProto {
     
     repeated StockLocationProto stock_locations = 1;
-}
-
-message SaveStockLocationsRequestProto {
-    
-    string tenant_id = 1;
-    
-    repeated StockLocationProto stock_locations = 2;
-}
-
-message SaveStockLocationsResponseProto {
-}
-
-message SetStockLocationIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string stock_location_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetStockLocationIsHiddenResponseProto {
 }
 
 

@@ -3,6 +3,23 @@ syntax = "proto3";
 package bmapi.common;
 
 
+enum EnumStockMovementReferenceSource {
+    EnumStockMovementReferenceSource_None = 0;
+    EnumStockMovementReferenceSource_Order = 1;
+    EnumStockMovementReferenceSource_Credit = 2;
+    EnumStockMovementReferenceSource_TransferFrom = 3;
+    EnumStockMovementReferenceSource_TransferTo = 4;
+    EnumStockMovementReferenceSource_AssemblyInput = 5;
+    EnumStockMovementReferenceSource_AssemblyOutput = 6;
+    EnumStockMovementReferenceSource_PurchaseOrder = 7;
+}
+
+enum EnumYesNoEither {
+    EnumYesNoEither_Either = 0;
+    EnumYesNoEither_Yes = 1;
+    EnumYesNoEither_No = 2;
+}
+
 enum EnumAlcoholType {
     EnumAlcoholType_None = 0;
     EnumAlcoholType_Beer = 1;
@@ -29,23 +46,6 @@ enum EnumStockItemType {
     EnumStockItemType_Unknown = 0;
     EnumStockItemType_Material = 1;
     EnumStockItemType_Product = 2;
-}
-
-enum EnumStockMovementReferenceSource {
-    EnumStockMovementReferenceSource_None = 0;
-    EnumStockMovementReferenceSource_Order = 1;
-    EnumStockMovementReferenceSource_Credit = 2;
-    EnumStockMovementReferenceSource_TransferFrom = 3;
-    EnumStockMovementReferenceSource_TransferTo = 4;
-    EnumStockMovementReferenceSource_AssemblyInput = 5;
-    EnumStockMovementReferenceSource_AssemblyOutput = 6;
-    EnumStockMovementReferenceSource_PurchaseOrder = 7;
-}
-
-enum EnumYesNoEither {
-    EnumYesNoEither_Either = 0;
-    EnumYesNoEither_Yes = 1;
-    EnumYesNoEither_No = 2;
 }
 
 enum EnumDistributionType {

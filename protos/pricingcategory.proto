@@ -17,10 +17,6 @@ service PricingCategoryService {
     rpc GetAllPricingCategories(GetAllPricingCategoriesRequestProto) returns (GetAllPricingCategoriesResponseProto) {}
     // Gets a specific pricing category. (Errors if not found).
     rpc GetPricingCategory(GetPricingCategoryRequestProto) returns (GetPricingCategoryResponseProto) {}
-    // Saves a single PricingCategory
-    rpc SavePricingCategory(SavePricingCategoryRequestProto) returns (SavePricingCategoryResponseProto) {}
-    // Hides or unhides the given Pricing Category.
-    rpc SetPricingCategoryIsHidden(SetPricingCategoryIsHiddenRequestProto) returns (SetPricingCategoryIsHiddenResponseProto) {}
     // Gets specific pricing categories. (Errors if any not found).
     rpc GetPricingCategories(GetPricingCategoriesRequestProto) returns (GetPricingCategoriesResponseProto) {}
 }
@@ -46,28 +42,6 @@ message GetPricingCategoryRequestProto {
 message GetPricingCategoryResponseProto {
     
     PricingCategoryProto pricing_category = 1;
-}
-
-message SavePricingCategoryRequestProto {
-    
-    string tenant_id = 1;
-    
-    PricingCategoryProto pricing_category = 2;
-}
-
-message SavePricingCategoryResponseProto {
-}
-
-message SetPricingCategoryIsHiddenRequestProto {
-    
-    string tenant_id = 1;
-    
-    string pricing_category_id = 2;
-    // True to hide, false to unhide.
-    bool hide = 3;
-}
-
-message SetPricingCategoryIsHiddenResponseProto {
 }
 
 message GetPricingCategoriesRequestProto {

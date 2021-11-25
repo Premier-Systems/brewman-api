@@ -18,8 +18,6 @@ interface ICourierServiceService extends grpc.ServiceDefinition<grpc.UntypedServ
     getAllCouriers: ICourierServiceService_IGetAllCouriers;
     getCourier: ICourierServiceService_IGetCourier;
     getCouriers: ICourierServiceService_IGetCouriers;
-    saveCouriers: ICourierServiceService_ISaveCouriers;
-    setCourierIsHidden: ICourierServiceService_ISetCourierIsHidden;
     calculateNextDespatchDateByCourier: ICourierServiceService_ICalculateNextDespatchDateByCourier;
 }
 
@@ -50,24 +48,6 @@ interface ICourierServiceService_IGetCouriers extends grpc.MethodDefinition<cour
     responseSerialize: grpc.serialize<courier_pb.GetCouriersResponseProto>;
     responseDeserialize: grpc.deserialize<courier_pb.GetCouriersResponseProto>;
 }
-interface ICourierServiceService_ISaveCouriers extends grpc.MethodDefinition<courier_pb.SaveCouriersRequestProto, courier_pb.SaveCouriersResponseProto> {
-    path: "/bmapi.distribution.courier.CourierService/SaveCouriers";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<courier_pb.SaveCouriersRequestProto>;
-    requestDeserialize: grpc.deserialize<courier_pb.SaveCouriersRequestProto>;
-    responseSerialize: grpc.serialize<courier_pb.SaveCouriersResponseProto>;
-    responseDeserialize: grpc.deserialize<courier_pb.SaveCouriersResponseProto>;
-}
-interface ICourierServiceService_ISetCourierIsHidden extends grpc.MethodDefinition<courier_pb.SetCourierIsHiddenRequestProto, courier_pb.SetCourierIsHiddenResponseProto> {
-    path: "/bmapi.distribution.courier.CourierService/SetCourierIsHidden";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<courier_pb.SetCourierIsHiddenRequestProto>;
-    requestDeserialize: grpc.deserialize<courier_pb.SetCourierIsHiddenRequestProto>;
-    responseSerialize: grpc.serialize<courier_pb.SetCourierIsHiddenResponseProto>;
-    responseDeserialize: grpc.deserialize<courier_pb.SetCourierIsHiddenResponseProto>;
-}
 interface ICourierServiceService_ICalculateNextDespatchDateByCourier extends grpc.MethodDefinition<courier_pb.CalculateNextDespatchDateByCourierRequestProto, courier_pb.CalculateNextDespatchDateByCourierResponseProto> {
     path: "/bmapi.distribution.courier.CourierService/CalculateNextDespatchDateByCourier";
     requestStream: false;
@@ -84,8 +64,6 @@ export interface ICourierServiceServer extends grpc.UntypedServiceImplementation
     getAllCouriers: grpc.handleUnaryCall<courier_pb.GetAllCouriersRequestProto, courier_pb.GetAllCouriersResponseProto>;
     getCourier: grpc.handleUnaryCall<courier_pb.GetCourierRequestProto, courier_pb.GetCourierResponseProto>;
     getCouriers: grpc.handleUnaryCall<courier_pb.GetCouriersRequestProto, courier_pb.GetCouriersResponseProto>;
-    saveCouriers: grpc.handleUnaryCall<courier_pb.SaveCouriersRequestProto, courier_pb.SaveCouriersResponseProto>;
-    setCourierIsHidden: grpc.handleUnaryCall<courier_pb.SetCourierIsHiddenRequestProto, courier_pb.SetCourierIsHiddenResponseProto>;
     calculateNextDespatchDateByCourier: grpc.handleUnaryCall<courier_pb.CalculateNextDespatchDateByCourierRequestProto, courier_pb.CalculateNextDespatchDateByCourierResponseProto>;
 }
 
@@ -99,12 +77,6 @@ export interface ICourierServiceClient {
     getCouriers(request: courier_pb.GetCouriersRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.GetCouriersResponseProto) => void): grpc.ClientUnaryCall;
     getCouriers(request: courier_pb.GetCouriersRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.GetCouriersResponseProto) => void): grpc.ClientUnaryCall;
     getCouriers(request: courier_pb.GetCouriersRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.GetCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    saveCouriers(request: courier_pb.SaveCouriersRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.SaveCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    saveCouriers(request: courier_pb.SaveCouriersRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.SaveCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    saveCouriers(request: courier_pb.SaveCouriersRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.SaveCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    setCourierIsHidden(request: courier_pb.SetCourierIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.SetCourierIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setCourierIsHidden(request: courier_pb.SetCourierIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.SetCourierIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    setCourierIsHidden(request: courier_pb.SetCourierIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.SetCourierIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
     calculateNextDespatchDateByCourier(request: courier_pb.CalculateNextDespatchDateByCourierRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.CalculateNextDespatchDateByCourierResponseProto) => void): grpc.ClientUnaryCall;
     calculateNextDespatchDateByCourier(request: courier_pb.CalculateNextDespatchDateByCourierRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.CalculateNextDespatchDateByCourierResponseProto) => void): grpc.ClientUnaryCall;
     calculateNextDespatchDateByCourier(request: courier_pb.CalculateNextDespatchDateByCourierRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.CalculateNextDespatchDateByCourierResponseProto) => void): grpc.ClientUnaryCall;
@@ -121,12 +93,6 @@ export class CourierServiceClient extends grpc.Client implements ICourierService
     public getCouriers(request: courier_pb.GetCouriersRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.GetCouriersResponseProto) => void): grpc.ClientUnaryCall;
     public getCouriers(request: courier_pb.GetCouriersRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.GetCouriersResponseProto) => void): grpc.ClientUnaryCall;
     public getCouriers(request: courier_pb.GetCouriersRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.GetCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCouriers(request: courier_pb.SaveCouriersRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.SaveCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCouriers(request: courier_pb.SaveCouriersRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.SaveCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    public saveCouriers(request: courier_pb.SaveCouriersRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.SaveCouriersResponseProto) => void): grpc.ClientUnaryCall;
-    public setCourierIsHidden(request: courier_pb.SetCourierIsHiddenRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.SetCourierIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setCourierIsHidden(request: courier_pb.SetCourierIsHiddenRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.SetCourierIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
-    public setCourierIsHidden(request: courier_pb.SetCourierIsHiddenRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.SetCourierIsHiddenResponseProto) => void): grpc.ClientUnaryCall;
     public calculateNextDespatchDateByCourier(request: courier_pb.CalculateNextDespatchDateByCourierRequestProto, callback: (error: grpc.ServiceError | null, response: courier_pb.CalculateNextDespatchDateByCourierResponseProto) => void): grpc.ClientUnaryCall;
     public calculateNextDespatchDateByCourier(request: courier_pb.CalculateNextDespatchDateByCourierRequestProto, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: courier_pb.CalculateNextDespatchDateByCourierResponseProto) => void): grpc.ClientUnaryCall;
     public calculateNextDespatchDateByCourier(request: courier_pb.CalculateNextDespatchDateByCourierRequestProto, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: courier_pb.CalculateNextDespatchDateByCourierResponseProto) => void): grpc.ClientUnaryCall;
