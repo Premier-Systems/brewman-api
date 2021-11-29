@@ -34,7 +34,7 @@ Our proto files contain some documentation. Our plan is to improve the documenta
 critical services. We recommend looking at our [NodeJS unit test](src/tests/orders.test.ts) that creates an order as a starting point for making
 your own requests.
 
-We will also shortly be publishing documentation to a web portal.
+Our documentation can be found in the docs folder or is hosted here: [Documentation](https://premier-systems.github.io/brewman-api/)
 
 ### Rate Limiting / Pricing
 This API has been requested by our customers to help with some back office tasks and performing ecommerce integrations. 
