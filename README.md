@@ -1,4 +1,4 @@
-## Brewman Web - API - BETA
+## Brewman Web - Web API - BETA
 
 ** The API schema and documentation is in beta and subject to change until final release. We may make changes to API 
 definitions that could cause client code to break. We will inform all customers via our ApiUsers chat room if this is 
@@ -10,31 +10,35 @@ distillery management web product.
 *Note. This API is not for the Brewman 6 desktop application.*
 
 ### Overview
-You must use the [gRPC](https://grpc.io/) protocol to make requests to the Brewman API. gRPC has wide range support for 
-many platforms including (but not limited to):
-- .NET
-- NodeJS
-- Java
-- Go
-- Python
+We publish a web api for our customers to use with supporting OpenApi documentation.
 
-Typically, you will need to compile our service proto files into a client library targeting your platform of choice. 
-The instructions for doing so vary by platform. We have provided generated client libraries for some frameworks in the 
-`./generated` folder. Please see [`tools/Dockerfile`](tools/Dockerfile) for some tips on how to generate code for other platforms.
+- [Complete Reference Documentation](https://brewman.premiersystems.com/swagger/index.html)
 
-#### Authentication
-The API is designed to make requests as a Brewman user. We recommend creating a user in Brewman specifically for your 
-API so you able to see in the web application what entities are created/updated by the API.
+You are free to make calls to our api endpoints using the json as described in the documentation. You may find it useful to utilise the many tools that create client libraries from our [open api json spec](https://brewman.premiersystems.com/swagger/v1/swagger.json).
 
-You need to generate a token from within the user administration pages of the Brewman application. The generated token
-needs to be supplied on every API request as metadata on a key called `API_TOKEN`.
+### Authentication
+The API is designed to make requests as a Brewman user. We recommend creating a new user in Brewman specifically for your 
+API so you will be able to see in the web application what entities are created/updated by your program.
 
-### Documentation
-Our proto files contain some documentation. Our plan is to improve the documentation over time - especially on our most 
-critical services. We recommend looking at our [NodeJS unit test](src/tests/orders.test.ts) that creates an order as a starting point for making
-your own requests.
+Once you have created the user you will be able to generate an API token from the following screen:
 
-Our documentation can be found in the docs folder or is hosted here: [Documentation](https://premier-systems.github.io/brewman-api/)
+![Create Token](./1.png)
+
+Then you can capture the token and tenant identifier for use in API calls.
+
+![CApture Token](./2.png)
+
+The API Token needs be sent on every request to our API in an HTTP header called `Api-Token`.
+
+Our service is multi-tenanted, which allows a single user to interact with multiple breweries, businesses, or departments.
+The current tenants id is included on this screen and will need to be supplied to nearly all our API methods in the request
+payload. This is documented in each method.
+
+### Getting Started
+
+We recommend looking at our included test case for creating an order to get started with our API.
+
+[Create Order Example Code](./src/tests/orders.test.ts)
 
 ### Rate Limiting / Pricing
 This API has been requested by our customers to help with some back office tasks and performing ecommerce integrations. 
