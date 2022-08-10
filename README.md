@@ -40,6 +40,8 @@ We recommend looking at our included test case for creating an order to get star
 
 [Create Order Example Code](./src/tests/orders.test.ts)
 
+To run this test yourself you would need to update `./src/auth.ts` to include the values appropriate to your tenant. 
+
 ### Rate Limiting / Pricing
 This API has been requested by our customers to help with some back office tasks and performing ecommerce integrations. 
 We do not expect a heavy load from API requests, as such we do not currently anticipate the requirement for any rate 

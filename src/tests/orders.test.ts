@@ -26,6 +26,7 @@ test("Creating Order", async () => {
     }
   });
 
+  // 3) Create the order
   const orderHeader = await postOrderV1CreateOrder({
     tenantId: TENANT_ID,
     externalReference: "my-external-system-order-1",
@@ -36,7 +37,7 @@ test("Creating Order", async () => {
   const caskId = crypto.randomUUID();
   const caseId = crypto.randomUUID();
 
-  // Build the order lines (this will add default values and calculate prices from price lists etc.)
+  // 4) Build the order lines (this will add default values and calculate prices from price lists etc.)
   const order = await postOrderV1BuildOrderLines({
     tenantId: TENANT_ID,
     items: [

@@ -7,8 +7,6 @@
     "output"
   ],
   "scripts": {
-    "codegen2": "sta -p https://brewman.premiersystems.com/swagger/v1/swagger.json -o ./src -n bmapi.ts",
-    "codegen3": "sta --axios -p ./swagger.json -o ./src -n bmapi.ts",
     "codegen": "npx swag-ts ./swagger.config.json",
     "test": "vitest",
     "coverage": "vitest run --coverage"
