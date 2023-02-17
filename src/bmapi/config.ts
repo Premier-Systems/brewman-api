@@ -12,7 +12,7 @@ import Axios, {
 //@ts-ignore
 import qs from "qs";
 import * as https from "https";
-import { API_TOKEN, SERVER_BASE_URL } from "../auth";
+import { brewmanApiConfiguration, SERVER_BASE_URL } from "../auth";
 
 const baseConfig: AxiosRequestConfig = {
   baseURL: SERVER_BASE_URL,
@@ -21,10 +21,14 @@ const baseConfig: AxiosRequestConfig = {
     "Content-Encoding": "UTF-8",
     Accept: "application/json",
     "Content-Type": "application/json-patch+json",
-    "Api-Token": API_TOKEN,
+    "Api-Token": brewmanApiConfiguration.apiToken,
   },
   paramsSerializer: (param) => qs.stringify(param, { indices: false }),
 };
+
+function updateBaseConfigApiToken(apiToken: string) {
+  baseConfig.headers["Api-Token"] = apiToken;
+}
 
 let axiosInstance: AxiosInstance;
 
@@ -55,7 +59,7 @@ function getAxiosInstance(security: Security): AxiosInstance {
         if (error.response) {
           return Promise.reject(
             new RequestError(
-              error.response.data,
+              error.response.data as string,
               error.response.status,
               error.response
             )
@@ -110,4 +114,4 @@ export type Security = any[] | undefined;
 
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
-export { getAxiosInstance, RequestError };
+export { getAxiosInstance, RequestError, updateBaseConfigApiToken };

@@ -1,8 +1,20 @@
 {
-  "include": ["src/**/*"],
   "compilerOptions": {
-    "outDir": "output",
+    /* Language and Environment */
+    "target": "es2016",
+
+    /* Modules */
+    "module": "CommonJS",
+    "rootDir": "./src",
+
+    /* Emit */
     "declaration": true,
-    "esModuleInterop": true
-  }
+    "outDir": "dist",
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["dist/**/*", "src/tests/*"]
 }
