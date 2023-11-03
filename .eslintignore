@@ -1,0 +1,5 @@
+node_modules/
+dist/
+src/bmapi/httpRequest.ts
+src/bmapi/services.ts
+src/bmapi/types.ts
